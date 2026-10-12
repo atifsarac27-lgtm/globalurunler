@@ -1,0 +1,3476 @@
+{
+ "urunler": [
+  {
+   "marka": "Burger King",
+   "ulke": "Meksika",
+   "ad": "Kamehameha King de Pollo",
+   "slug": "kamehamehakingdepollo",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Meksika",
+   "ad": "Super Saiyan WHOPPER",
+   "slug": "supersaiyanwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Meksika",
+   "ad": "BABY BURGERS",
+   "slug": "babyburgers",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Japonya",
+   "ad": "BIG MOUTH GUILTY",
+   "slug": "bigmouthguilty",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Japonya",
+   "ad": "MUSHROOM WHOPPER",
+   "slug": "mushroomwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Birleşik Krallık",
+   "ad": "Crispy Chicken Tenders",
+   "slug": "crispychickentenders",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Almanya",
+   "ad": "Crispy Chicken Curry",
+   "slug": "crispychickencurry",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Almanya",
+   "ad": "Super Saiyan Whopper®",
+   "slug": "supersaiyanwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "ABD",
+   "ad": "Honey Chicken Biscuit",
+   "slug": "honeychickenbiscuit",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "ABD",
+   "ad": "BUFFALO RANCH CHICKEN SANDWICH",
+   "slug": "buffaloranchchickensandwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Japonya",
+   "ad": "ザクタルグリルチキン",
+   "slug": "サクタルクリルチキン",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Japonya",
+   "ad": "ザクタルえびブロッコリー",
+   "slug": "サクタルえひフロッコリー",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Polonya",
+   "ad": "POPCORN CHICKEN",
+   "slug": "popcornchicken",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hollanda",
+   "ad": "PICKLE BURGER",
+   "slug": "pickleburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Meksika",
+   "ad": "MOZZARELLA STICKS",
+   "slug": "mozzarellasticks",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Meksika",
+   "ad": "DIPS",
+   "slug": "dips",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "ABD",
+   "ad": "Pineapple Tea & Lemonade",
+   "slug": "pineappletealemonade",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Singapur",
+   "ad": "Mad Black Truffle Sour Crème",
+   "slug": "madblacktrufflesourcreme",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "ABD",
+   "ad": "STEAK 'N MAC BOWL",
+   "slug": "steaknmacbowl",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "ABD",
+   "ad": "STEAK 'N POTATO BOWL",
+   "slug": "steaknpotatobowl",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Japonya",
+   "ad": "M&Mチョコチップ",
+   "slug": "mmチョコチッフ",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Japonya",
+   "ad": "プリプリエビプリオ",
+   "slug": "フリフリエヒフリオ",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Japonya",
+   "ad": "チーズチーズ倍月見 セット",
+   "slug": "チースチース倍月見セット",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Japonya",
+   "ad": "食べくらべポテナゲ大",
+   "slug": "食へくらへホテナケ大",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Malezya",
+   "ad": "NASI ACAR SAMBAL PADU",
+   "slug": "nasiacarsambalpadu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Malezya",
+   "ad": "NASI ORIGINAL RECIPE PADU",
+   "slug": "nasioriginalrecipepadu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Meksika",
+   "ad": "Cheesy Dragon Balls",
+   "slug": "cheesydragonballs",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Meksika",
+   "ad": "Dragon Ball Super Sauce",
+   "slug": "dragonballsupersauce",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Meksika",
+   "ad": "Dragon Ball Sundae",
+   "slug": "dragonballsundae",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Japonya",
+   "ad": "Golden Pine Mix İçecek Serisi (3 Çeşit)",
+   "slug": "goldenpinemixicecekserisi3cesit",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Japonya",
+   "ad": "Golden Pine Mix Coke (Kola)",
+   "slug": "goldenpinemixcokekola",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Japonya",
+   "ad": "Golden Pine Mix Ginger Ale (Zencefilli Gazoz)",
+   "slug": "goldenpinemixgingeralezencefilligazoz",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Japonya",
+   "ad": "Golden Pine Mix Iced Tea (Buzlu Çay)",
+   "slug": "goldenpinemixicedteabuzlucay",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Japonya",
+   "ad": "Pickleball Burger Serisi (Yeni Ürünler)",
+   "slug": "pickleballburgerserisiyeniurunler",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Japonya",
+   "ad": "Chicken Pickleball Burger",
+   "slug": "chickenpickleballburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Japonya",
+   "ad": "Cheese Chicken Nuggets [Peynirli Tavuk Nugget]",
+   "slug": "cheesechickennuggetspeynirlitavuknugget",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Birleşik Krallık",
+   "ad": "Yeni Sos Serisi (BK Exclusive Sauces)",
+   "slug": "yenisosserisibkexclusivesauces",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Brezilya",
+   "ad": "Super Saiyan Whopper",
+   "slug": "supersaiyanwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Brezilya",
+   "ad": "Esferas do Dragão de Pepperoni (Pepperoni Ejder Topları)",
+   "slug": "esferasdodragaodepepperonipepperoniejdertopları",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Almanya",
+   "ad": "Super Saiyan Shaker Fries",
+   "slug": "supersaiyanshakerfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Almanya",
+   "ad": "Stacker Whopper",
+   "slug": "stackerwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Güney Kore",
+   "ad": "Maison Truffle Cheese Burger (메종 트러플치즈 버거)",
+   "slug": "maisontrufflecheeseburger메종트러플치즈버거",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Güney Kore",
+   "ad": "Truffle Mushroom Whopper (트러플 머쉬룸 와퍼 - 2026 Sezon Lansmanı)",
+   "slug": "trufflemushroomwhopper트러플머쉬룸와퍼2026sezonlansmanı",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Güney Kore",
+   "ad": "Hot Truffle Mushroom Whopper (핫 트러플 머쉬룸 와퍼)",
+   "slug": "hottrufflemushroomwhopper핫트러플머쉬룸와퍼",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Güney Kore",
+   "ad": "Deep Truffle Fries (딥 트러플 프라이)",
+   "slug": "deeptrufflefries딥트러플프라이",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Güney Kore",
+   "ad": "Truffle Mushroom Pie Royale (트러플 머쉬룸 파이로얄)",
+   "slug": "trufflemushroompieroyale트러플머쉬룸파이로얄",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Türkiye",
+   "ad": "Bal Kabağı Milkshake",
+   "slug": "balkabagımilkshake",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "ABD",
+   "ad": "New Chicken Nuggets (Yenilenen Tavuk Nugget'lar)",
+   "slug": "newchickennuggetsyenilenentavuknuggetlar",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "ABD",
+   "ad": "Special Savory Sauce",
+   "slug": "specialsavorysauce",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "ABD",
+   "ad": "Super Saiyan Sauce",
+   "slug": "supersaiyansauce",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "ABD",
+   "ad": "Dragon Ball Burst Lemonade",
+   "slug": "dragonballburstlemonade",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "ABD",
+   "ad": "Game Day Pretzel Burger",
+   "slug": "gamedaypretzelburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "ABD",
+   "ad": "Chicken Fries with Nacho Cheese Sauce",
+   "slug": "chickenfrieswithnachocheesesauce",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "ABD",
+   "ad": "Vampire Bite (Cadılar Bayramı İçeceği)",
+   "slug": "vampirebitecadılarbayramıicecegi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Kanada",
+   "ad": "Super Saiyan Sauce",
+   "slug": "supersaiyansauce",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Kanada",
+   "ad": "Dragon Ball Burst Lemonade",
+   "slug": "dragonballburstlemonade",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Kanada",
+   "ad": "Roasted Garlic Whopper",
+   "slug": "roastedgarlicwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Fransa",
+   "ad": "Ice Burger (Nutella & Lotus Biscoff)",
+   "slug": "iceburgernutellalotusbiscoff",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Fransa",
+   "ad": "Menu Ultimate King (EA SPORTS FC 27 İş Birliği)",
+   "slug": "menuultimatekingeasportsfc27isbirligi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İspanya",
+   "ad": "Menús Super Saiyan / Dragon Ball Super Menüsü",
+   "slug": "menussupersaiyandragonballsupermenusu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İspanya",
+   "ad": "Hamburguesa Pringles Sour Creamy",
+   "slug": "hamburguesapringlessourcreamy",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İspanya",
+   "ad": "Pringles Steakhouse (Ortaklık Ürünü)",
+   "slug": "pringlessteakhouseortaklıkurunu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İtalya",
+   "ad": "Bacon King Compact",
+   "slug": "baconkingcompact",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İtalya",
+   "ad": "Saiyan Whopper (Super Saiyan Combo)",
+   "slug": "saiyanwhoppersupersaiyancombo",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avustralya",
+   "ad": "Big Jack Angus",
+   "slug": "bigjackangus",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avustralya",
+   "ad": "Double Big Jack",
+   "slug": "doublebigjack",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avustralya",
+   "ad": "Pistachio Papi Shake & Pistachio Papi Storm",
+   "slug": "pistachiopapishakepistachiopapistorm",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avustralya",
+   "ad": "Jack’d Up Energy Drinks",
+   "slug": "jackdupenergydrinks",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avustralya",
+   "ad": "Cheese Lovers Whopper & Double Cheese Lovers Whopper",
+   "slug": "cheeseloverswhopperdoublecheeseloverswhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avustralya",
+   "ad": "Eggs Benny Brekky Wrap & Brekky Roll",
+   "slug": "eggsbennybrekkywrapbrekkyroll",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Yeni Zelanda",
+   "ad": "Super Saiyan WHOPPER®",
+   "slug": "supersaiyanwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Yeni Zelanda",
+   "ad": "Super Saiyan Chicken Burger (Super Saiyan Fried Chicken)",
+   "slug": "supersaiyanchickenburgersupersaiyanfriedchicken",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Yeni Zelanda",
+   "ad": "Super Saiyan Plant-Based WHOPPER®",
+   "slug": "supersaiyanplantbasedwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Yeni Zelanda",
+   "ad": "Dragon Ball Super Loaded Fries",
+   "slug": "dragonballsuperloadedfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Çin",
+   "ad": "烤菠菠双层厚牛堡 (Kızarmış Ananaslı Çift Katlı Kalın Dana Burger)",
+   "slug": "烤菠菠双层厚牛堡kızarmısananaslıciftkatlıkalındanaburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Çin",
+   "ad": "辣芝芝双层厚鸡堡 (Baharatlı Peynirli Çift Katlı Kalın Tavuk Burger)",
+   "slug": "辣芝芝双层厚鸡堡baharatlıpeynirliciftkatlıkalıntavukburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Çin",
+   "ad": "蜜瓜乳酸菌风味气泡饮 (Kavunlu & Probiyotik Aromalı Gazlı İçecek)",
+   "slug": "蜜瓜乳酸菌风味气泡饮kavunluprobiyotikaromalıgazlıicecek",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Tayland",
+   "ad": "Dragon Ball Super Whopper Jr.",
+   "slug": "dragonballsuperwhopperjr",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Filipinler",
+   "ad": "BK Krispper",
+   "slug": "bkkrispper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Şili",
+   "ad": "Sweet Bacon King (King's Selection)",
+   "slug": "sweetbaconkingkingsselection",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Şili",
+   "ad": "Menú Dragon Ball Super (King Jr. / Özel Seri Menüsü)",
+   "slug": "menudragonballsuperkingjrozelserimenusu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Arjantin",
+   "ad": "Combo Kamehameha XL (Simple ve Doble)",
+   "slug": "combokamehamehaxlsimplevedoble",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Arjantin",
+   "ad": "Dragon Ball Papas (Papas Noisette)",
+   "slug": "dragonballpapaspapasnoisette",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Arjantin",
+   "ad": "Bebida Splash (Mango ve Maracuyá)",
+   "slug": "bebidasplashmangovemaracuya",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Kolombiya",
+   "ad": "Quesolover King (ve Nugget Dolgulu Peynir Ek Ürünü)",
+   "slug": "quesoloverkingvenuggetdolgulupeynirekurunu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Kolombiya",
+   "ad": "La Líder King (by Reykon)",
+   "slug": "laliderkingbyreykon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Kolombiya",
+   "ad": "Bowl con Carne de Cerdo (Reykon Menüsü Eşlikçisi)",
+   "slug": "bowlconcarnedecerdoreykonmenusueslikcisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Birleşik Arap Emirlikleri",
+   "ad": "King’s Kofta Sandwich",
+   "slug": "kingskoftasandwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Birleşik Arap Emirlikleri",
+   "ad": "Nutella King Fusion",
+   "slug": "nutellakingfusion",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Birleşik Arap Emirlikleri",
+   "ad": "King Savers Yeni Burger Serisi",
+   "slug": "kingsaversyeniburgerserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Truffle King",
+   "slug": "truffleking",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Your Majesty",
+   "slug": "yourmajesty",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Egglord",
+   "slug": "egglord",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Golden Prince",
+   "slug": "goldenprince",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Super Saiyan Whopper",
+   "slug": "supersaiyanwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Super Saiyan Plant-Based Whopper",
+   "slug": "supersaiyanplantbasedwhopper",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Super Saiyan Chicken",
+   "slug": "supersaiyanchicken",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Cheesy Bacon Dragon Balls",
+   "slug": "cheesybacondragonballs",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Super Fries Dragon Ball",
+   "slug": "superfriesdragonball",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Polonya",
+   "ad": "Krispper® Tenders",
+   "slug": "krisppertenders",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "ABD",
+   "ad": "Pineapple Beverage Lineup (Ananaslı İçecek Serisi)",
+   "slug": "pineapplebeveragelineupananaslıicecekserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Singapur",
+   "ad": "Mala Honey Hae Bee Hiam serisi",
+   "slug": "malahoneyhaebeehiamserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Kanada",
+   "ad": "Popeyes Biscuit Mix",
+   "slug": "popeyesbiscuitmix",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Kanada",
+   "ad": "Popeyes Blackened Ranch Dipping Sauce",
+   "slug": "popeyesblackenedranchdippingsauce",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Kanada",
+   "ad": "Popeyes Sweet Heat Dipping Sauce",
+   "slug": "popeyessweetheatdippingsauce",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Fransa",
+   "ad": "Chick’n Gaufre (Chicken & Waffle)",
+   "slug": "chickngaufrechickenwaffle",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Fransa",
+   "ad": "Ghost Pepper BBQ Sos",
+   "slug": "ghostpepperbbqsos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Fransa",
+   "ad": "Black Chicken Sandwich / Black Double Chicken Sandwich",
+   "slug": "blackchickensandwichblackdoublechickensandwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Fransa",
+   "ad": "Black Loaded Fries / Black Dipper / Box Édition Halloween",
+   "slug": "blackloadedfriesblackdipperboxeditionhalloween",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Fransa",
+   "ad": "Yeni Dipper Sos Formatı (XXL Soslar)",
+   "slug": "yenidippersosformatıxxlsoslar",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Fransa",
+   "ad": "Suprême Pop Ice Cookie",
+   "slug": "supremepopicecookie",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Fransa",
+   "ad": "Yeni Milkshake Çeşitleri",
+   "slug": "yenimilkshakecesitleri",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "ABD",
+   "ad": "Chicken Cheesesteak (Klasik)",
+   "slug": "chickencheesesteakklasik",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "ABD",
+   "ad": "Chicken Deluxe Cheesesteak",
+   "slug": "chickendeluxecheesesteak",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "ABD",
+   "ad": "Spicy Chicken Cheesesteak",
+   "slug": "spicychickencheesesteak",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Sbarro",
+   "ulke": "ABD",
+   "ad": "Spicy Calabrian Pepperoni and Sausage Pizza",
+   "slug": "spicycalabrianpepperoniandsausagepizza",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "ABD",
+   "ad": "Doritos® Hot Honey Nachos",
+   "slug": "doritoshothoneynachos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "ABD",
+   "ad": "Hot Honey Italian Sub",
+   "slug": "hothoneyitaliansub",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "ABD",
+   "ad": "Hot Honey Turkey Italiano Sub",
+   "slug": "hothoneyturkeyitalianosub",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Japonya",
+   "ad": "Zakutaru Ham (ザクタルハム)",
+   "slug": "zakutaruhamサクタルハム",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Japonya",
+   "ad": "Kinmokusei Oolong Tea (金木犀烏龍ティー / Osmanthus Oolong Çayı)",
+   "slug": "kinmokuseioolongtea金木犀烏龍ティーosmanthusoolongcayı",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Japonya",
+   "ad": "M&M Choco Chip Cookie",
+   "slug": "mmchocochipcookie",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Güney Kore",
+   "ad": "Kuzu Eti Koleksiyonu (Lamb Sandwich ve Lamb & Hummus Sandwich)",
+   "slug": "kuzuetikoleksiyonulambsandwichvelambhummussandwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Güney Kore",
+   "ad": "Bebek Vahşi Karides Sandviçi",
+   "slug": "bebekvahsikaridessandvici",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Kanada",
+   "ad": "Hot Honey Pepperoni Pizza Snackwich",
+   "slug": "hothoneypepperonipizzasnackwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Kanada",
+   "ad": "Turkey Caesar Snackwich",
+   "slug": "turkeycaesarsnackwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Kanada",
+   "ad": "Doritos® Sweet Chili Heat!® Footlong Nachos",
+   "slug": "doritossweetchiliheatfootlongnachos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Kanada",
+   "ad": "Mini Cookie Boxes (Mini Kurabiye Kutuları)",
+   "slug": "minicookieboxesminikurabiyekutuları",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Birleşik Krallık",
+   "ad": "Beef Chilli (Sub / Spud Jacket Potato / Wrap / Salata formatlarında)",
+   "slug": "beefchillisubspudjacketpotatowrapsalataformatlarında",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Birleşik Krallık",
+   "ad": "Loaded Beef Chilli Waffle Fries",
+   "slug": "loadedbeefchilliwafflefries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Birleşik Krallık",
+   "ad": "Loaded Beef Chilli Nachos",
+   "slug": "loadedbeefchillinachos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Birleşik Krallık",
+   "ad": "Mozzarella & Cheddar Bites",
+   "slug": "mozzarellacheddarbites",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Birleşik Krallık",
+   "ad": "Matcha & White Chip Cookie",
+   "slug": "matchawhitechipcookie",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Birleşik Krallık",
+   "ad": "Pumpkin Spiced Cookie",
+   "slug": "pumpkinspicedcookie",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Avustralya",
+   "ad": "Subway Rice Bowls Serisi",
+   "slug": "subwayricebowlsserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Avustralya",
+   "ad": "Chicken Teriyaki Rice Bowl",
+   "slug": "chickenteriyakiricebowl",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Avustralya",
+   "ad": "Green Goddess Chicken Rice Bowl",
+   "slug": "greengoddesschickenricebowl",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Avustralya",
+   "ad": "Green Goddess Falafel Rice Bowl",
+   "slug": "greengoddessfalafelricebowl",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Avustralya",
+   "ad": "Korean-Style BBQ Steak Rice Bowl",
+   "slug": "koreanstylebbqsteakricebowl",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Avustralya",
+   "ad": "Japanese-Style Chicken Rice Bowl",
+   "slug": "japanesestylechickenricebowl",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Avustralya",
+   "ad": "Ghost Pepper Bread",
+   "slug": "ghostpepperbread",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Almanya",
+   "ad": "Baked Potato (Kumpir / Fırında Patates Serisi)",
+   "slug": "bakedpotatokumpirfırındapatatesserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Almanya",
+   "ad": "Beef Chili (Brisket Chili İçeriği ve Ürün Grubu)",
+   "slug": "beefchilibrisketchiliicerigiveurungrubu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Almanya",
+   "ad": "Mozzarella & Cheddar Bites (Çıtır Peynir Atıştırmalığı)",
+   "slug": "mozzarellacheddarbitescıtırpeyniratıstırmalıgı",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Almanya",
+   "ad": "Yeni Sonbahar Kurabiyeleri & Tatlılar",
+   "slug": "yenisonbaharkurabiyeleritatlılar",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Brezilya",
+   "ad": "Sub Frango Ranch Bacon (15 cm ve 30 cm)",
+   "slug": "subfrangoranchbacon15cmve30cm",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Brezilya",
+   "ad": "Salada Frango Ranch",
+   "slug": "saladafrangoranch",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Brezilya",
+   "ad": "Molho Ranch (Ranch Sos - Düzenli Menüye Giriş)",
+   "slug": "molhoranchranchsosduzenlimenuyegiris",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Meksika",
+   "ad": "Subway Chicken Frankie",
+   "slug": "subwaychickenfrankie",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Meksika",
+   "ad": "Gran Pastor",
+   "slug": "granpastor",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Meksika",
+   "ad": "Campechano",
+   "slug": "campechano",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Meksika",
+   "ad": "Pastor con Tostitos",
+   "slug": "pastorcontostitos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Meksika",
+   "ad": "La Gringa",
+   "slug": "lagringa",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "ABD",
+   "ad": "Caramel Apple Pie McCafé İçecek Serisi (Caramel Apple Pie Coffees)",
+   "slug": "caramelapplepiemccafeicecekserisicaramelapplepiecoffees",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Japonya",
+   "ad": "Aburi Beef Sukiyaki-style Tsukimi (炙り牛すき焼き風月見)",
+   "slug": "aburibeefsukiyakistyletsukimi炙り牛すき焼き風月見",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Japonya",
+   "ad": "Cheese Cheese Bai Tsukimi (チーズチーズ倍月見) – Yoru Mac (Akşam Menüsü)",
+   "slug": "cheesecheesebaitsukimiチースチース倍月見yorumacaksammenusu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Japonya",
+   "ad": "Hokkaido Butter, Red Bean and Mochi Tsukimi Pie (北海道バターとあんことおもちの月見パイ)",
+   "slug": "hokkaidobutterredbeanandmochitsukimipie北海道ハターとあんことおもちの月見ハイ",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Japonya",
+   "ad": "Golden Egg Tartar Sauce (黄金のたまごタルタルソース) – Chicken McNuggets Sosu",
+   "slug": "goldeneggtartarsauce黄金のたまこタルタルソースchickenmcnuggetssosu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Almanya",
+   "ad": "Der M® Bacon",
+   "slug": "dermbacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Almanya",
+   "ad": "Big Tasty® Pepper Bacon",
+   "slug": "bigtastypepperbacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Almanya",
+   "ad": "McCrispy® Pepper Delight",
+   "slug": "mccrispypepperdelight",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Almanya",
+   "ad": "McChicken® Bacon Deluxe",
+   "slug": "mcchickenbacondeluxe",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Almanya",
+   "ad": "McChicken® Aioli Style",
+   "slug": "mcchickenaiolistyle",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Almanya",
+   "ad": "McWings & Signature McWings Dip",
+   "slug": "mcwingssignaturemcwingsdip",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Almanya",
+   "ad": "Double Hamburger Royal Bacon BBQ",
+   "slug": "doublehamburgerroyalbaconbbq",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Almanya",
+   "ad": "Popcorn Latte / Iced Popcorn Latte",
+   "slug": "popcornlatteicedpopcornlatte",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Türkiye",
+   "ad": "Elmalı Tarçınlı McPops™",
+   "slug": "elmalıtarcınlımcpopsTM",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Türkiye",
+   "ad": "White Chocolate Mocha",
+   "slug": "whitechocolatemocha",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Krallık",
+   "ad": "Big Rösti",
+   "slug": "bigrosti",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Krallık",
+   "ad": "Maple & Cheddar Chicken",
+   "slug": "maplecheddarchicken",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Krallık",
+   "ad": "Mac & Cheese Triangles (ve Sharebox)",
+   "slug": "maccheesetrianglesvesharebox",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Krallık",
+   "ad": "Paprika McShaker Fries",
+   "slug": "paprikamcshakerfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Krallık",
+   "ad": "Chicken & Egg McMuffin",
+   "slug": "chickeneggmcmuffin",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Krallık",
+   "ad": "Chicken & Bacon McMuffin",
+   "slug": "chickenbaconmcmuffin",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Krallık",
+   "ad": "S'mores McFlurry (ve Mini)",
+   "slug": "smoresmcflurryvemini",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Krallık",
+   "ad": "Guava x Sprite Zero",
+   "slug": "guavaxspritezero",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Krallık",
+   "ad": "Szechuan Dip (Sos)",
+   "slug": "szechuandipsos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Kanada",
+   "ad": "Chicken Parmi Burger",
+   "slug": "chickenparmiburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Kanada",
+   "ad": "McExtreme Pulled Pork",
+   "slug": "mcextremepulledpork",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Kanada",
+   "ad": "Garlic & Black Pepper Chicken McNuggets",
+   "slug": "garlicblackpepperchickenmcnuggets",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Kanada",
+   "ad": "Cheesy Bacon McFlavour Fries",
+   "slug": "cheesybaconmcflavourfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Kanada",
+   "ad": "Stroopwafel McFlurry",
+   "slug": "stroopwafelmcflurry",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Kanada",
+   "ad": "Pistachio McCafé Serisi",
+   "slug": "pistachiomccafeserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Kanada",
+   "ad": "Caesar & Bacon McCrispy",
+   "slug": "caesarbaconmccrispy",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Kanada",
+   "ad": "Caesar & Bacon McWrap",
+   "slug": "caesarbaconmcwrap",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Kanada",
+   "ad": "SNICKERS® McFlurry",
+   "slug": "snickersmcflurry",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Fransa",
+   "ad": "Nagi Bao Burger (Bœuf / Poulet / Poisson)",
+   "slug": "nagibaoburgerbœufpouletpoisson",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Fransa",
+   "ad": "Sprite® sans sucre saveur Fruit de la Passion",
+   "slug": "spritesanssucresaveurfruitdelapassion",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Fransa",
+   "ad": "McExtreme Ultra Cheddar Jalapeño (1 steak haché / 2 steaks hachés)",
+   "slug": "mcextremeultracheddarjalapeno1steakhache2steakshaches",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İspanya",
+   "ad": "Big Arch",
+   "slug": "bigarch",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İtalya",
+   "ad": "McChicken Il Romano",
+   "slug": "mcchickenilromano",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İtalya",
+   "ad": "McChicken Il Mediterraneo",
+   "slug": "mcchickenilmediterraneo",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İtalya",
+   "ad": "McWrap Il Mediterraneo",
+   "slug": "mcwrapilmediterraneo",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İtalya",
+   "ad": "Maionese al Cacio e Pepe",
+   "slug": "maionesealcacioepepe",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İtalya",
+   "ad": "Panzerotti (x3)",
+   "slug": "panzerottix3",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İtalya",
+   "ad": "Ramyeon McShaker Fries",
+   "slug": "ramyeonmcshakerfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İtalya",
+   "ad": "Menu Huntr/x & Menu Saja Boys",
+   "slug": "menuhuntrxmenusajaboys",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hollanda",
+   "ad": "Quarter Pounder Maple BBQ & Bacon",
+   "slug": "quarterpoundermaplebbqbacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hollanda",
+   "ad": "McCrispy Teriyaki",
+   "slug": "mccrispyteriyaki",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hollanda",
+   "ad": "McFlurry Popcorn",
+   "slug": "mcflurrypopcorn",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hollanda",
+   "ad": "McFizz Sakura",
+   "slug": "mcfizzsakura",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hollanda",
+   "ad": "Cheese Empanada's",
+   "slug": "cheeseempanadas",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "McVeggie® Deluxe",
+   "slug": "mcveggiedeluxe",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "Maple BBQ & Bacon Quarter Pounder (ve Podwójny / Double versiyonu)",
+   "slug": "maplebbqbaconquarterpoundervepodwojnydoubleversiyonu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "McCrispy® Teriyaki",
+   "slug": "mccrispyteriyaki",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "McNuggets® Black Pepper & Garlic",
+   "slug": "mcnuggetsblackpeppergarlic",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "McFlurry® Popcorn Caramel",
+   "slug": "mcflurrypopcorncaramel",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "Sprite® × Sakura",
+   "slug": "spritesakura",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "Yeni Soslar: Sos Szechuan Style & Sos Truffle Cheese",
+   "slug": "yenisoslarsosszechuanstylesostrufflecheese",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "Cheese Empanadas",
+   "slug": "cheeseempanadas",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "Chrupiące talarki ziemniaczane (Çıtır Patates Diskleri/Halkaları)",
+   "slug": "chrupiacetalarkiziemniaczanecıtırpatatesdisklerihalkaları",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "Yeni Paylaşım Sosları (Örn. Dragon Chili, Blue Cheese)",
+   "slug": "yenipaylasımsoslarıorndragonchilibluecheese",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Cheesy McCrispy",
+   "slug": "cheesymccrispy",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Cheesy Double Quarter Pounder",
+   "slug": "cheesydoublequarterpounder",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Birdie's Strawberry Shortcake Frappé",
+   "slug": "birdiesstrawberryshortcakefrappe",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Birdie's Brekkie Signature Sauce (Pembe Sos) ve Özel Sandviçler",
+   "slug": "birdiesbrekkiesignaturesaucepembesosveozelsandvicler",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Nashville McCrispy",
+   "slug": "nashvillemccrispy",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Nashville McSpicy",
+   "slug": "nashvillemcspicy",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Nashville McWrap",
+   "slug": "nashvillemcwrap",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Nashville Shaker McWings",
+   "slug": "nashvilleshakermcwings",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Nashville McShaker Fries",
+   "slug": "nashvillemcshakerfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avustralya",
+   "ad": "Frozen Fanta Mango",
+   "slug": "frozenfantamango",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Yeni Zelanda",
+   "ad": "Tim Tam® & Jatz® Inspired McFlurry®",
+   "slug": "timtamjatzinspiredmcflurry",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Yeni Zelanda",
+   "ad": "3pc Mozzarella Sticks",
+   "slug": "3pcmozzarellasticks",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hindistan",
+   "ad": "Spicy Patakha Paneer Burger",
+   "slug": "spicypatakhapaneerburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hindistan",
+   "ad": "Spicy Patakha Chicken Burger",
+   "slug": "spicypatakhachickenburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Singapur Usulü Yengeç Soslu Deniz Mahsulleri Burgeri (新加坡蟹酱风味海鲜堡 - Singapore Chilli Crab Flavour Seafood Burger)",
+   "slug": "singapurusuluyengecsosludenizmahsulleriburgeri新加坡蟹酱风味海鲜堡singaporechillicrabflavourseafoodburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Tay Usulü Kömür Ateşi Aromalı Domuz Eti Burgeri (泰式炭烤风味猪猪堡 - Thai-style Charcoal-Grilled Pork Burger)",
+   "slug": "tayusulukomuratesiaromalıdomuzetiburgeri泰式炭烤风味猪猪堡thaistylecharcoalgrilledporkburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Malezya Köri Aromalı İnce Çıtır Tavuk (马来咖喱风味薄皮肉骨鸡 - Malaysian Curry Crispy Bone-in Chicken)",
+   "slug": "malezyakoriaromalıincecıtırtavuk马来咖喱风味薄皮肉骨鸡malaysiancurrycrispyboneinchicken",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Güneydoğu Hindistan Cevizi Aromalı Tavuk Pirzola Burgeri (品味椰香鸡扒堡 / 东南亚风味椰香鸡扒堡)",
+   "slug": "guneydoguhindistanceviziaromalıtavukpirzolaburgeri品味椰香鸡扒堡东南亚风味椰香鸡扒堡",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Milo Çikolatalı Frappe (美禄可可雪冰 - McCafé Milo Cocoa Frappé)",
+   "slug": "milocikolatalıfrappe美禄可可雪冰mccafemilococoafrappe",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Süt & Pirinç Aromalı McFlurry (泷愿成真麦旋风 — 大米风味)",
+   "slug": "sutpirincaromalımcflurry泷愿成真麦旋风大米风味",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Süt & Pirinç Aromalı Külah Dondurma (奶香大米风味圆筒)",
+   "slug": "sutpirincaromalıkulahdondurma奶香大米风味圆筒",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Süt & Pirinç Aromalı Sundae (奶香大米风味新地)",
+   "slug": "sutpirincaromalısundae奶香大米风味新地",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Süt & Pirinç Turtası (奶香大米派)",
+   "slug": "sutpirincturtası奶香大米派",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "Kore Usulü Soslu Tavuk Ürünleri, Atıştırmalıklar ve Tatlılar (8 Yeni Ürün)",
+   "slug": "koreusulusoslutavukurunleriatıstırmalıklarvetatlılar8yeniurun",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Güney Kore",
+   "ad": "McCrispy Gochujang Butter (맥크리스피 고추장 버터)",
+   "slug": "mccrispygochujangbutter맥크리스피고추장버터",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Güney Kore",
+   "ad": "McSpicy Gochujang Butter (맥스파이시 고추장 버터)",
+   "slug": "mcspicygochujangbutter맥스파이시고추장버터",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Güney Kore",
+   "ad": "Gochujang Butter Sosu (고추장 버터 소스 - Ayrı Dip Sos)",
+   "slug": "gochujangbuttersosu고추장버터소스ayrıdipsos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayvan",
+   "ad": "Çıtır Tavuk But Burger (勁脆鷄腿堡 - Crispy Chicken Thigh Burger)",
+   "slug": "cıtırtavukbutburger勁脆鷄腿堡crispychickenthighburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayvan",
+   "ad": "Orijinal Kore Acı Soslu Tavuk But Burger (正宗韓式辣醬鷄腿堡)",
+   "slug": "orijinalkoreacısoslutavukbutburger正宗韓式辣醬鷄腿堡",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayvan",
+   "ad": "Orijinal Kore Acı Soslu Quarter Pounder Dana Burger (正宗韓式辣醬四盎司牛肉堡)",
+   "slug": "orijinalkoreacısosluquarterpounderdanaburger正宗韓式辣醬四盎司牛肉堡",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayvan",
+   "ad": "Kore Turşusu (Kimçi) Aromalı Çalkalamalı Patates (韓式泡菜風味搖搖薯條)",
+   "slug": "koretursusukimciaromalıcalkalamalıpatates韓式泡菜風味搖搖薯條",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayvan",
+   "ad": "Kore Bal ve Yuzu Gazlı İçeceği (韓式蜜柚氣泡飲)",
+   "slug": "korebalveyuzugazlıicecegi韓式蜜柚氣泡飲",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayvan",
+   "ad": "Füme Peynir Aromalı Sos (煙燻起司風味醬)",
+   "slug": "fumepeyniraromalısos煙燻起司風味醬",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hong Kong",
+   "ad": "McCrispy with Gochujang Butter Sauce (K-Crispy Thigh Burger)",
+   "slug": "mccrispywithgochujangbuttersaucekcrispythighburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hong Kong",
+   "ad": "Gochujang Butter Sauce (Dip Sos)",
+   "slug": "gochujangbuttersaucedipsos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hong Kong",
+   "ad": "Korean Bulgogi Flavored McShaker Fries",
+   "slug": "koreanbulgogiflavoredmcshakerfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hong Kong",
+   "ad": "Jeju Mandarin Punch with Mini Nata de Coco (Jeju Satsuma Soda)",
+   "slug": "jejumandarinpunchwithmininatadecocojejusatsumasoda",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hong Kong",
+   "ad": "Bite-Sized Salted Caramel Churros",
+   "slug": "bitesizedsaltedcaramelchurros",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hong Kong",
+   "ad": "Sweetheart Crunchy OREO McFlurry",
+   "slug": "sweetheartcrunchyoreomcflurry",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Singapur",
+   "ad": "Katsu Chicken Tenders",
+   "slug": "katsuchickentenders",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Singapur",
+   "ad": "Strawberry Daifuku Pie",
+   "slug": "strawberrydaifukupie",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Singapur",
+   "ad": "Kyoho Grape Soft Serve / McFlurry",
+   "slug": "kyohograpesoftservemcflurry",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Singapur",
+   "ad": "Spicy Bulgogi Chicken Burger (Tekli ve Çiftli Seçenek)",
+   "slug": "spicybulgogichickenburgertekliveciftlisecenek",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Singapur",
+   "ad": "Bulgogi Beef Burger (Tekli ve Çiftli Seçenek)",
+   "slug": "bulgogibeefburgertekliveciftlisecenek",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Malezya",
+   "ad": "Ayam Goreng McD Rasa Ori (Yeni Tarif/Lansman)",
+   "slug": "ayamgorengmcdrasaoriyenitariflansman",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Malezya",
+   "ad": "Ninja Wasabi Burger",
+   "slug": "ninjawasabiburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Malezya",
+   "ad": "Sakura McFizz",
+   "slug": "sakuramcfizz",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Malezya",
+   "ad": "Mochi Matcha Deluxe Sundae",
+   "slug": "mochimatchadeluxesundae",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Malezya",
+   "ad": "Grimace Shake",
+   "slug": "grimaceshake",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Malezya",
+   "ad": "Spanish Latte (McCafé)",
+   "slug": "spanishlattemccafe",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayland",
+   "ad": "K-Spicy Chicken Burger (K-Spicy Tavuk Burger)",
+   "slug": "kspicychickenburgerkspicytavukburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayland",
+   "ad": "K-Spicy McFried Chicken (K-Spicy Kızarmış Tavuk)",
+   "slug": "kspicymcfriedchickenkspicykızarmıstavuk",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayland",
+   "ad": "McFizz Blue Galaxy (McFizz Mavi Galaksi)",
+   "slug": "mcfizzbluegalaxymcfizzmavigalaksi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayland",
+   "ad": "Blue Lemon McFizz & McFloat (Mavi Limon Serisi)",
+   "slug": "bluelemonmcfizzmcfloatmavilimonserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Filipinler",
+   "ad": "Creamy BBQ Crispy Chicken Sandwich",
+   "slug": "creamybbqcrispychickensandwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Filipinler",
+   "ad": "Creamy BBQ Burger McDo",
+   "slug": "creamybbqburgermcdo",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Filipinler",
+   "ad": "Honey Butter McShaker Fries",
+   "slug": "honeybuttermcshakerfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Filipinler",
+   "ad": "Chicken McDo Mega Meals Serisi",
+   "slug": "chickenmcdomegamealsserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Endonezya",
+   "ad": "Ayam Krispy McD Sambal Matah",
+   "slug": "ayamkrispymcdsambalmatah",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Endonezya",
+   "ad": "Ayam Krispy McD Kari Medan",
+   "slug": "ayamkrispymcdkarimedan",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Endonezya",
+   "ad": "Es Kopi Klepon",
+   "slug": "eskopiklepon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Endonezya",
+   "ad": "McFlurry Pisang Ijo",
+   "slug": "mcflurrypisangijo",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Brezilya",
+   "ad": "McFish Deluxe & McFish Deluxe Duplo",
+   "slug": "mcfishdeluxemcfishdeluxeduplo",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Brezilya",
+   "ad": "Salada Fish (Salada Mix com Carne do McFish)",
+   "slug": "saladafishsaladamixcomcarnedomcfish",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Brezilya",
+   "ad": "Quarterão Melt Parmesão",
+   "slug": "quarteraomeltparmesao",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Brezilya",
+   "ad": "McCrispy Chicken Melt Parmesão",
+   "slug": "mccrispychickenmeltparmesao",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Brezilya",
+   "ad": "Red Bull Blue Raspberry Energizer",
+   "slug": "redbullblueraspberryenergizer",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Meksika",
+   "ad": "Menú Checo (Checo Pérez Menüsü)",
+   "slug": "menuchecochecoperezmenusu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Meksika",
+   "ad": "Sundae Piña Chile (Ananas & Biber Soslu Sundae)",
+   "slug": "sundaepinachileananasbibersoslusundae",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Meksika",
+   "ad": "Sprite Mango Maracuyá",
+   "slug": "spritemangomaracuya",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Meksika",
+   "ad": "Bebida con Perlas de Mora Azul",
+   "slug": "bebidaconperlasdemoraazul",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Meksika",
+   "ad": "Papas con Sazonador Ramen",
+   "slug": "papasconsazonadorramen",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Arjantin",
+   "ad": "Hamburguesa G.O.A.T. (Greatest Of All Tastys)",
+   "slug": "hamburguesagoatgreatestofalltastys",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Arap Emirlikleri",
+   "ad": "Shrimp Burger",
+   "slug": "shrimpburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Arap Emirlikleri",
+   "ad": "Fish Tempura Wrap",
+   "slug": "fishtempurawrap",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Birleşik Arap Emirlikleri",
+   "ad": "Fish & Fries",
+   "slug": "fishfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Mısır",
+   "ad": "Creamy Ranch Chicken",
+   "slug": "creamyranchchicken",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Mısır",
+   "ad": "Fiery Mayo Chicken",
+   "slug": "fierymayochicken",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Güney Afrika",
+   "ad": "Yeni McWrap® Serisi (Tavuklu Dürümler)",
+   "slug": "yenimcwrapserisitavukludurumler",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Güney Afrika",
+   "ad": "Spicy McWrap",
+   "slug": "spicymcwrap",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Güney Afrika",
+   "ad": "Korean BBQ McWrap",
+   "slug": "koreanbbqmcwrap",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Güney Afrika",
+   "ad": "Jalapeño McWrap",
+   "slug": "jalapenomcwrap",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Güney Afrika",
+   "ad": "Lemon Pepper McWrap",
+   "slug": "lemonpeppermcwrap",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Güney Afrika",
+   "ad": "Breakfast McWrap (Kahvaltı McWrap)",
+   "slug": "breakfastmcwrapkahvaltımcwrap",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İsveç",
+   "ad": "Maple BBQ & Bacon Quarter Pounder (ve Double versiyonu)",
+   "slug": "maplebbqbaconquarterpoundervedoubleversiyonu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İsveç",
+   "ad": "McCrispy Hot Honey",
+   "slug": "mccrispyhothoney",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İsveç",
+   "ad": "Garlic & Black Pepper Chicken McNuggets",
+   "slug": "garlicblackpepperchickenmcnuggets",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İsveç",
+   "ad": "Cheeseburger McShaker Fries",
+   "slug": "cheeseburgermcshakerfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İsveç",
+   "ad": "Szechuan Sos (Szechuan Dip)",
+   "slug": "szechuansosszechuandip",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İsveç",
+   "ad": "McFlurry Caramel Pretzel",
+   "slug": "mcflurrycaramelpretzel",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İsveç",
+   "ad": "Green Crush x Sprite Zero",
+   "slug": "greencrushxspritezero",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "Der M",
+   "slug": "derm",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "Crispy Veggie Big Tasty",
+   "slug": "crispyveggiebigtasty",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "Strawberry Melon Refresher",
+   "slug": "strawberrymelonrefresher",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "Tropic Pineapple Refresher",
+   "slug": "tropicpineapplerefresher",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "Pink Dragonfruit & Sprite Zero Fizzer",
+   "slug": "pinkdragonfruitspritezerofizzer",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "Cherry Kiss & Sprite Zero Fizzer",
+   "slug": "cherrykissspritezerofizzer",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "Red Bull Blueberry Energizer",
+   "slug": "redbullblueberryenergizer",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "Red Bull Waldmeister Energizer",
+   "slug": "redbullwaldmeisterenergizer",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "Soğuk Kahve & Matcha Özel Seçenekleri (Coffee+ Specials)",
+   "slug": "sogukkahvematchaozelseceneklericoffeespecials",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İsviçre",
+   "ad": "Double Royal Crispy Onions & Bacon",
+   "slug": "doubleroyalcrispyonionsbacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İsviçre",
+   "ad": "Frappé Cappuccino Caramel",
+   "slug": "frappecappuccinocaramel",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Portekiz",
+   "ad": "McCrispy Hot Honey",
+   "slug": "mccrispyhothoney",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Portekiz",
+   "ad": "McCrispy Cheddar & Bacon",
+   "slug": "mccrispycheddarbacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Portekiz",
+   "ad": "Snack Wrap Hot Honey",
+   "slug": "snackwraphothoney",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Portekiz",
+   "ad": "Snack Wrap Cheddar & Bacon",
+   "slug": "snackwrapcheddarbacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Portekiz",
+   "ad": "Molho Hot Honey (Hot Honey Sos)",
+   "slug": "molhohothoneyhothoneysos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çekya",
+   "ad": "Big Arch",
+   "slug": "bigarch",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Romanya",
+   "ad": "McCombo® Creamy Sauce Serisi (Sandviç & Menü)",
+   "slug": "mccombocreamysauceserisisandvicmenu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Romanya",
+   "ad": "Creamy Sauce Pui",
+   "slug": "creamysaucepui",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Romanya",
+   "ad": "Creamy Sauce Vită",
+   "slug": "creamysaucevita",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Romanya",
+   "ad": "McCafé® Pistachio Collection (Fıstık & Çikolatalı Kurabiye Koleksiyonu)",
+   "slug": "mccafepistachiocollectionfıstıkcikolatalıkurabiyekoleksiyonu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Romanya",
+   "ad": "Pistachio & Choco Cookie Latte",
+   "slug": "pistachiochococookielatte",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Romanya",
+   "ad": "McPops™ cu fistic",
+   "slug": "mcpopsTMcufistic",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Romanya",
+   "ad": "Orange Choco Pie (Portakal & Çikolatalı Turta)",
+   "slug": "orangechocopieportakalcikolatalıturta",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Romanya",
+   "ad": "Triplu Cheeseburger (Triple Cheeseburger)",
+   "slug": "triplucheeseburgertriplecheeseburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Yunanistan",
+   "ad": "Double McChicken™",
+   "slug": "doublemcchickenTM",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Yunanistan",
+   "ad": "Double Filet-O-Fish™",
+   "slug": "doublefiletofishTM",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Yunanistan",
+   "ad": "Double Quarter Pounder™ with Cheese",
+   "slug": "doublequarterpounderTMwithcheese",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Yunanistan",
+   "ad": "Loving Donut",
+   "slug": "lovingdonut",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Sour Cherry Sprite",
+   "slug": "sourcherrysprite",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Cheese & Potato Sides",
+   "slug": "cheesepotatosides",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Chocolate Crush McFlurry",
+   "slug": "chocolatecrushmcflurry",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Garlic & Black Pepper McNuggets",
+   "slug": "garlicblackpeppermcnuggets",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Big Rösti (Almanya menşeili)",
+   "slug": "bigrostialmanyamenseili",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Maple & Cheddar Chicken (Kanada menşeili)",
+   "slug": "maplecheddarchickenkanadamenseili",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Paprika McShaker® Fries (Hollanda menşeili)",
+   "slug": "paprikamcshakerfrieshollandamenseili",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Mac & Cheese Triangles (BAE menşeili)",
+   "slug": "maccheesetrianglesbaemenseili",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "S'mores McFlurry® (Kanada menşeili)",
+   "slug": "smoresmcflurrykanadamenseili",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Guava x Sprite® Zero (Hindistan menşeili)",
+   "slug": "guavaxspritezerohindistanmenseili",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Szechuan Dip (Çin menşeili)",
+   "slug": "szechuandipcinmenseili",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "İrlanda",
+   "ad": "Chicken & Egg McMuffin® / Chicken & Bacon McMuffin® (Avustralya menşeili)",
+   "slug": "chickeneggmcmuffinchickenbaconmcmuffinavustralyamenseili",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Polonya",
+   "ad": "Loaded Doritos Tex-Mex (KFC x Doritos)",
+   "slug": "loadeddoritostexmexkfcxdoritos",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Polonya",
+   "ad": "Loaded Doritos Spicy / Extra Spicy",
+   "slug": "loadeddoritosspicyextraspicy",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Meksika",
+   "ad": "Hot Cruji Bravo (ve Hot Cruji Bravo Papa Pops)",
+   "slug": "hotcrujibravovehotcrujibravopapapops",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Malezya",
+   "ad": "Cheesy Lava Zinger Burger",
+   "slug": "cheesylavazingerburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Malezya",
+   "ad": "Dunked Cheesy Crunch",
+   "slug": "dunkedcheesycrunch",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Malezya",
+   "ad": "Cheezy Shaker Fries",
+   "slug": "cheezyshakerfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Malezya",
+   "ad": "Cempedak Pie (Yeniden Menü Lansmanı)",
+   "slug": "cempedakpieyenidenmenulansmanı",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Malezya",
+   "ad": "Iced Brown Butter Oat Latte",
+   "slug": "icedbrownbutteroatlatte",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hollanda",
+   "ad": "Doritos Loaded Bag",
+   "slug": "doritosloadedbag",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hollanda",
+   "ad": "Doritos Zinger Burger",
+   "slug": "doritoszingerburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hollanda",
+   "ad": "Fried Pickles",
+   "slug": "friedpickles",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hollanda",
+   "ad": "Pickle Loaded Fries",
+   "slug": "pickleloadedfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hollanda",
+   "ad": "Pickle Pepsi (Pickle Pepsi Max)",
+   "slug": "picklepepsipicklepepsimax",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hollanda",
+   "ad": "Red Bull Winter Edition (Pistache-Bes / Antep Fıstığı & Orman Meyvesi)",
+   "slug": "redbullwintereditionpistachebesantepfıstıgıormanmeyvesi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Çekya",
+   "ad": "Doritos Loaded Tex-Mex",
+   "slug": "doritosloadedtexmex",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Çekya",
+   "ad": "Doritos Loaded Extra Spicy",
+   "slug": "doritosloadedextraspicy",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Çekya",
+   "ad": "Kuřecí Popcorn Megabox Kombinasyonları (Popcorn & iTwist / Popcorn & Cheeseburger)",
+   "slug": "kurecipopcornmegaboxkombinasyonlarıpopcornitwistpopcorncheeseburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "ABD",
+   "ad": "Hot Ranch Big Dip",
+   "slug": "hotranchbigdip",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "ABD",
+   "ad": "Go Buckets",
+   "slug": "gobuckets",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Kanada",
+   "ad": "Flamin' Hot Chicken Sandwich",
+   "slug": "flaminhotchickensandwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Kanada",
+   "ad": "Flamin' Hot Fries",
+   "slug": "flaminhotfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Kanada",
+   "ad": "Flamin' Hot Dip Cup",
+   "slug": "flaminhotdipcup",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Kanada",
+   "ad": "Cheetos Dirty Soda",
+   "slug": "cheetosdirtysoda",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Birleşik Krallık",
+   "ad": "KFC Mozzamelt Burger (ve Mozzamelt Box Meal)",
+   "slug": "kfcmozzameltburgervemozzameltboxmeal",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Birleşik Krallık",
+   "ad": "Mega Mozza Sticks (Mega Mozzarella Çubukları)",
+   "slug": "megamozzasticksmegamozzarellacubukları",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Birleşik Krallık",
+   "ad": "Mozza Dipping Feast (Mozzarella Soslu Paylaşım Kovası)",
+   "slug": "mozzadippingfeastmozzarellasoslupaylasımkovası",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Fransa",
+   "ad": "Saucy Burger",
+   "slug": "saucyburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Fransa",
+   "ad": "Saucy Boxmaster",
+   "slug": "saucyboxmaster",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Fransa",
+   "ad": "Menu Découverte Saucy",
+   "slug": "menudecouvertesaucy",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "İspanya",
+   "ad": "Doritos Loaded (Doritos Loaded Picantes & Doritos Loaded Tex-Mex)",
+   "slug": "doritosloadeddoritosloadedpicantesdoritosloadedtexmex",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "İspanya",
+   "ad": "La Salvajada (Menü Teklifi / Serisi)",
+   "slug": "lasalvajadamenuteklifiserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "KFC Pickle Burger",
+   "slug": "kfcpickleburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Frickles (Fried Pickles)",
+   "slug": "fricklesfriedpickles",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Pickle Loaded Chips",
+   "slug": "pickleloadedchips",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Pickle Pepsi / Pickle Pepsi Max",
+   "slug": "picklepepsipicklepepsimax",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Pickle Ranch Dip Sosu",
+   "slug": "pickleranchdipsosu",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Pickle Cheesecake",
+   "slug": "picklecheesecake",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Secret Menu Pickle Slider",
+   "slug": "secretmenupickleslider",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Bigger Original Tenders",
+   "slug": "biggeroriginaltenders",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Genişletilmiş Dip Sos Yelpazesi",
+   "slug": "genisletilmisdipsosyelpazesi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Saucy Tenders Dip'd Feast",
+   "slug": "saucytendersdipdfeast",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "Caramel Biscuit Bliss Cup (Tatlı)",
+   "slug": "caramelbiscuitblisscuptatlı",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Avustralya",
+   "ad": "KFC Tender Sub (Pilot/Test Satışı)",
+   "slug": "kfctendersubpilottestsatısı",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Yeni Zelanda",
+   "ad": "Liquid Gold Sauce (ve bağlantılı Liquid Gold Bucket)",
+   "slug": "liquidgoldsaucevebaglantılıliquidgoldbucket",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hindistan",
+   "ad": "Onam Mega Bucket",
+   "slug": "onammegabucket",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hindistan",
+   "ad": "Double Chicken Dynamite",
+   "slug": "doublechickendynamite",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Çin",
+   "ad": "Oreo Orijinal Tarifli Tavuk Burger / Oreo Original Recipe Chicken Burger (Çince: 奥利奥原味鸡汉堡)",
+   "slug": "oreoorijinaltariflitavukburgeroreooriginalrecipechickenburgercince奥利奥原味鸡汉堡",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Japonya",
+   "ad": "Torori Tsukimi Wafu Katsu Burger Kobore Tartar (とろ～り月見和風カツバーガーこぼれタルタル)",
+   "slug": "tororitsukimiwafukatsuburgerkoboretartarとろり月見和風カツハーカーこほれタルタル",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Tayland",
+   "ad": "KFC Chicken Rice Bowl (KFC ข้าวมันไก่)",
+   "slug": "kfcchickenricebowlkfcขาวมนไก",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Tayland",
+   "ad": "Seoul Hot Chicken Serisi (ไก่กรอบโซลฮอต)",
+   "slug": "seoulhotchickenserisiไกกรอบโซลฮอต",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Filipinler",
+   "ad": "KFC World-Famous Tenders & New Dips (Dünyaca Ünlü Tavuk Tenders ve Yeni Soslar)",
+   "slug": "kfcworldfamoustendersnewdipsdunyacaunlutavuktendersveyenisoslar",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Filipinler",
+   "ad": "Strawberry Mango Fizz",
+   "slug": "strawberrymangofizz",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Filipinler",
+   "ad": "Garlic Butter Chicken",
+   "slug": "garlicbutterchicken",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Endonezya",
+   "ad": "Lado Ijo Chicken / Lado Ijo Deals",
+   "slug": "ladoijochickenladoijodeals",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Endonezya",
+   "ad": "Lado Ijo Winger & Lado Ijo Don",
+   "slug": "ladoijowingerladoijodon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Endonezya",
+   "ad": "Yeni Sambal Sos Çeşitleri (Sambal Korek & Sambal Rawit)",
+   "slug": "yenisambalsoscesitlerisambalkoreksambalrawit",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Endonezya",
+   "ad": "Es Kuwut (Yeni İçecek)",
+   "slug": "eskuwutyeniicecek",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Singapur",
+   "ad": "Japanese Nanban Zinger",
+   "slug": "japanesenanbanzinger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Singapur",
+   "ad": "Japanese Nanban Chicken Bites",
+   "slug": "japanesenanbanchickenbites",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Singapur",
+   "ad": "Japanese Nanban Loaded Fries",
+   "slug": "japanesenanbanloadedfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Singapur",
+   "ad": "Sweet Potato Mochi Balls",
+   "slug": "sweetpotatomochiballs",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Singapur",
+   "ad": "Louisiana Surf N' Turf Kentaco",
+   "slug": "louisianasurfnturfkentaco",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Singapur",
+   "ad": "Louisiana Surf N' Turf Platter",
+   "slug": "louisianasurfnturfplatter",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Singapur",
+   "ad": "Louisiana Loaded Salad Bowl",
+   "slug": "louisianaloadedsaladbowl",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Güney Afrika",
+   "ad": "K-Dunked Chicken Range (K-Dunked Burger, Twister, Wings, Strips ve Pops)",
+   "slug": "kdunkedchickenrangekdunkedburgertwisterwingsstripsvepops",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Güney Afrika",
+   "ad": "Mighty Bucket for One",
+   "slug": "mightybucketforone",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Suudi Arabistan",
+   "ad": "Pickle Burger (Pickled Burger)",
+   "slug": "pickleburgerpickledburger",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Suudi Arabistan",
+   "ad": "Pickle Twister / Loaded Twister",
+   "slug": "pickletwisterloadedtwister",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Suudi Arabistan",
+   "ad": "Pickle Loaded Fries",
+   "slug": "pickleloadedfries",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Suudi Arabistan",
+   "ad": "Fried Pickles (Frickles) & Pickle Dip",
+   "slug": "friedpicklesfricklespickledip",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Suudi Arabistan",
+   "ad": "\"Worth It\" / \"Menyu Yeswa\" Genişlemesi (منيو يسوى - New Wrap)",
+   "slug": "worthitmenyuyeswagenislemesiمنيويسوىnewwrap",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Brezilya",
+   "ad": "Kentucky Cheddar Bacon",
+   "slug": "kentuckycheddarbacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Brezilya",
+   "ad": "Kentucky Onion",
+   "slug": "kentuckyonion",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Brezilya",
+   "ad": "Kentucky Salad Bacon",
+   "slug": "kentuckysaladbacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Şili",
+   "ad": "Nuevas Alitas Picantes con Chile",
+   "slug": "nuevasalitaspicantesconchile",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Şili",
+   "ad": "Dunked Sandwich",
+   "slug": "dunkedsandwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Şili",
+   "ad": "Papas Cheddar y Bacon",
+   "slug": "papascheddarybacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Şili",
+   "ad": "Popcorn Cheddar y Bacon",
+   "slug": "popcorncheddarybacon",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Şili",
+   "ad": "Picoteo del Coronel",
+   "slug": "picoteodelcoronel",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Macaristan",
+   "ad": "Popcorn Csirke (Popcorn Chicken) Serisi",
+   "slug": "popcorncsirkepopcornchickenserisi",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Macaristan",
+   "ad": "KFC x Doritos Loaded (Tex-Mex & Extra Spicy)",
+   "slug": "kfcxdoritosloadedtexmexextraspicy",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Macaristan",
+   "ad": "Sonbahar Sezonu: Pumpkin Spice Serisi (İçecek)",
+   "slug": "sonbaharsezonupumpkinspiceserisiicecek",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Crazy Cheezy Dip (50g / 110g)",
+   "slug": "crazycheezydip50g110g",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Cheezy Burger (Picant / Nepicant)",
+   "slug": "cheezyburgerpicantnepicant",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Cheezy Twister (Picant / Nepicant)",
+   "slug": "cheezytwisterpicantnepicant",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Loaded Cheezy Fries (Aioli / BBQ)",
+   "slug": "loadedcheezyfriesaiolibbq",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Top Menu cu Booster / Hot Booster",
+   "slug": "topmenucuboosterhotbooster",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Top Menu cu Crispy Sandwich",
+   "slug": "topmenucucrispysandwich",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Top Menu cu Crispy Strips",
+   "slug": "topmenucucrispystrips",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Top Menu cu Strips Nepicanți",
+   "slug": "topmenucustripsnepicanti",
+   "ilk_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-12"
+  }
+ ]
+}
