@@ -26,8 +26,10 @@ jobs:
 
       - name: Tarayıcıyı kur
         run: |
-          pip install playwright==1.49.1 openpyxl
+          pip install playwright==1.49.1 openpyxl pillow
           playwright install --with-deps chromium
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-core fonts-noto-cjk
 
       - name: Radarı çalıştır
         env:
@@ -36,7 +38,15 @@ jobs:
           EKRAN_KOPYALA: "1"
         run: python radar.py
 
-      - name: Raporu yükle
+      - name: PDF raporu yükle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDF-rapor
+          path: rapor/rapor.pdf
+          retention-days: 90
+
+      - name: Tüm rapor dosyalarını yükle
         if: always()
         uses: actions/upload-artifact@v4
         with:
