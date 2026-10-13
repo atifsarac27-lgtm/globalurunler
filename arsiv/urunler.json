@@ -214,7 +214,7 @@
    "slug": "食へくらへホテナケ大",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -4930,7 +4930,7 @@
    "slug": "哈囉迷你批hellominipie",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -4939,7 +4939,7 @@
    "slug": "大眼朱oreo麥旋風",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -4948,7 +4948,7 @@
    "slug": "香烤雞翼意式蕃茄",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -4965,8 +4965,8 @@
    "ad": "熱情果椰果梳打",
    "slug": "熱情果椰果梳打",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12",
-   "sinif": "belirsiz"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -7289,6 +7289,96 @@
    "ilk_gorulme": "2026-10-13",
    "son_gorulme": "2026-10-13",
    "sinif": "elenen"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Hindistan",
+   "ad": "INTRODUCING SIGNATURE RICE BOWLS",
+   "slug": "introducingsignaturericebowls",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Meksika",
+   "ad": "NUEVOS DIPS",
+   "slug": "nuevosdips",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Hindistan",
+   "ad": "sub cravers",
+   "slug": "subcravers",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Filipinler",
+   "ad": "WHAT'S NEW",
+   "slug": "whatsnew",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "厚松饼堡",
+   "slug": "厚松饼堡",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hong Kong",
+   "ad": "黑松露紫菜味調味粉",
+   "slug": "黑松露紫菜味調味粉",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Yunanistan",
+   "ad": "MINIONS BURGER",
+   "slug": "minionsburger",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Yunanistan",
+   "ad": "MINIONS SOLO BUCKET",
+   "slug": "minionssolobucket",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Yunanistan",
+   "ad": "BANANA SAUCE",
+   "slug": "bananasauce",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Finlandiya",
+   "ad": "Ultimate Chili Cheese",
+   "slug": "ultimatechilicheese",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   }
  ]
 }
