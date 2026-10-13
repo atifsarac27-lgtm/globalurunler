@@ -7379,6 +7379,24 @@
    "ilk_gorulme": "2026-10-13",
    "son_gorulme": "2026-10-13",
    "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Çin",
+   "ad": "新厚松饼堡和浓浓黑巧！",
+   "slug": "新厚松饼堡和浓浓黑巧",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "İsrail",
+   "ad": "רד בול נותן לך דאבל כנפיים",
+   "slug": "רדבולנותןלךדאבלכנפיים",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   }
  ]
 }
