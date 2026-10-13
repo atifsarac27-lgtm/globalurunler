@@ -7,9 +7,17 @@ on:
       gun:
         description: "Kaç günlük dönem taransın? (2 ay = 60)"
         default: "60"
+      sadece_rapor:
+        description: "Yalnızca raporu yeniden kur (Gemini çağrısı yok, ücretsiz). Top ve yorum dosyalarını güncelledikten sonra kullanın."
+        type: choice
+        options: ["hayir", "evet"]
+        default: "hayir"
+      max_usd:
+        description: "Bu çalışmada en çok tahmini harcama (dolar). Dolunca durur."
+        default: "18"
 
 permissions:
-  contents: write   # arşivi ve son ekran görüntülerini depoya kaydetmek için
+  contents: write   # arşivi, son ekran görüntülerini ve son rapor verisini depoya kaydetmek için
 
 jobs:
   radar:
@@ -26,7 +34,7 @@ jobs:
 
       - name: Tarayıcıyı kur
         run: |
-          pip install playwright==1.49.1 openpyxl pillow
+          pip install playwright==1.49.1 openpyxl pillow pypdf
           playwright install --with-deps chromium
           sudo apt-get update -qq
           sudo apt-get install -y -qq fonts-noto-core fonts-noto-cjk
@@ -35,15 +43,20 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DONEM_GUN: ${{ inputs.gun }}
+          MAX_USD: ${{ inputs.max_usd }}
+          SADECE_RAPOR: ${{ inputs.sadece_rapor == 'evet' && '1' || '0' }}
           EKRAN_KOPYALA: "1"
+          VERI_KOPYALA: "1"
         run: python radar.py
 
-      - name: PDF raporu yükle
+      - name: PDF raporları yükle
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: PDF-rapor
-          path: rapor/rapor.pdf
+          path: |
+            rapor/rapor.pdf
+            rapor/yonetici-ozeti.pdf
           retention-days: 90
 
       - name: Tüm rapor dosyalarını yükle
@@ -59,7 +72,7 @@ jobs:
         run: |
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
-          git add arsiv son-ekran 2>/dev/null || true
+          git add arsiv son-ekran son-gorseller 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Kaydedilecek değişiklik yok."
           else
