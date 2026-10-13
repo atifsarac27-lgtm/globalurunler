@@ -233,7 +233,7 @@ SITES = [
     ("kfc-za", "KFC", "Güney Afrika", "https://order.kfc.co.za/menu/new-limited-time", "en-ZA"),
     ("kfc-sa", "KFC", "Suudi Arabistan", None, "ar-SA"),
     ("kfc-ae", "KFC", "Birleşik Arap Emirlikleri", None, "en-AE"),
-    ("kfc-br", "KFC", "Brezilya", "https://www.kfcbrasil.com.br/", "pt-BR"),
+    ("kfc-br", "KFC", "Brezilya", "https://kfcbrasil.com.br/", "pt-BR"),
     ("kfc-ar", "KFC", "Arjantin", "https://www.kfc.com.ar/", "es-AR"),
     ("kfc-cl", "KFC", "Şili", None, "es-CL"),
     ("kfc-hu", "KFC", "Macaristan", "https://kfc.hu/", "hu-HU"),
@@ -376,10 +376,17 @@ YEMEK_IZ = re.compile(
     r"pedido|zamów|zamow|rendel|objednat|comand[aă]|παραγγελ|заказ|注文|주문|订购|訂購|点餐|點餐", re.I)
 
 
-def yemek_sayfasi_mi(baslik, metin):
+def yemek_sayfasi_mi(baslik, metin, marka=None):
     """Sayfa bir yiyecek zinciri sitesi gibi mi? (KFC GIDA gibi aynı adı taşıyan başka bir işletmeyi ayıklar)"""
     bulunan = {m.group(0).lower() for m in YEMEK_IZ.finditer(f"{baslik or ''} {(metin or '')[:8000]}")}
-    return len(bulunan) >= 3
+    if len(bulunan) >= 3:
+        return True
+    # Dil/yazı sistemi listede yoksa (Çince, İbranice, Yunanca, Kiril...) markanın adı sayfa metninde sık geçiyorsa kabul
+    if marka:
+        govde = f"{baslik or ''} {(metin or '')[:8000]}".lower()
+        iz = sum(govde.count(i.lower()) for i in MARKA_IZI.get(marka, []) if "." not in i)
+        return iz >= 3
+    return False
 
 
 # Ana sayfadaki "yeni ürünler" bağlantısını bulur (haber/basın/kariyer sayfalarını almaz).
@@ -456,7 +463,7 @@ def tara_site(browser, kod, marka, ulke, url, dil):
         if r["durum"] == "OK" and not marka_sayfasi_mi(marka, son_url, baslik, metin):
             r["durum"] = "HATA"
             r["neden"] = f"Sayfada {marka} izi yok (adres yanlış ya da başka siteye yönlendi: {urlparse(son_url).netloc})"
-        elif r["durum"] == "OK" and not yemek_sayfasi_mi(baslik, metin):
+        elif r["durum"] == "OK" and not yemek_sayfasi_mi(baslik, metin, marka):
             r["durum"] = "HATA"
             r["neden"] = "Yiyecek zinciri sitesi gibi görünmüyor (aynı adı taşıyan başka bir işletme olabilir)"
         r["ekranlar"] = dosyalar
@@ -978,7 +985,8 @@ def sinif_ver(a):
     # --- Resmi mod: kanıt markanın kendi sayfasındaki "yeni" ifadesidir (tarih sitede genellikle yoktur) ---
     if RESMI_MOD and a.get("resmi_kanit") and not kaynak_var:
         a["bagli_kaynak"] = 1
-        a["tespit_tarihi"] = BUGUN.isoformat()
+        ars = a.get("arsiv_kaydi") or {}
+        a["tespit_tarihi"] = ars.get("ilk_gorulme") or BUGUN.isoformat()   # ilk kez görüldüğü gün (önceki çalışmalardan)
         if not a["kaynaklar"] and a.get("site_adresi"):
             a["kaynaklar"] = [{"baslik": "Resmi site", "adres": a["site_adresi"], "destek": []}]
         a["kanit"] = ("Ürün adı sayfa metninde de geçiyor." if a.get("ad_metinde")
@@ -1218,6 +1226,15 @@ def gorsel_bul(a):
 RAPOR_UYARI = []     # rapor eksikse kapağa ve özete yazılır
 KATMAN = [("dunya", "Dünyada İlk"), ("ulke", "Ülkede İlk"), ("belirsiz", "Belirsiz (incelenecek)"),
           ("elenen", "Elenenler")]
+
+
+def katman():
+    """Raporda gösterilen katmanlar. Resmi modda 'Dünyada İlk' hiçbir yerde gösterilmez."""
+    if RESMI_MOD:
+        return [("ulke", "Resmi sitede yeni"), ("belirsiz", "Belirsiz (incelenecek)"), ("elenen", "Yeni sayılmayanlar")]
+    return KATMAN
+
+
 GUVEN_SINIF = {"Doğrulandı": "g1", "Muhtemelen": "g2", "Doğrulanamadı": "g3"}
 
 
@@ -1251,11 +1268,15 @@ def satir_html(a):
         gorsel += f"<div class=\"alt\"><a href=\"ekran_goruntuleri/{e(a['ekran'])}\" target=\"_blank\">tam ekran</a></div>"
     son = a.get("neden", "") if a["sinif"] == "elenen" else (baska_metni(a) or "-")
     not_ = a.get("dunyada_ilk_ifadesi") or ("" if a["sinif"] == "elenen" else a.get("neden", ""))
+    ilk = a.get("ulkede_ilk_cikis") or "-"
+    if RESMI_MOD:
+        ilk = a.get("tespit_tarihi") or "-"
+        son, not_ = (a.get("neden", "") or "-"), ""
     return (f"<tr><td>{e(a['marka'])}</td><td>{e(a['ulke'])}</td>"
             f"<td><b>{e(a['ad'])}</b><div class=\"alt\">{e(a.get('aciklama'))} {e(a.get('fiyat'))}</div>"
             f"{'<div class=alt>Sitede: ' + e(a['etiket']) + '</div>' if a.get('etiket') else ''}</td>"
             f"<td><span class=\"rozet {GUVEN_SINIF[a['guven']]}\">{e(a['guven'])}</span><div class=\"alt\">{e(kt_metni(a))}</div></td>"
-            f"<td>{e(a.get('ulkede_ilk_cikis') or '-')}</td><td>{e(son)}<div class=\"alt\">{e(not_)}</div>"
+            f"<td>{e(ilk)}</td><td>{e(son)}<div class=\"alt\">{e(not_)}</div>"
             f"<div class=\"alt\">{e(a.get('kanit'))}</div></td>"
             f"<td>{kaynak_html(a)}</td><td class=\"ek\">{gorsel}</td></tr>")
 
@@ -1264,15 +1285,24 @@ def html_yaz(katmanlar, siteler, zaman, istatistik):
     def tablo(liste, son_baslik):
         if not liste:
             return "<p class=\"bos\">Kayıt yok.</p>"
-        h = ("<table><thead><tr><th>Marka</th><th>Ülke</th><th>Ürün</th><th>Güven</th><th>Bu ülkede ilk çıkış</th>"
+        h = (f"<table><thead><tr><th>Marka</th><th>Ülke</th><th>Ürün</th><th>Güven</th><th>{ilk_baslik}</th>"
              f"<th>{son_baslik}</th><th>Kaynaklar</th><th>Görsel</th></tr></thead><tbody>")
         return h + "".join(satir_html(a) for a in liste) + "</tbody></table>"
 
     sonlar = {"dunya": "Not", "ulke": "Başka ülkelerde önceden", "belirsiz": "Bilinen", "elenen": "Elenme nedeni"}
+    if RESMI_MOD:
+        sonlar.update(ulke="Not", belirsiz="Not")
+    efsane = ("<span class=\"rozet g1\">Doğrulandı</span> ürün, markanın resmi sitesinde yenilik ifadesiyle görüldü. "
+              "Çıkış tarihi sitede yazmadığı için tespit tarihi esas alınır."
+              if RESMI_MOD else
+              "<span class=\"rozet g1\">Doğrulandı</span> ürünü adıyla anan kaynak var, tarih ve diğer bilgiler net ·\n"
+              "<span class=\"rozet g2\">Muhtemelen</span> kaynak var ama bir bilgi eksik ya da kaynak ürünü adıyla anmıyor ·\n"
+              "<span class=\"rozet g3\">Doğrulanamadı</span> kaynak bulunamadı. Kaynaksız satır hiçbir zaman Dünyada/Ülkede İlk'e girmez.")
+    ilk_baslik = "Tespit tarihi" if RESMI_MOD else "Bu ülkede ilk çıkış"
     dugmeler = "".join(f"<button data-t=\"{k}\"{' class=on' if i == 0 else ''}>{ad} ({len(katmanlar[k])})</button>"
-                       for i, (k, ad) in enumerate(KATMAN))
+                       for i, (k, ad) in enumerate(katman()))
     bolumler = "".join(f"<section id=\"{k}\"{' class=on' if i == 0 else ''}><div class=\"sar\">{tablo(katmanlar[k], sonlar[k])}</div></section>"
-                       for i, (k, _) in enumerate(KATMAN))
+                       for i, (k, _) in enumerate(katman()))
     st_satir = "".join(
         f"<tr><td>{e(s['marka'])}</td><td>{e(s['ulke'])}</td><td>{e(s['durum'])}</td><td>{e(s['neden'])}</td></tr>"
         for s in siteler)
@@ -1302,14 +1332,12 @@ a{{color:inherit}}
 <div class="mut">Dönem: {DONEM_BAS.strftime('%d.%m.%Y')} – {BUGUN.strftime('%d.%m.%Y')} (son {GUN} gün) · Oluşturma: {e(zaman)}</div>
 <div class="mut">{e(istatistik)}</div>
 {''.join(f'<p style="background:var(--kotb);color:var(--kot);padding:10px 12px;border-radius:8px"><b>UYARI:</b> {e(u)}</p>' for u in RAPOR_UYARI)}
-<p class="mut"><span class="rozet g1">Doğrulandı</span> ürünü adıyla anan kaynak var, tarih ve diğer bilgiler net ·
-<span class="rozet g2">Muhtemelen</span> kaynak var ama bir bilgi eksik ya da kaynak ürünü adıyla anmıyor ·
-<span class="rozet g3">Doğrulanamadı</span> kaynak bulunamadı. Kaynaksız satır hiçbir zaman Dünyada/Ülkede İlk'e girmez.</p>
+<p class="mut">{efsane}</p>
 <nav>{dugmeler}<button data-t="site">Site durumu ({len(siteler)})</button></nav>
 <div class="arac"><input id="ara" placeholder="Ara (ürün, ülke...)"><select id="marka"><option value="">Tüm markalar</option>{markalar}</select></div>
 {bolumler}
 <section id="site"><div class="sar"><table><thead><tr><th>Marka</th><th>Ülke</th><th>Resmi site</th><th>Not</th></tr></thead><tbody>{st_satir}</tbody></table></div>
-<p class="mut">OK: sayfa açıldı, ekran görüntüsü alındı. Diğerleri yalnızca arama ile tarandı.</p></section>
+<p class="mut">OK: sayfa açıldı, ekran görüntüsü alındı. {'Diğerleri taranamadı.' if RESMI_MOD else 'Diğerleri yalnızca arama ile tarandı.'}</p></section>
 </main><script>
 const bt=document.querySelectorAll('nav button'),ss=document.querySelectorAll('section');
 bt.forEach(b=>b.onclick=()=>{{bt.forEach(x=>x.classList.toggle('on',x===b));ss.forEach(s=>s.classList.toggle('on',s.id===b.dataset.t))}});
@@ -1547,7 +1575,7 @@ def ozet_maddeleri(v, liste):
              f"{len(ts)} resmi site tarandı."]
         nr = sum(1 for a in liste if a.get("tespit_tarihi"))
         m.append(f"Resmi sitelerde “yeni” olarak öne çıkarılan <b>{len(liste)}</b> ürün bulundu"
-                 + (f" (bunların {len(liste) - nr} tanesi tarihli kaynakla doğrulandı, {nd} tanesi Dünyada İlk)." if len(liste) - nr else ".")
+                 + (f" (bunların {len(liste) - nr} tanesi tarihli kaynakla doğrulandı)." if len(liste) - nr else ".")
                  + (f" {nr} ürünün çıkış tarihi sitede yazmadığı için tespit tarihi esas alındı." if nr else ""))
     else:
         m = [f"{len({s['marka'] for s in siteler})} marka ve {len({s['ulke'] for s in siteler})} ülkede toplam "
@@ -1576,7 +1604,7 @@ def karsilastirma_html(v, liste, siteler):
         ulke.setdefault(a["ulke"], {"d": 0, "u": 0})["d" if a["sinif"] == "dunya" else "u"] += 1
     mx = max([x["d"] + x["u"] for x in marka.values()] + [1])
     satir = "".join(
-        f"<tr><td><b>{e(k)}</b></td><td class=s>{len(x['ulke'])}</td><td class=s>{x['d']}</td><td class=s>{x['u']}</td>"
+        f"<tr><td><b>{e(k)}</b></td><td class=s>{len(x['ulke'])}</td>{'' if RESMI_MOD else f"<td class=s>{x['d']}</td>"}<td class=s>{x['u']}</td>"
         f"<td><div class=bar><i class=d style=\"width:{100 * x['d'] / mx:.1f}%\"></i><i class=u style=\"width:{100 * x['u'] / mx:.1f}%\"></i></div></td></tr>"
         for k, x in sorted(marka.items(), key=lambda kv: marka_sirasi(kv[0])))
     ux = sorted(ulke.items(), key=lambda kv: (-(kv[1]["d"] + kv[1]["u"]), tr_anahtar(kv[0])))[:10]
@@ -1586,7 +1614,7 @@ def karsilastirma_html(v, liste, siteler):
         f"<td><div class=bar style=\"min-width:110pt\"><i class=d style=\"width:{100 * x['d'] / umx:.1f}%\"></i><i class=u style=\"width:{100 * x['u'] / umx:.1f}%\"></i></div></td></tr>"
         for k, x in ux)
     return ("<div class=\"iki\"><div><table class=\"k\"><thead><tr><th>Marka</th><th class=s>Taranan ülke</th>"
-            f"<th class=s>Dünyada İlk</th><th class=s>{e(ulke_basligi())}</th><th>Dağılım</th></tr></thead><tbody>" + satir
+            f"{'' if RESMI_MOD else '<th class=s>Dünyada İlk</th>'}<th class=s>{e(ulke_basligi())}</th><th>Dağılım</th></tr></thead><tbody>" + satir
             + "</tbody></table></div><div><table class=\"k\"><thead><tr><th>En çok yenilik çıkan ülkeler</th><th class=s>Ürün</th>"
               "<th></th></tr></thead><tbody>" + (usatir or "<tr><td colspan=3 class=bos>Kayıt yok</td></tr>")
             + "</tbody></table></div></div>")
@@ -1606,9 +1634,7 @@ def yontem_resmi_html(v, siteler, katmanlar, liste):
         "Her ürünün kaynağı, ürünün görüldüğü resmi sayfadır.</li>"
         "<li><b>Tarih.</b> Resmi sitelerde çıkış tarihi çoğu zaman yazmaz. Bu ürünler için markanın kendi sitesinde yeni olarak "
         "işaretlenmiş olması ve tespit tarihi esas alınmıştır; ürünün tam çıkış tarihi kanıtlanmamıştır. Daha önce görülen ya da "
-        "geri dönüş ifadesi taşıyan ürünler listeye alınmamıştır.</li>"
-        "<li><b>Dünyada İlk.</b> Resmi sayfalar başka ülkelerle karşılaştırma yapmadığı için bu yöntemle “dünyada ilk” "
-        "iddiası ortaya konmamıştır.</li></ul>"
+        "geri dönüş ifadesi taşıyan ürünler listeye alınmamıştır.</li></ul>"
         "<p><b>Sınırlar.</b> Yalnızca resmi sitesi açılabilen marka-ülkeler taranmıştır"
         + (f"; açılamayanlar: {e(adlar)}. " if kapali else ". ")
         + "Tarama her ürünü yakalamayabilir; listede olmayan bir ürün “yok” anlamına gelmez. "
@@ -1684,8 +1710,8 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
     kapak = (f"<section class=\"kapak\"><div class=\"ust-yazi\">GLOBAL YENİ ÜRÜNLER{' · ÖZET' if kisa else ''}</div>"
              f"<h1>{DONEM_BAS.strftime('%d.%m.%Y')} – {BUGUN.strftime('%d.%m.%Y')}</h1>"
              f"<div class=\"alt\">Burger King · Popeyes · Arby's · Sbarro · Subway · McDonald's · KFC</div>"
-             f"<div class=\"amac\">Bu rapor, {'son 2 ayda' if GUN == 60 else f'son {GUN} günde'} yukarıdaki markaların dünyadaki yeni ürünlerini derlemek amacıyla hazırlanmıştır.</div>"
-             f"<div class=\"kutular\"><div class=\"kutu d\"><b>{nd}</b><span>Dünyada İlk</span></div>"
+             f"<div class=\"amac\">Bu rapor, {'son 2 ayda' if GUN == 60 else f'son {GUN} günde'} yukarıdaki markaların {'resmi sitelerinde öne çıkardığı yeni ürünleri derlemek' if RESMI_MOD else 'dünyadaki yeni ürünlerini derlemek'} amacıyla hazırlanmıştır.</div>"
+             f"<div class=\"kutular\">" + ("" if RESMI_MOD else f"<div class=\"kutu d\"><b>{nd}</b><span>Dünyada İlk</span></div>") +
              f"<div class=\"kutu u\"><b>{nu}</b><span>{e(ulke_basligi())}</span></div>"
              f"<div class=\"kutu\"><b>{len({s['ulke'] for s in taranan(siteler)})}</b><span>taranan ülke</span></div>"
              f"<div class=\"kutu\"><b>{len({s['marka'] for s in taranan(siteler)})}</b><span>marka</span></div></div>"
@@ -1698,10 +1724,10 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
     marka_t = {}
     for a in liste:
         marka_t.setdefault(a["marka"], [0, 0])[0 if a["sinif"] == "dunya" else 1] += 1
-    mt = "".join(f"<tr><td><b>{e(k)}</b></td><td class=s>{x[0]}</td><td class=s>{x[1]}</td></tr>"
+    mt = "".join(f"<tr><td><b>{e(k)}</b></td>{'' if RESMI_MOD else f'<td class=s>{x[0]}</td>'}<td class=s>{x[1]}</td></tr>"
                  for k, x in sorted(marka_t.items(), key=lambda kv: marka_sirasi(kv[0])))
     bolum("Özet", f"<div class=\"ozet-izgara\"><div><ul>{maddeler}</ul></div><div>"
-          f"<table class=\"k\"><thead><tr><th>Marka</th><th class=s>Dünyada İlk</th><th class=s>{e(ulke_basligi())}</th></tr></thead>"
+          f"<table class=\"k\"><thead><tr><th>Marka</th>{'' if RESMI_MOD else '<th class=s>Dünyada İlk</th>'}<th class=s>{e(ulke_basligi())}</th></tr></thead>"
           f"<tbody>{mt or '<tr><td colspan=3 class=bos>Kayıt yok</td></tr>'}</tbody></table></div></div>")
 
     if top:
@@ -1827,7 +1853,22 @@ BASLIK = ["Marka", "Ülke", "Ürün", "Açıklama", "Fiyat", "Sitedeki ifade", "
           "Kaynak bağlantıları", "Görsel dosyası", "Ekran dosyası", "Site adresi"]
 
 
+BASLIK_RESMI = ["Marka", "Ülke", "Ürün", "Açıklama", "Fiyat", "Sitedeki ifade", "Güven", "Tespit tarihi",
+                "Not / elenme nedeni", "Kanıt özeti", "Bulunduğu yer", "Kaynak bağlantıları", "Görsel dosyası",
+                "Ekran dosyası", "Site adresi"]
+
+
+def baslik():
+    return BASLIK_RESMI if RESMI_MOD else BASLIK
+
+
 def satir_duz(a):
+    if RESMI_MOD:
+        return [
+            a["marka"], a["ulke"], a["ad"], a.get("aciklama", ""), a.get("fiyat", ""), a.get("etiket", ""), a["guven"],
+            a.get("tespit_tarihi", ""), a.get("neden", ""), a.get("kanit", ""), kt_metni(a),
+            "\n".join(k["adres"] for k in a["kaynaklar"]), a.get("gorsel", ""), a.get("ekran", ""), a.get("site_adresi", ""),
+        ]
     return [
         a["marka"], a["ulke"], a["ad"], a.get("aciklama", ""), a.get("fiyat", ""), a.get("etiket", ""), a["guven"],
         a.get("ulkede_ilk_cikis", ""), baska_metni(a), a.get("dunyada_ilk_ifadesi", ""), a.get("neden", ""),
@@ -1844,18 +1885,21 @@ def excel_yaz(katmanlar, siteler):
         return False
     wb = Workbook()
     wb.remove(wb.active)
-    for k, ad in KATMAN:
+    for k, ad in katman():
+        if RESMI_MOD and k == "belirsiz" and not katmanlar[k]:
+            continue
         ws = wb.create_sheet(ad[:31])
-        ws.append(BASLIK)
+        ws.append(baslik())
         for a in katmanlar[k]:
             ws.append(satir_duz(a))
         _bicim(ws, Font, PatternFill, Alignment)
-    ws = wb.create_sheet("Top adayları")          # elle kontrol için: Doğrulandı + Dünyada İlk
-    ws.append(BASLIK)
-    for a in katmanlar["dunya"]:
-        if a["guven"] == "Doğrulandı":
-            ws.append(satir_duz(a))
-    _bicim(ws, Font, PatternFill, Alignment)
+    if not RESMI_MOD:
+        ws = wb.create_sheet("Top adayları")          # elle kontrol için: Doğrulandı + Dünyada İlk
+        ws.append(BASLIK)
+        for a in katmanlar["dunya"]:
+            if a["guven"] == "Doğrulandı":
+                ws.append(satir_duz(a))
+        _bicim(ws, Font, PatternFill, Alignment)
     ws = wb.create_sheet("Site durumu")
     ws.append(["Marka", "Ülke", "Resmi site", "Not", "Adres"])
     for s in siteler:
@@ -1883,7 +1927,7 @@ def _bicim(ws, Font, PatternFill, Alignment):
 def csv_yaz(ad, liste):
     with open(OUT / ad, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f, delimiter=";")
-        w.writerow(BASLIK)
+        w.writerow(baslik())
         for a in liste:
             w.writerow(satir_duz(a))
 
@@ -2084,10 +2128,12 @@ def rapor_uret(tum, siteler, zaman, hatalar, br):
     katmanlar = {k: sorted([a for a in tum if a["sinif"] == k],
                            key=lambda a: (a["marka"], a["ulke"], sira[a["guven"]], a["ad"])) for k, _ in KATMAN}
     acik_n = sum(1 for s in siteler if s["durum"] == "OK" and s.get("ekranlar"))
-    ist = (" · ".join(f"{ad}: {len(katmanlar[k])}" for k, ad in KATMAN)
+    ist = (" · ".join(f"{ad}: {len(katmanlar[k])}" for k, ad in katman())
            + f" · {len(siteler)} marka x ülke, resmi sitesi açılan {acik_n}")
     (OUT / "rapor.html").write_text(html_yaz(katmanlar, siteler, zaman, ist), encoding="utf-8")
-    for k, ad in (("dunya", "dunyada_ilk"), ("ulke", "ulkede_ilk"), ("belirsiz", "belirsiz"), ("elenen", "elenenler")):
+    csv_adlari = ((("ulke", "yeni_urunler"), ("belirsiz", "belirsiz"), ("elenen", "elenenler")) if RESMI_MOD else
+                  (("dunya", "dunyada_ilk"), ("ulke", "ulkede_ilk"), ("belirsiz", "belirsiz"), ("elenen", "elenenler")))
+    for k, ad in csv_adlari:
         csv_yaz(f"{ad}.csv", katmanlar[k])
     excel_yaz(katmanlar, siteler)
     try:
@@ -2136,9 +2182,9 @@ def main():
     tum_n = sum(len(v) for v in katmanlar.values())
     ozet = (f"## Yeni Ürün Radarı\nDönem: {DONEM_BAS} – {BUGUN}\n\n| Katman | Adet | Doğrulandı | Muhtemelen | Doğrulanamadı |\n"
             "|---|---|---|---|---|\n"
-            + "".join(f"| {'Resmi sitede yeni' if (RESMI_MOD and k == 'ulke') else ad} | {len(katmanlar[k])} | " + " | ".join(
+            + "".join(f"| {ad} | {len(katmanlar[k])} | " + " | ".join(
                 str(sum(1 for a in katmanlar[k] if a['guven'] == g)) for g in ("Doğrulandı", "Muhtemelen", "Doğrulanamadı")) + " |\n"
-                for k, ad in KATMAN if not (RESMI_MOD and k in ("dunya", "belirsiz")))
+                for k, ad in katman() if not (RESMI_MOD and k == "belirsiz" and not katmanlar[k]))
             + f"\nToplam aday: {tum_n} · Resmi sitesi açılan: {acik_n}/{len(siteler)} · "
               f"Görseli olan: {sum(1 for a in tum if a.get('gorsel'))} · Hata/uyarı: {len(hatalar)} · "
               f"Gemini çağrısı: {_cagri_sayaci['n']} (aramalı {_arama_sayaci['n']}) · Tahmini harcama (çağrı başı taban dahil): ${_harcama['usd']:.2f} (tavan ${MAX_USD:g}; girdi {_harcama['girdi'] / 1e6:.2f}M, çıktı {_harcama['cikti'] / 1e6:.2f}M token, {_harcama['sorgu']} arama sorgusu)\n")
