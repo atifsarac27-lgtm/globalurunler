@@ -25,7 +25,7 @@
    "slug": "babyburgers",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -33,7 +33,8 @@
    "ad": "BIG MOUTH GUILTY",
    "slug": "bigmouthguilty",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -41,7 +42,8 @@
    "ad": "MUSHROOM WHOPPER",
    "slug": "mushroomwhopper",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "elenen"
   },
   {
    "marka": "Burger King",
@@ -50,7 +52,7 @@
    "slug": "crispychickentenders",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -59,7 +61,7 @@
    "slug": "crispychickencurry",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -68,7 +70,7 @@
    "slug": "supersaiyanwhopper",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Popeyes",
@@ -95,7 +97,7 @@
    "slug": "サクタルクリルチキン",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Subway",
@@ -104,7 +106,7 @@
    "slug": "サクタルえひフロッコリー",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -131,7 +133,7 @@
    "slug": "mozzarellasticks",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -140,7 +142,7 @@
    "slug": "dips",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Popeyes",
@@ -158,7 +160,7 @@
    "slug": "madblacktrufflesourcreme",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "elenen"
+   "sinif": "ulke"
   },
   {
    "marka": "Arby's",
@@ -185,7 +187,7 @@
    "slug": "mmチョコチッフ",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -194,7 +196,7 @@
    "slug": "フリフリエヒフリオ",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "elenen"
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -203,7 +205,7 @@
    "slug": "チースチース倍月見セット",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "elenen"
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -221,7 +223,7 @@
    "slug": "nasiacarsambalpadu",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -558,7 +560,7 @@
    "slug": "saiyanwhoppersupersaiyancombo",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -695,7 +697,7 @@
    "slug": "sweetbaconkingkingsselection",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -763,7 +765,8 @@
    "ad": "King’s Kofta Sandwich",
    "slug": "kingskoftasandwich",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -771,7 +774,8 @@
    "ad": "Nutella King Fusion",
    "slug": "nutellakingfusion",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -859,7 +863,8 @@
    "ad": "Krispper® Tenders",
    "slug": "krisppertenders",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "Popeyes",
@@ -2036,7 +2041,7 @@
    "slug": "mccrispygochujangbutter맥크리스피고추장버터",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -2044,7 +2049,8 @@
    "ad": "McSpicy Gochujang Butter (맥스파이시 고추장 버터)",
    "slug": "mcspicygochujangbutter맥스파이시고추장버터",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -2944,7 +2950,7 @@
    "slug": "hotcrujibravovehotcrujibravopapapops",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -3598,7 +3604,8 @@
    "ad": "Popcorn Csirke (Popcorn Chicken) Serisi",
    "slug": "popcorncsirkepopcornchickenserisi",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -3606,7 +3613,8 @@
    "ad": "KFC x Doritos Loaded (Tex-Mex & Extra Spicy)",
    "slug": "kfcxdoritosloadedtexmexextraspicy",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -3630,7 +3638,8 @@
    "ad": "Cheezy Burger (Picant / Nepicant)",
    "slug": "cheezyburgerpicantnepicant",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -3646,7 +3655,8 @@
    "ad": "Loaded Cheezy Fries (Aioli / BBQ)",
    "slug": "loadedcheezyfriesaiolibbq",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -3705,7 +3715,7 @@
    "slug": "steakmeetbowl",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Arby's",
@@ -3723,7 +3733,7 @@
    "slug": "マックフルーリー明治アーモントチョコレート",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -3983,7 +3993,7 @@
    "ad": "Full Flame (Carne / Pollo)",
    "slug": "fullflamecarnepollo",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12",
+   "son_gorulme": "2026-10-13",
    "sinif": "elenen"
   },
   {
@@ -3993,7 +4003,7 @@
    "slug": "asianfusionking",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -4811,8 +4821,8 @@
    "ad": "진주 고추 크림치즈 머핀",
    "slug": "진주고추크림치즈머핀",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12",
-   "sinif": "elenen"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -5469,7 +5479,7 @@
    "slug": "にんにく醤油チキン",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "elenen"
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -5658,7 +5668,7 @@
    "slug": "whopperchiltepincrunch",
    "ilk_gorulme": "2026-10-13",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Sbarro",
@@ -6252,7 +6262,7 @@
    "slug": "chickentenders",
    "ilk_gorulme": "2026-10-13",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -6901,6 +6911,384 @@
    "ilk_gorulme": "2026-10-13",
    "son_gorulme": "2026-10-13",
    "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Meksika",
+   "ad": "MEGABOX KETIRAS BURGER",
+   "slug": "megaboxketirasburger",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "Kanada",
+   "ad": "Melts",
+   "slug": "melts",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "McCrispy Strips",
+   "slug": "mccrispystrips",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hollanda",
+   "ad": "PICKLE OBSESSED BIJ KFC!",
+   "slug": "pickleobsessedbijkfc",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "Kanada",
+   "ad": "Sips",
+   "slug": "sips",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "McCrispy Bacon Supreme",
+   "slug": "mccrispybaconsupreme",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Singapur",
+   "ad": "CHICKEN HAM & EGG TWISTER",
+   "slug": "chickenhameggtwister",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Tayland",
+   "ad": "McDonald's K-Spicy Series",
+   "slug": "mcdonaldskspicyseries",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Marți Bucket",
+   "slug": "martibucket",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Kanada",
+   "ad": "PRETZEL BACON BURGER",
+   "slug": "pretzelbaconburger",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Avusturya",
+   "ad": "McCrispy Homestyle",
+   "slug": "mccrispyhomestyle",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Romanya",
+   "ad": "Loaded Chicken Fries BBQ",
+   "slug": "loadedchickenfriesbbq",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avustralya",
+   "ad": "CHEESY CHEESE BURGER",
+   "slug": "cheesycheeseburger",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Yeni Zelanda",
+   "ad": "Dragon Ball Super inspired menu",
+   "slug": "dragonballsuperinspiredmenu",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Yeni Zelanda",
+   "ad": "FUNNEL FRIES",
+   "slug": "funnelfries",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Danimarka",
+   "ad": "BUCKET FOR ONE NOT FOR SHARING",
+   "slug": "bucketforonenotforsharing",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Çin",
+   "ad": "牛气厚酱小皇堡",
+   "slug": "牛气厚酱小皇堡",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "İtalya",
+   "ad": "THE FOCACCIA",
+   "slug": "thefocaccia",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Çin",
+   "ad": "烧烤风味香骨鸡",
+   "slug": "烧烤风味香骨鸡",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "İtalya",
+   "ad": "Doritos LOADED",
+   "slug": "doritosloaded",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Çin",
+   "ad": "好运元宝酥",
+   "slug": "好运元宝酥",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Letonya",
+   "ad": "Doritos LOADED",
+   "slug": "doritosloaded",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Çin",
+   "ad": "蘸酱鸡块（杏子甜辣酱/葱香奶酪酱）",
+   "slug": "蘸酱鸡块杏子甜辣酱葱香奶酪酱",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Letonya",
+   "ad": "Miksēts spainītis",
+   "slug": "miksetsspainitis",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hırvatistan",
+   "ad": "Doritos LOADED",
+   "slug": "doritosloaded",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Şili",
+   "ad": "CROISSANDWICH",
+   "slug": "croissandwich",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Hırvatistan",
+   "ad": "POPCORN PILETINA",
+   "slug": "popcornpiletina",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Şili",
+   "ad": "FONDUE KING",
+   "slug": "fondueking",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Litvanya",
+   "ad": "Doritos LOADED",
+   "slug": "doritosloaded",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Arjantin",
+   "ad": "CHEDDAR QUEEN",
+   "slug": "cheddarqueen",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Litvanya",
+   "ad": "Maišytas kibirėlis",
+   "slug": "maisytaskibirelis",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Arjantin",
+   "ad": "KING'S SELECTION",
+   "slug": "kingsselection",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Portekiz",
+   "ad": "NOVO MOLHO Cheetos Pandilla",
+   "slug": "novomolhocheetospandilla",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Portekiz",
+   "ad": "NOVO SABOR Cheetos Pandilla",
+   "slug": "novosaborcheetospandilla",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avusturya",
+   "ad": "Plant-Based Crispy Chicken",
+   "slug": "plantbasedcrispychicken",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avusturya",
+   "ad": "The Royals",
+   "slug": "theroyals",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avusturya",
+   "ad": "Chili Cheese Lovers",
+   "slug": "chilicheeselovers",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Danimarka",
+   "ad": "Gourmet Japanese Katsu",
+   "slug": "gourmetjapanesekatsu",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İsviçre",
+   "ad": "Baby Chili Cheese",
+   "slug": "babychilicheese",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Malezya",
+   "ad": "MALTY DINOSAUR",
+   "slug": "maltydinosaur",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İsviçre",
+   "ad": "Mushroom Le Gruyère AOP oder Classic Appenzeller",
+   "slug": "mushroomlegruyereaopoderclassicappenzeller",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "elenen"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Singapur",
+   "ad": "Quarter Chicken Leg",
+   "slug": "quarterchickenleg",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "elenen"
   }
  ]
 }
