@@ -1364,6 +1364,31 @@ q.oninput=f;m.onchange=f;
 # ---------------------------------- PDF ----------------------------------------------
 MARKA_SIRA = ["Burger King", "Popeyes", "Arby's", "Sbarro", "Subway", "McDonald's", "KFC"]
 TR_ULKE = "Türkiye"
+# PDF'te ülke adları İngilizce gösterilir (veri ve Excel/CSV Türkçe kalır)
+ULKE_EN = {
+    "ABD": "United States", "Almanya": "Germany", "Arjantin": "Argentina", "Avustralya": "Australia",
+    "Avusturya": "Austria", "Bahreyn": "Bahrain", "Bangladeş": "Bangladesh", "Belarus": "Belarus",
+    "Birleşik Arap Emirlikleri": "United Arab Emirates", "Birleşik Krallık": "United Kingdom", "Brezilya": "Brazil",
+    "Brunei": "Brunei", "Danimarka": "Denmark", "Dominik Cumhuriyeti": "Dominican Republic", "Endonezya": "Indonesia",
+    "Estonya": "Estonia", "Fas": "Morocco", "Filipinler": "Philippines", "Finlandiya": "Finland", "Fransa": "France",
+    "Guadeloupe": "Guadeloupe", "Guam": "Guam", "Güney Afrika": "South Africa", "Güney Kore": "South Korea",
+    "Hindistan": "India", "Hollanda": "Netherlands", "Honduras": "Honduras", "Hong Kong": "Hong Kong",
+    "Hırvatistan": "Croatia", "Japonya": "Japan", "Kanada": "Canada", "Katar": "Qatar", "Kolombiya": "Colombia",
+    "Kosta Rika": "Costa Rica", "Kuveyt": "Kuwait", "Kıbrıs": "Cyprus", "Letonya": "Latvia", "Litvanya": "Lithuania",
+    "Lüksemburg": "Luxembourg", "Macaristan": "Hungary", "Malezya": "Malaysia", "Malta": "Malta", "Meksika": "Mexico",
+    "Moldova": "Moldova", "Mısır": "Egypt", "Pakistan": "Pakistan", "Panama": "Panama", "Paraguay": "Paraguay",
+    "Polonya": "Poland", "Portekiz": "Portugal", "Porto Riko": "Puerto Rico", "Romanya": "Romania",
+    "Singapur": "Singapore", "Slovakya": "Slovakia", "Slovenya": "Slovenia", "Suudi Arabistan": "Saudi Arabia",
+    "Sırbistan": "Serbia", "Tayland": "Thailand", "Tayvan": "Taiwan", "Türkiye": "Turkey", "Ukrayna": "Ukraine",
+    "Umman": "Oman", "Uruguay": "Uruguay", "Vietnam": "Vietnam", "Yeni Zelanda": "New Zealand", "Yunanistan": "Greece",
+    "Çekya": "Czechia", "Çin": "China", "Ürdün": "Jordan", "İrlanda": "Ireland", "İspanya": "Spain", "İsrail": "Israel",
+    "İsveç": "Sweden", "İsviçre": "Switzerland", "İtalya": "Italy", "Şili": "Chile",
+}
+
+
+def ulke_ad(x):
+    return ULKE_EN.get(x, x)
+
 AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
 YORUM_DOSYASI = Path(os.environ.get("YORUM_DOSYASI", "yorum.json"))      # dikkat çeken noktalar, rapor sahibi
 TOP_DOSYASI = Path(os.environ.get("TOP_DOSYASI", "top_onay.json"))       # elle onaylanan Top ürünler
@@ -1479,7 +1504,7 @@ def kart_html(a, kok, kimlik=None, mk=""):
     top_not = f"<div class=\"tn\">{e(kisalt(a['_top_not'], 140))}</div>" if a.get("_top_not") else ""
     idt = f" id=\"b{kimlik}\"" if kimlik else ""
     return (f"<div class=\"kart\"{idt}>{g}"
-            f"<div class=\"ust\">{rozet}<span class=\"tr\"><b>{e(a['ulke'])}</b>{mk} · {e(tarih)}</span></div>"
+            f"<div class=\"ust\">{rozet}<span class=\"tr\"><b>{e(ulke_ad(a['ulke']))}</b>{mk} · {e(tarih)}</span></div>"
             f"<div class=\"ad\">{e(kisalt(a['ad'], 70))}</div>"
             f"<div class=\"ac\">{e(kisalt(a.get('aciklama'), 150))}</div>"
             f"{top_not}"
@@ -1603,11 +1628,11 @@ def ozet_maddeleri(v, liste):
         m.append("En çok yeni ürünü çıkaran markalar: " + ", ".join(f"{k} ({n})" for k, n in en) + ".")
     if ulke_say:
         en = sorted(ulke_say.items(), key=lambda x: (-x[1], tr_anahtar(x[0])))[:4]
-        m.append("En çok yeni ürünün çıktığı ülkeler: " + ", ".join(f"{k} ({n})" for k, n in en) + ".")
+        m.append("En çok yeni ürünün çıktığı ülkeler: " + ", ".join(f"{ulke_ad(k)} ({n})" for k, n in en) + ".")
     tr = [a for a in liste if a["ulke"] == TR_ULKE]
     if any(s["ulke"] == TR_ULKE for s in ts):
-        m.append(f"Türkiye: bu dönemde doğrulanmış {len(tr)} yeni ürün." if tr else
-                 "Türkiye: bu dönemde doğrulanmış yeni ürün bulunmadı.")
+        m.append(f"{ulke_ad(TR_ULKE)}: bu dönemde doğrulanmış {len(tr)} yeni ürün." if tr else
+                 f"{ulke_ad(TR_ULKE)}: bu dönemde doğrulanmış yeni ürün bulunmadı.")
     return m
 
 
@@ -1627,7 +1652,7 @@ def karsilastirma_html(v, liste, siteler):
     ux = sorted(ulke.items(), key=lambda kv: (-(kv[1]["d"] + kv[1]["u"]), tr_anahtar(kv[0])))[:10]
     umx = max([x["d"] + x["u"] for _, x in ux] + [1])
     usatir = "".join(
-        f"<tr><td><b>{e(k)}</b></td><td class=s>{x['d'] + x['u']}</td>"
+        f"<tr><td><b>{e(ulke_ad(k))}</b></td><td class=s>{x['d'] + x['u']}</td>"
         f"<td><div class=bar style=\"min-width:110pt\"><i class=d style=\"width:{100 * x['d'] / umx:.1f}%\"></i><i class=u style=\"width:{100 * x['u'] / umx:.1f}%\"></i></div></td></tr>"
         for k, x in ux)
     return ("<div class=\"iki\"><div><table class=\"k\"><thead><tr><th>Marka</th><th class=s>Taranan ülke</th>"
@@ -1649,7 +1674,7 @@ def yontem_resmi_html(v, siteler, katmanlar, liste):
     grup = {}
     for s in kapali:
         grup.setdefault(s["marka"], []).append(s["ulke"])
-    adlar = "; ".join(f"{m} ({len(u)}): {', '.join(sorted(u, key=tr_anahtar))}"
+    adlar = "; ".join(f"{m} ({len(u)}): {', '.join(ulke_ad(x) for x in sorted(u, key=tr_anahtar))}"
                       for m, u in sorted(grup.items(), key=lambda kv: marka_sirasi(kv[0])))
     return (
         f"<div class=\"yontem\"><p>Bu rapor, {e(marka_dizisi(v))}'nin resmi internet "
@@ -1771,7 +1796,7 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
     if kisa and (tr_markalar or (RESMI_MOD and tr)):     # tam raporda Türkiye markaların altında
         icerik = izgara_html([kart_html(a, kok) for a in tr]) if tr else (
             f"<p class=\"bos\">Bu dönemde Türkiye'de taranan markalarda ({', '.join(tr_markalar)}) yeni ürün bulunamadı.</p>")
-        bolum("Türkiye", icerik)
+        bolum(ulke_ad(TR_ULKE), icerik)
 
     yh = yorum_html(yorum)
     if yh:
@@ -1787,19 +1812,19 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
             n, mk = baslik(marka, tur="marka")
             gruplar = []
             # Türkiye her markada en başta, diğer ülkeler alfabetik; her ülke kendi alt başlığıyla
-            for ulke in sorted({a["ulke"] for a in urunler}, key=lambda u: (u != TR_ULKE, tr_anahtar(u))):
-                un, umk = baslik(ulke, tur="ulke", marka=marka)
+            for ulke in sorted({a["ulke"] for a in urunler}, key=lambda u: (u != TR_ULKE, ulke_ad(u))):
+                un, umk = baslik(ulke_ad(ulke), tur="ulke", marka=marka)
                 kartlar = [kart_html(a, kok) for a in urunler if a["ulke"] == ulke]
                 ilk, kalan = izgara_html(kartlar[:4]), izgara_html(kartlar[4:]) if len(kartlar) > 4 else ""
                 # başlık ilk kart satırıyla birlikte tutulur (sayfa sonunda başlık yalnız kalmasın)
-                gruplar.append(f"<div class=\"ulke-grup\"><div class=\"ulke-bas\"><h3 class=\"ulke-b\" id=\"b{un}\">{e(ulke)}{umk}"
+                gruplar.append(f"<div class=\"ulke-grup\"><div class=\"ulke-bas\"><h3 class=\"ulke-b\" id=\"b{un}\">{e(ulke_ad(ulke))}{umk}"
                                f" <span>({len(kartlar)})</span></h3>{ilk}</div>{kalan}</div>")
             govde.append(f"<section class=\"sayfa\" id=\"b{n}\"><h2>{e(marka)}{mk}</h2>{''.join(gruplar)}</section>")
 
         el = katmanlar["elenen"]
         if el:
             satirlar = "".join(
-                f"<div><b>{e(a['marka'])} · {e(a['ulke'])}:</b> {e(kisalt(a['ad'], 50))} <span style=\"color:#6b6b66\">— {e(kisalt(a.get('neden'), 70))}</span></div>"
+                f"<div><b>{e(a['marka'])} · {e(ulke_ad(a['ulke']))}:</b> {e(kisalt(a['ad'], 50))} <span style=\"color:#6b6b66\">— {e(kisalt(a.get('neden'), 70))}</span></div>"
                 for a in sorted(el, key=lambda a: (marka_sirasi(a["marka"]), tr_anahtar(a["ulke"]), tr_anahtar(a["ad"]))))
             bolum("Yeni sayılmayan ürünler", "<p class=\"bos\">Markanın öne çıkardığı ama bu dönemde yeni olmadığı için listeye "
                   "alınmayan ürünler (geri dönenler, dönemden önce çıkanlar).</p><div class=\"elenen\">" + satirlar + "</div>")
