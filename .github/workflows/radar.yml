@@ -12,11 +12,11 @@ on:
         type: choice
         options: ["hayir", "evet"]
         default: "hayir"
-      deneme:
-        description: "Deneme mi? (evet: yalnızca 12 site taranır, en çok 20 Gemini çağrısı. hayır: tüm resmi siteler taranır)"
+      kapsam:
+        description: "Kaç site taransın? deneme-12 (12 site, en çok 20 çağrı) · buyuk-50 (büyük pazarlar, en çok 130 çağrı) · hepsi (134 site, en çok 260 çağrı)"
         type: choice
-        options: ["evet", "hayir"]
-        default: "evet"
+        options: ["deneme-12", "buyuk-50", "hepsi"]
+        default: "deneme-12"
       max_usd:
         description: "Bu çalışmada en çok tahmini harcama (dolar). Dolunca durur."
         default: "4"
@@ -50,8 +50,8 @@ jobs:
           DONEM_GUN: ${{ inputs.gun }}
           MAX_USD: ${{ inputs.max_usd }}
           RESMI_MOD: "1"
-          MAX_SITE: ${{ inputs.deneme == 'evet' && '12' || '0' }}
-          MAX_CAGRI: ${{ inputs.deneme == 'evet' && '20' || '200' }}
+          MAX_SITE: ${{ inputs.kapsam == 'deneme-12' && '12' || inputs.kapsam == 'buyuk-50' && '50' || '0' }}
+          MAX_CAGRI: ${{ inputs.kapsam == 'deneme-12' && '20' || inputs.kapsam == 'buyuk-50' && '130' || '260' }}
           SADECE_RAPOR: ${{ inputs.sadece_rapor == 'evet' && '1' || '0' }}
           EKRAN_KOPYALA: "1"
           VERI_KOPYALA: "1"
