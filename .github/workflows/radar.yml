@@ -12,9 +12,14 @@ on:
         type: choice
         options: ["hayir", "evet"]
         default: "hayir"
+      deneme:
+        description: "Deneme mi? (evet: yalnızca 12 site taranır, en çok 20 Gemini çağrısı. hayır: tüm resmi siteler taranır)"
+        type: choice
+        options: ["evet", "hayir"]
+        default: "evet"
       max_usd:
         description: "Bu çalışmada en çok tahmini harcama (dolar). Dolunca durur."
-        default: "18"
+        default: "4"
 
 permissions:
   contents: write   # arşivi, son ekran görüntülerini ve son rapor verisini depoya kaydetmek için
@@ -44,6 +49,9 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           DONEM_GUN: ${{ inputs.gun }}
           MAX_USD: ${{ inputs.max_usd }}
+          RESMI_MOD: "1"
+          MAX_SITE: ${{ inputs.deneme == 'evet' && '12' || '0' }}
+          MAX_CAGRI: ${{ inputs.deneme == 'evet' && '20' || '200' }}
           SADECE_RAPOR: ${{ inputs.sadece_rapor == 'evet' && '1' || '0' }}
           EKRAN_KOPYALA: "1"
           VERI_KOPYALA: "1"
