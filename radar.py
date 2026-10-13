@@ -371,7 +371,9 @@ YEMEK_IZ = re.compile(
     r"burger|chicken|pizza|sandwich|wrap|nugget|fries|menu|menü|menú|menù|cardápio|cardapio|speisekarte|restaurant|"
     r"restaurante|ristorante|restoran|tavuk|hähnchen|poulet|pollo|frango|kurczak|kuře|csirke|ayam|manok|kip\b|kylling|"
     r"étlap|jídelní|meniu|thực đơn|เมนู|ไก่|μενού|κοτόπουλο|меню|курица|курка|"
-    r"メニュー|ハンバーガー|チキン|菜单|菜單|漢堡|汉堡|炸鸡|炸雞|메뉴|버거|치킨|منيو|مطعم|وجبات", re.I)
+    r"メニュー|ハンバーガー|チキン|菜单|菜單|漢堡|汉堡|炸鸡|炸雞|메뉴|버거|치킨|منيو|مطعم|وجبات|"
+    r"order|delivery|pick-?up|nutrition|calories|coffee|kahve|kampanya|sipariş|siparis|lezzet|bestell|commander|ordina|"
+    r"pedido|zamów|zamow|rendel|objednat|comand[aă]|παραγγελ|заказ|注文|주문|订购|訂購|点餐|點餐", re.I)
 
 
 def yemek_sayfasi_mi(baslik, metin):
@@ -469,6 +471,9 @@ def tara_site(browser, kod, marka, ulke, url, dil):
     except Exception as e:  # noqa: BLE001
         r["durum"] = "HATA"
         r["neden"] = f"{type(e).__name__}: {(str(e).splitlines() or [''])[0][:140]}"
+        if re.search(r"ERR_HTTP2|ERR_CONNECTION_(RESET|CLOSED)|ERR_EMPTY_RESPONSE|ERR_ACCESS_DENIED", str(e)):
+            r["durum"] = "ENGELLİ"
+            r["neden"] = "Site bağlantıyı kesti (büyük olasılıkla otomatik erişimi engelliyor): " + r["neden"][:100]
     finally:
         ctx.close()
     return r
@@ -1907,7 +1912,7 @@ def topla(br, sites, hatalar):
     secili = None
     if MAX_SITE:
         # Deneme: önce Türkiye ve büyük pazarlar; her ülkede markalar sırayla
-        oncelik = ["Türkiye", "ABD", "Birleşik Krallık", "Almanya", "Fransa", "Japonya", "Kanada", "İspanya", "İtalya",
+        oncelik = ["Türkiye", "ABD", "Birleşik Krallık", "Almanya", "Fransa", "Japonya", "Çin", "Hindistan", "Kanada", "İspanya", "İtalya",
                    "Avustralya", "Brezilya", "Meksika", "Güney Kore", "Hollanda", "Polonya"]
         adresli = [x for x in sites if x[3]]
         adresli.sort(key=lambda x: (oncelik.index(x[2]) if x[2] in oncelik else len(oncelik), marka_sirasi(x[1])))
@@ -2131,9 +2136,9 @@ def main():
     tum_n = sum(len(v) for v in katmanlar.values())
     ozet = (f"## Yeni Ürün Radarı\nDönem: {DONEM_BAS} – {BUGUN}\n\n| Katman | Adet | Doğrulandı | Muhtemelen | Doğrulanamadı |\n"
             "|---|---|---|---|---|\n"
-            + "".join(f"| {ad} | {len(katmanlar[k])} | " + " | ".join(
+            + "".join(f"| {'Resmi sitede yeni' if (RESMI_MOD and k == 'ulke') else ad} | {len(katmanlar[k])} | " + " | ".join(
                 str(sum(1 for a in katmanlar[k] if a['guven'] == g)) for g in ("Doğrulandı", "Muhtemelen", "Doğrulanamadı")) + " |\n"
-                for k, ad in KATMAN)
+                for k, ad in KATMAN if not (RESMI_MOD and k in ("dunya", "belirsiz")))
             + f"\nToplam aday: {tum_n} · Resmi sitesi açılan: {acik_n}/{len(siteler)} · "
               f"Görseli olan: {sum(1 for a in tum if a.get('gorsel'))} · Hata/uyarı: {len(hatalar)} · "
               f"Gemini çağrısı: {_cagri_sayaci['n']} (aramalı {_arama_sayaci['n']}) · Tahmini harcama (çağrı başı taban dahil): ${_harcama['usd']:.2f} (tavan ${MAX_USD:g}; girdi {_harcama['girdi'] / 1e6:.2f}M, çıktı {_harcama['cikti'] / 1e6:.2f}M token, {_harcama['sorgu']} arama sorgusu)\n")
