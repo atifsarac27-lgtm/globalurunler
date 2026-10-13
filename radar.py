@@ -1540,6 +1540,10 @@ table.k td.s { text-align: right; font-variant-numeric: tabular-nums; width: 62p
 .iki { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24pt; }
 .satir { display: flex; gap: 8pt; margin-bottom: 8pt; break-inside: avoid; align-items: stretch; }
 .satir > .kart { flex: 1 1 0; min-width: 0; }
+.ulke-grup { margin-bottom: 6pt; }
+.ulke-bas { break-inside: avoid; }
+.ulke-b { font-size: 12pt; margin: 8pt 0 6pt; padding-bottom: 2pt; border-bottom: .6pt solid #d8d6ce; break-after: avoid; }
+.ulke-b span { font-weight: 400; color: #6b6b66; font-size: 9.5pt; }
 .kart.bos-k { visibility: hidden; border: 0; }
 .kart { border: .7pt solid #d8d6ce; border-radius: 7pt; padding: 6pt; display: flex; flex-direction: column; gap: 3pt; background: #fff; }
 .kart .gorsel { height: 96pt; display: flex; align-items: center; justify-content: center; background: #f6f5f1; border-radius: 4pt; overflow: hidden; }
@@ -1633,6 +1637,11 @@ def karsilastirma_html(v, liste, siteler):
             + "</tbody></table></div></div>")
 
 
+def marka_dizisi(v):
+    m = v.get("_markalar") or list(MARKA_SIRA)
+    return m[0] if len(m) == 1 else ", ".join(m[:-1]) + " ve " + m[-1]
+
+
 def yontem_resmi_html(v, siteler, katmanlar, liste):
     acik = sum(1 for s in siteler if s.get("adres") and s["durum"] == "OK")
     denenen = [s for s in siteler if s.get("adres") and s["durum"] not in ("ATLANDI",)]
@@ -1643,7 +1652,7 @@ def yontem_resmi_html(v, siteler, katmanlar, liste):
     adlar = "; ".join(f"{m} ({len(u)}): {', '.join(sorted(u, key=tr_anahtar))}"
                       for m, u in sorted(grup.items(), key=lambda kv: marka_sirasi(kv[0])))
     return (
-        "<div class=\"yontem\"><p>Bu rapor, Burger King, Popeyes, Arby's, Sbarro, Subway, McDonald's ve KFC'nin resmi internet "
+        f"<div class=\"yontem\"><p>Bu rapor, {e(marka_dizisi(v))}'nin resmi internet "
         f"sitelerinde {DONEM_BAS.strftime('%d.%m.%Y')} – {BUGUN.strftime('%d.%m.%Y')} döneminde ({v['zaman']}) “yeni” olarak "
         "öne çıkarılan ürünlere dayanır.</p><ul>"
         f"<li><b>Nasıl bulundu?</b> {len(denenen)} resmi sitenin ana sayfası ve varsa “yeni ürünler” sayfası açıldı; "
@@ -1707,6 +1716,12 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
     kok = OUT.resolve()
     katmanlar, siteler = v["katmanlar"], v["siteler"]
     liste = pdf_urunleri(katmanlar)
+    markalar = sorted({a["marka"] for a in liste}, key=marka_sirasi) or list(MARKA_SIRA)
+    if RESMI_MOD and liste:
+        # hiç ürünü çıkmayan marka PDF'te hiç anılmaz (sayılara da girmez); Excel'deki site listesi değişmez
+        siteler = [s for s in siteler if s["marka"] in markalar]
+        v = dict(v, siteler=siteler)
+    v = dict(v, _markalar=markalar)
     top = top_urunleri(liste)
     yorum = json_oku(YORUM_DOSYASI) or {}
     sahibi = dict(RAPOR_SAHIBI)
@@ -1726,7 +1741,7 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
 
     kapak = (f"<section class=\"kapak\"><div class=\"ust-yazi\">GLOBAL YENİ ÜRÜNLER{' · ÖZET' if kisa else ''}</div>"
              f"<h1>{DONEM_BAS.strftime('%d.%m.%Y')} – {BUGUN.strftime('%d.%m.%Y')}</h1>"
-             f"<div class=\"alt\">Burger King · Popeyes · Arby's · Sbarro · Subway · McDonald's · KFC</div>"
+             f"<div class=\"alt\">{e(' · '.join(markalar))}</div>"
              f"<div class=\"amac\">Bu rapor, {'son 2 ayda' if GUN == 60 else f'son {GUN} günde'} yukarıdaki markaların {'resmi sitelerinde öne çıkardığı yeni ürünleri derlemek' if RESMI_MOD else 'dünyadaki yeni ürünlerini derlemek'} amacıyla hazırlanmıştır.</div>"
              f"<div class=\"kutular\">" + ("" if RESMI_MOD else f"<div class=\"kutu d\"><b>{nd}</b><span>Dünyada İlk</span></div>") +
              f"<div class=\"kutu u\"><b>{nu}</b><span>{e(ulke_basligi())}</span></div>"
@@ -1753,7 +1768,7 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
 
     tr_markalar = sorted({s["marka"] for s in taranan(siteler) if s["ulke"] == TR_ULKE}, key=marka_sirasi)
     tr = [a for a in liste if a["ulke"] == TR_ULKE]
-    if tr_markalar or (RESMI_MOD and tr):
+    if kisa and (tr_markalar or (RESMI_MOD and tr)):     # tam raporda Türkiye markaların altında
         icerik = izgara_html([kart_html(a, kok) for a in tr]) if tr else (
             f"<p class=\"bos\">Bu dönemde Türkiye'de taranan markalarda ({', '.join(tr_markalar)}) yeni ürün bulunamadı.</p>")
         bolum("Türkiye", icerik)
@@ -1766,19 +1781,20 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
 
     if not kisa:
         for marka in sorted({a["marka"] for a in liste}, key=marka_sirasi):
-            urunler = [a for a in liste if a["marka"] == marka and a["ulke"] != TR_ULKE]
+            urunler = [a for a in liste if a["marka"] == marka]
             if not urunler:
                 continue
             n, mk = baslik(marka, tur="marka")
-            kartlar = []
-            for ulke in sorted({a["ulke"] for a in urunler}, key=tr_anahtar):
-                for i, a in enumerate([x for x in urunler if x["ulke"] == ulke]):
-                    if i == 0:
-                        un, umk = baslik(ulke, tur="ulke", marka=marka)
-                        kartlar.append(kart_html(a, kok, kimlik=un, mk=umk))
-                    else:
-                        kartlar.append(kart_html(a, kok))
-            govde.append(f"<section class=\"sayfa\" id=\"b{n}\"><h2>{e(marka)}{mk}</h2>{izgara_html(kartlar)}</section>")
+            gruplar = []
+            # Türkiye her markada en başta, diğer ülkeler alfabetik; her ülke kendi alt başlığıyla
+            for ulke in sorted({a["ulke"] for a in urunler}, key=lambda u: (u != TR_ULKE, tr_anahtar(u))):
+                un, umk = baslik(ulke, tur="ulke", marka=marka)
+                kartlar = [kart_html(a, kok) for a in urunler if a["ulke"] == ulke]
+                ilk, kalan = izgara_html(kartlar[:4]), izgara_html(kartlar[4:]) if len(kartlar) > 4 else ""
+                # başlık ilk kart satırıyla birlikte tutulur (sayfa sonunda başlık yalnız kalmasın)
+                gruplar.append(f"<div class=\"ulke-grup\"><div class=\"ulke-bas\"><h3 class=\"ulke-b\" id=\"b{un}\">{e(ulke)}{umk}"
+                               f" <span>({len(kartlar)})</span></h3>{ilk}</div>{kalan}</div>")
+            govde.append(f"<section class=\"sayfa\" id=\"b{n}\"><h2>{e(marka)}{mk}</h2>{''.join(gruplar)}</section>")
 
         el = katmanlar["elenen"]
         if el:
@@ -2144,6 +2160,11 @@ def rapor_uret(tum, siteler, zaman, hatalar, br):
     sira = {"Doğrulandı": 0, "Muhtemelen": 1, "Doğrulanamadı": 2}
     katmanlar = {k: sorted([a for a in tum if a["sinif"] == k],
                            key=lambda a: (a["marka"], a["ulke"], sira[a["guven"]], a["ad"])) for k, _ in KATMAN}
+    if RESMI_MOD:
+        # Hiç ürünü çıkmayan marka (ör. Sbarro) raporun hiçbir yerinde (PDF, Excel, HTML, sayılar) geçmez
+        urunlu = {a["marka"] for a in pdf_urunleri(katmanlar)}
+        if urunlu:
+            siteler = [s for s in siteler if s["marka"] in urunlu]
     acik_n = sum(1 for s in siteler if s["durum"] == "OK" and s.get("ekranlar"))
     ist = (" · ".join(f"{ad}: {len(katmanlar[k])}" for k, ad in katman())
            + f" · {len(siteler)} marka x ülke, resmi sitesi açılan {acik_n}")
