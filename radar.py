@@ -50,6 +50,9 @@ MAX_ARAMA = int(os.environ.get("MAX_ARAMA", "3500"))       # bir çalışmada en
 ONLY = [x.strip() for x in os.environ.get("ONLY", "").split(",") if x.strip()]  # yalnız bu markalar
 SADECE_ARAMA = os.environ.get("SADECE_ARAMA") == "1"       # siteleri açma (test)
 SADECE_RAPOR = os.environ.get("SADECE_RAPOR") == "1"       # Gemini çağırma; önceki çalışmanın verisinden raporu yeniden kur
+RESMI_MOD = os.environ.get("RESMI_MOD", "1") == "1"        # 1: yalnızca resmi siteler (ücretli arama yok); 0: eski arama + doğrulama hattı
+MAX_SITE = int(os.environ.get("MAX_SITE") or "0")          # >0: adresi olan en çok bu kadar site taranır (deneme); 0: hepsi
+MAX_CAGRI = int(os.environ.get("MAX_CAGRI") or "0")        # >0: bir çalışmada en çok bu kadar Gemini çağrısı (sert sınır); 0: sınırsız
 
 OUT = Path(os.environ.get("OUT_DIR", "rapor"))
 SHOTS = OUT / "ekran_goruntuleri"
@@ -77,110 +80,110 @@ SITES = [
     ("bk-de", "Burger King", "Almanya", "https://www.burgerking.de/", "de-DE"),
     ("bk-kr", "Burger King", "Güney Kore", "https://www.burgerking.co.kr/", "ko-KR"),
     ("bk-tr", "Burger King", "Türkiye", "https://www.burgerking.com.tr/", "tr-TR"),
-    ("bk-us", "Burger King", "ABD", None, "en-US"),
-    ("bk-ca", "Burger King", "Kanada", None, "en-CA"),
-    ("bk-fr", "Burger King", "Fransa", None, "fr-FR"),
-    ("bk-es", "Burger King", "İspanya", None, "es-ES"),
-    ("bk-it", "Burger King", "İtalya", None, "it-IT"),
-    ("bk-nl", "Burger King", "Hollanda", None, "nl-NL"),
-    ("bk-au", "Burger King", "Avustralya", None, "en-AU"),
-    ("bk-nz", "Burger King", "Yeni Zelanda", None, "en-NZ"),
-    ("bk-in", "Burger King", "Hindistan", None, "en-IN"),
-    ("bk-cn", "Burger King", "Çin", None, "zh-CN"),
+    ("bk-us", "Burger King", "ABD", "https://www.bk.com/", "en-US"),
+    ("bk-ca", "Burger King", "Kanada", "https://www.burgerking.ca/", "en-CA"),
+    ("bk-fr", "Burger King", "Fransa", "https://www.burgerking.fr/", "fr-FR"),
+    ("bk-es", "Burger King", "İspanya", "https://www.burgerking.es/", "es-ES"),
+    ("bk-it", "Burger King", "İtalya", "https://www.burgerking.it/", "it-IT"),
+    ("bk-nl", "Burger King", "Hollanda", "https://www.burgerking.nl/", "nl-NL"),
+    ("bk-au", "Burger King", "Avustralya", "https://www.hungryjacks.com.au/", "en-AU"),
+    ("bk-nz", "Burger King", "Yeni Zelanda", "https://www.burgerking.co.nz/", "en-NZ"),
+    ("bk-in", "Burger King", "Hindistan", "https://www.burgerking.in/", "en-IN"),
+    ("bk-cn", "Burger King", "Çin", "https://www.bkchina.cn/", "zh-CN"),
     ("bk-th", "Burger King", "Tayland", None, "th-TH"),
-    ("bk-ph", "Burger King", "Filipinler", None, "en-PH"),
-    ("bk-cl", "Burger King", "Şili", None, "es-CL"),
-    ("bk-ar", "Burger King", "Arjantin", None, "es-AR"),
-    ("bk-co", "Burger King", "Kolombiya", None, "es-CO"),
+    ("bk-ph", "Burger King", "Filipinler", "https://www.burgerking.com.ph/", "en-PH"),
+    ("bk-cl", "Burger King", "Şili", "https://www.burgerking.cl/", "es-CL"),
+    ("bk-ar", "Burger King", "Arjantin", "https://www.burgerking.com.ar/", "es-AR"),
+    ("bk-co", "Burger King", "Kolombiya", "https://www.burgerking.com.co/", "es-CO"),
     ("bk-sa", "Burger King", "Suudi Arabistan", None, "ar-SA"),
-    ("bk-ae", "Burger King", "Birleşik Arap Emirlikleri", None, "en-AE"),
-    ("bk-pl", "Burger King", "Polonya", None, "pl-PL"),
-    ("bk-py", "Burger King", "Paraguay", None, "es-PY"),
-    ("bk-uy", "Burger King", "Uruguay", None, "es-UY"),
+    ("bk-ae", "Burger King", "Birleşik Arap Emirlikleri", "https://www.burgerking.ae/", "en-AE"),
+    ("bk-pl", "Burger King", "Polonya", "https://burgerking.pl/", "pl-PL"),
+    ("bk-py", "Burger King", "Paraguay", "https://www.burgerking.com.py/", "es-PY"),
+    ("bk-uy", "Burger King", "Uruguay", "https://www.burgerking.com.uy/", "es-UY"),
     ("bk-pr", "Burger King", "Porto Riko", None, "es-PR"),
-    ("bk-at", "Burger King", "Avusturya", None, "de-AT"),
-    ("bk-dk", "Burger King", "Danimarka", None, "da-DK"),
-    ("bk-fi", "Burger King", "Finlandiya", None, "fi-FI"),
-    ("bk-ch", "Burger King", "İsviçre", None, "de-CH"),
+    ("bk-at", "Burger King", "Avusturya", "https://www.burgerking.at/", "de-AT"),
+    ("bk-dk", "Burger King", "Danimarka", "https://www.burgerking.dk/", "da-DK"),
+    ("bk-fi", "Burger King", "Finlandiya", "https://www.burgerking.fi/", "fi-FI"),
+    ("bk-ch", "Burger King", "İsviçre", "https://www.burger-king.ch/", "de-CH"),
     ("bk-bn", "Burger King", "Brunei", None, "en-BN"),
-    ("bk-my", "Burger King", "Malezya", None, "en-MY"),
-    ("bk-sg", "Burger King", "Singapur", None, "en-SG"),
-    ("bk-vn", "Burger King", "Vietnam", None, "vi-VN"),
+    ("bk-my", "Burger King", "Malezya", "https://www.burgerking.com.my/", "en-MY"),
+    ("bk-sg", "Burger King", "Singapur", "https://www.burgerking.com.sg/", "en-SG"),
+    ("bk-vn", "Burger King", "Vietnam", "https://www.burgerking.vn/", "vi-VN"),
     # Popeyes
     ("pop-us", "Popeyes", "ABD", "https://www.popeyes.com/", "en-US"),
     ("pop-sg", "Popeyes", "Singapur", "https://www.popeyes.com.sg/", "en-SG"),
-    ("pop-uk", "Popeyes", "Birleşik Krallık", "https://www.popeyes.co.uk/", "en-GB"),
-    ("pop-ca", "Popeyes", "Kanada", None, "en-CA"),
-    ("pop-mx", "Popeyes", "Meksika", None, "es-MX"),
-    ("pop-kr", "Popeyes", "Güney Kore", None, "ko-KR"),
+    ("pop-uk", "Popeyes", "Birleşik Krallık", "https://popeyesuk.com/", "en-GB"),
+    ("pop-ca", "Popeyes", "Kanada", "https://www.popeyeschicken.ca/", "en-CA"),
+    ("pop-mx", "Popeyes", "Meksika", "https://www.popeyes.com.mx/", "es-MX"),
+    ("pop-kr", "Popeyes", "Güney Kore", "https://www.popeyes.co.kr/", "ko-KR"),
     ("pop-cn", "Popeyes", "Çin", None, "zh-CN"),
     ("pop-my", "Popeyes", "Malezya", None, "en-MY"),
     ("pop-sa", "Popeyes", "Suudi Arabistan", None, "ar-SA"),
-    ("pop-fr", "Popeyes", "Fransa", None, "fr-FR"),
-    ("pop-tr", "Popeyes", "Türkiye", None, "tr-TR"),
+    ("pop-fr", "Popeyes", "Fransa", "https://popeyesfrance.fr/", "fr-FR"),
+    ("pop-tr", "Popeyes", "Türkiye", "https://www.popeyes.com.tr/", "tr-TR"),
     # Arby's
     ("arb-us", "Arby's", "ABD", "https://www.arbys.com/", "en-US"),
-    ("arb-ca", "Arby's", "Kanada", None, "en-CA"),
-    ("arb-tr", "Arby's", "Türkiye", None, "tr-TR"),
+    ("arb-ca", "Arby's", "Kanada", "https://www.arbys.ca/", "en-CA"),
+    ("arb-tr", "Arby's", "Türkiye", "https://www.arbys.com.tr/", "tr-TR"),
     # Sbarro
     ("sbr-us", "Sbarro", "ABD", "https://sbarro.com/", "en-US"),
     ("sbr-ca", "Sbarro", "Kanada", None, "en-CA"),
     ("sbr-ae", "Sbarro", "Birleşik Arap Emirlikleri", None, "en-AE"),
     ("sbr-sa", "Sbarro", "Suudi Arabistan", None, "ar-SA"),
-    ("sbr-tr", "Sbarro", "Türkiye", None, "tr-TR"),
+    ("sbr-tr", "Sbarro", "Türkiye", "https://www.sbarro.com.tr/", "tr-TR"),
     # Subway
     ("sub-us", "Subway", "ABD", "https://www.subway.com/en-us", "en-US"),
     ("sub-jp", "Subway", "Japonya", "https://subway.co.jp/", "ja-JP"),
     ("sub-kr", "Subway", "Güney Kore", "https://www.subway.co.kr/", "ko-KR"),
-    ("sub-ca", "Subway", "Kanada", None, "en-CA"),
-    ("sub-uk", "Subway", "Birleşik Krallık", None, "en-GB"),
-    ("sub-au", "Subway", "Avustralya", None, "en-AU"),
-    ("sub-de", "Subway", "Almanya", None, "de-DE"),
-    ("sub-fr", "Subway", "Fransa", None, "fr-FR"),
-    ("sub-in", "Subway", "Hindistan", None, "en-IN"),
-    ("sub-br", "Subway", "Brezilya", None, "pt-BR"),
-    ("sub-mx", "Subway", "Meksika", None, "es-MX"),
-    ("sub-tr", "Subway", "Türkiye", None, "tr-TR"),
+    ("sub-ca", "Subway", "Kanada", "https://www.subway.com/en-ca", "en-CA"),
+    ("sub-uk", "Subway", "Birleşik Krallık", "https://www.subway.com/en-gb", "en-GB"),
+    ("sub-au", "Subway", "Avustralya", "https://www.subway.com/en-au", "en-AU"),
+    ("sub-de", "Subway", "Almanya", "https://www.subway.com/de-de", "de-DE"),
+    ("sub-fr", "Subway", "Fransa", "https://www.subway.com/fr-fr", "fr-FR"),
+    ("sub-in", "Subway", "Hindistan", "https://subway.in/", "en-IN"),
+    ("sub-br", "Subway", "Brezilya", "https://www.subway.com.br/", "pt-BR"),
+    ("sub-mx", "Subway", "Meksika", "https://www.subway.com/es-mx", "es-MX"),
+    ("sub-tr", "Subway", "Türkiye", "https://www.subway.com.tr/", "tr-TR"),
     # McDonald's
     ("mcd-us", "McDonald's", "ABD", "https://www.mcdonalds.com/us/en-us.html", "en-US"),
     ("mcd-jp", "McDonald's", "Japonya", "https://www.mcdonalds.co.jp/", "ja-JP"),
     ("mcd-de", "McDonald's", "Almanya", "https://www.mcdonalds.com/de/de-de.html", "de-DE"),
-    ("mcd-tr", "McDonald's", "Türkiye", "https://www.mcdonalds.com/tr/tr-tr.html", "tr-TR"),
-    ("mcd-uk", "McDonald's", "Birleşik Krallık", None, "en-GB"),
-    ("mcd-ca", "McDonald's", "Kanada", None, "en-CA"),
-    ("mcd-fr", "McDonald's", "Fransa", None, "fr-FR"),
-    ("mcd-es", "McDonald's", "İspanya", None, "es-ES"),
-    ("mcd-it", "McDonald's", "İtalya", None, "it-IT"),
-    ("mcd-nl", "McDonald's", "Hollanda", None, "nl-NL"),
-    ("mcd-pl", "McDonald's", "Polonya", None, "pl-PL"),
-    ("mcd-au", "McDonald's", "Avustralya", None, "en-AU"),
-    ("mcd-nz", "McDonald's", "Yeni Zelanda", None, "en-NZ"),
-    ("mcd-in", "McDonald's", "Hindistan", None, "en-IN"),
-    ("mcd-cn", "McDonald's", "Çin", None, "zh-CN"),
-    ("mcd-kr", "McDonald's", "Güney Kore", None, "ko-KR"),
-    ("mcd-tw", "McDonald's", "Tayvan", None, "zh-TW"),
-    ("mcd-hk", "McDonald's", "Hong Kong", None, "zh-HK"),
-    ("mcd-sg", "McDonald's", "Singapur", None, "en-SG"),
-    ("mcd-my", "McDonald's", "Malezya", None, "en-MY"),
-    ("mcd-th", "McDonald's", "Tayland", None, "th-TH"),
-    ("mcd-ph", "McDonald's", "Filipinler", None, "en-PH"),
-    ("mcd-id", "McDonald's", "Endonezya", None, "id-ID"),
-    ("mcd-br", "McDonald's", "Brezilya", None, "pt-BR"),
-    ("mcd-mx", "McDonald's", "Meksika", None, "es-MX"),
-    ("mcd-ar", "McDonald's", "Arjantin", None, "es-AR"),
-    ("mcd-cl", "McDonald's", "Şili", None, "es-CL"),
-    ("mcd-sa", "McDonald's", "Suudi Arabistan", None, "ar-SA"),
-    ("mcd-ae", "McDonald's", "Birleşik Arap Emirlikleri", None, "en-AE"),
+    ("mcd-tr", "McDonald's", "Türkiye", "https://www.mcdonalds.com.tr/", "tr-TR"),
+    ("mcd-uk", "McDonald's", "Birleşik Krallık", "https://www.mcdonalds.com/gb/en-gb.html", "en-GB"),
+    ("mcd-ca", "McDonald's", "Kanada", "https://www.mcdonalds.com/ca/en-ca.html", "en-CA"),
+    ("mcd-fr", "McDonald's", "Fransa", "https://www.mcdonalds.fr/", "fr-FR"),
+    ("mcd-es", "McDonald's", "İspanya", "https://www.mcdonalds.es/", "es-ES"),
+    ("mcd-it", "McDonald's", "İtalya", "https://www.mcdonalds.com/it/it-it.html", "it-IT"),
+    ("mcd-nl", "McDonald's", "Hollanda", "https://www.mcdonalds.com/nl/nl-nl.html", "nl-NL"),
+    ("mcd-pl", "McDonald's", "Polonya", "https://mcdonalds.pl/", "pl-PL"),
+    ("mcd-au", "McDonald's", "Avustralya", "https://mcdonalds.com.au/", "en-AU"),
+    ("mcd-nz", "McDonald's", "Yeni Zelanda", "https://mcdonalds.co.nz/", "en-NZ"),
+    ("mcd-in", "McDonald's", "Hindistan", "https://www.mcdonaldsindia.com/", "en-IN"),
+    ("mcd-cn", "McDonald's", "Çin", "https://www.mcdonalds.com.cn/", "zh-CN"),
+    ("mcd-kr", "McDonald's", "Güney Kore", "https://www.mcdonalds.co.kr/", "ko-KR"),
+    ("mcd-tw", "McDonald's", "Tayvan", "https://www.mcdonalds.com/tw/zh-tw.html", "zh-TW"),
+    ("mcd-hk", "McDonald's", "Hong Kong", "https://www.mcdonalds.com.hk/", "zh-HK"),
+    ("mcd-sg", "McDonald's", "Singapur", "https://www.mcdonalds.com.sg/", "en-SG"),
+    ("mcd-my", "McDonald's", "Malezya", "https://www.mcdonalds.com.my/", "en-MY"),
+    ("mcd-th", "McDonald's", "Tayland", "https://www.mcdonalds.co.th/", "th-TH"),
+    ("mcd-ph", "McDonald's", "Filipinler", "https://www.mcdonalds.com.ph/", "en-PH"),
+    ("mcd-id", "McDonald's", "Endonezya", "https://mcdonalds.co.id/", "id-ID"),
+    ("mcd-br", "McDonald's", "Brezilya", "https://www.mcdonalds.com.br/", "pt-BR"),
+    ("mcd-mx", "McDonald's", "Meksika", "https://www.mcdonalds.com.mx/", "es-MX"),
+    ("mcd-ar", "McDonald's", "Arjantin", "https://www.mcdonalds.com.ar/", "es-AR"),
+    ("mcd-cl", "McDonald's", "Şili", "https://www.mcdonalds.cl/", "es-CL"),
+    ("mcd-sa", "McDonald's", "Suudi Arabistan", "https://www.mcdonalds.com/sa/en-sa/riyadh.html", "ar-SA"),
+    ("mcd-ae", "McDonald's", "Birleşik Arap Emirlikleri", "https://www.mcdonalds.com/ae/en-ae.html", "en-AE"),
     ("mcd-eg", "McDonald's", "Mısır", None, "ar-EG"),
-    ("mcd-za", "McDonald's", "Güney Afrika", None, "en-ZA"),
-    ("mcd-se", "McDonald's", "İsveç", None, "sv-SE"),
-    ("mcd-at", "McDonald's", "Avusturya", None, "de-AT"),
-    ("mcd-ch", "McDonald's", "İsviçre", None, "de-CH"),
-    ("mcd-pt", "McDonald's", "Portekiz", None, "pt-PT"),
-    ("mcd-cz", "McDonald's", "Çekya", None, "cs-CZ"),
-    ("mcd-ro", "McDonald's", "Romanya", None, "ro-RO"),
-    ("mcd-gr", "McDonald's", "Yunanistan", None, "el-GR"),
-    ("mcd-ie", "McDonald's", "İrlanda", None, "en-IE"),
+    ("mcd-za", "McDonald's", "Güney Afrika", "https://www.mcdonalds.co.za/", "en-ZA"),
+    ("mcd-se", "McDonald's", "İsveç", "https://www.mcdonalds.com/se/sv-se.html", "sv-SE"),
+    ("mcd-at", "McDonald's", "Avusturya", "https://www.mcdonalds.at/", "de-AT"),
+    ("mcd-ch", "McDonald's", "İsviçre", "https://www.mcdonalds.ch/", "de-CH"),
+    ("mcd-pt", "McDonald's", "Portekiz", "https://www.mcdonalds.pt/", "pt-PT"),
+    ("mcd-cz", "McDonald's", "Çekya", "https://www.mcdonalds.cz/", "cs-CZ"),
+    ("mcd-ro", "McDonald's", "Romanya", "https://www.mcdonalds.ro/", "ro-RO"),
+    ("mcd-gr", "McDonald's", "Yunanistan", "https://www.mcdonalds.gr/", "el-GR"),
+    ("mcd-ie", "McDonald's", "İrlanda", "https://www.mcdonalds.ie/", "en-IE"),
     ("mcd-cr", "McDonald's", "Kosta Rika", None, "es-CR"),
     ("mcd-hn", "McDonald's", "Honduras", None, "es-HN"),
     ("mcd-pa", "McDonald's", "Panama", None, "es-PA"),
@@ -210,52 +213,52 @@ SITES = [
     ("kfc-my", "KFC", "Malezya", "https://www.kfc.com.my/", "en-MY"),
     ("kfc-nl", "KFC", "Hollanda", "https://www.kfc.nl/", "nl-NL"),
     ("kfc-cz", "KFC", "Çekya", "https://www.kfc.cz/", "cs-CZ"),
-    ("kfc-us", "KFC", "ABD", None, "en-US"),
-    ("kfc-ca", "KFC", "Kanada", None, "en-CA"),
-    ("kfc-uk", "KFC", "Birleşik Krallık", None, "en-GB"),
-    ("kfc-de", "KFC", "Almanya", None, "de-DE"),
-    ("kfc-fr", "KFC", "Fransa", None, "fr-FR"),
-    ("kfc-es", "KFC", "İspanya", None, "es-ES"),
-    ("kfc-tr", "KFC", "Türkiye", None, "tr-TR"),
-    ("kfc-au", "KFC", "Avustralya", None, "en-AU"),
-    ("kfc-nz", "KFC", "Yeni Zelanda", None, "en-NZ"),
-    ("kfc-in", "KFC", "Hindistan", None, "en-IN"),
-    ("kfc-cn", "KFC", "Çin", None, "zh-CN"),
-    ("kfc-jp", "KFC", "Japonya", None, "ja-JP"),
-    ("kfc-kr", "KFC", "Güney Kore", None, "ko-KR"),
-    ("kfc-th", "KFC", "Tayland", None, "th-TH"),
-    ("kfc-ph", "KFC", "Filipinler", None, "en-PH"),
-    ("kfc-id", "KFC", "Endonezya", None, "id-ID"),
-    ("kfc-sg", "KFC", "Singapur", None, "en-SG"),
-    ("kfc-za", "KFC", "Güney Afrika", None, "en-ZA"),
+    ("kfc-us", "KFC", "ABD", "https://www.kfc.com/", "en-US"),
+    ("kfc-ca", "KFC", "Kanada", "https://www.kfc.ca/", "en-CA"),
+    ("kfc-uk", "KFC", "Birleşik Krallık", "https://www.kfc.co.uk/our-menu/whats-new", "en-GB"),
+    ("kfc-de", "KFC", "Almanya", "https://www.kfc.de/", "de-DE"),
+    ("kfc-fr", "KFC", "Fransa", "https://www.kfc.fr/", "fr-FR"),
+    ("kfc-es", "KFC", "İspanya", "https://www.kfc.es/", "es-ES"),
+    ("kfc-tr", "KFC", "Türkiye", "https://www.kfcturkiye.com/", "tr-TR"),
+    ("kfc-au", "KFC", "Avustralya", "https://www.kfc.com.au/", "en-AU"),
+    ("kfc-nz", "KFC", "Yeni Zelanda", "https://kfc.co.nz/", "en-NZ"),
+    ("kfc-in", "KFC", "Hindistan", "https://online.kfc.co.in/", "en-IN"),
+    ("kfc-cn", "KFC", "Çin", "https://www.kfc.com.cn/", "zh-CN"),
+    ("kfc-jp", "KFC", "Japonya", "https://www.kfc.co.jp/", "ja-JP"),
+    ("kfc-kr", "KFC", "Güney Kore", "https://www.kfckorea.com/promotion/newmenu", "ko-KR"),
+    ("kfc-th", "KFC", "Tayland", "https://www.kfc.co.th/", "th-TH"),
+    ("kfc-ph", "KFC", "Filipinler", "https://www.kfc.com.ph/", "en-PH"),
+    ("kfc-id", "KFC", "Endonezya", "https://kfcku.com/", "id-ID"),
+    ("kfc-sg", "KFC", "Singapur", "https://www.kfc.com.sg/", "en-SG"),
+    ("kfc-za", "KFC", "Güney Afrika", "https://order.kfc.co.za/menu/new-limited-time", "en-ZA"),
     ("kfc-sa", "KFC", "Suudi Arabistan", None, "ar-SA"),
     ("kfc-ae", "KFC", "Birleşik Arap Emirlikleri", None, "en-AE"),
-    ("kfc-br", "KFC", "Brezilya", None, "pt-BR"),
-    ("kfc-ar", "KFC", "Arjantin", None, "es-AR"),
+    ("kfc-br", "KFC", "Brezilya", "https://www.kfcbrasil.com.br/", "pt-BR"),
+    ("kfc-ar", "KFC", "Arjantin", "https://www.kfc.com.ar/", "es-AR"),
     ("kfc-cl", "KFC", "Şili", None, "es-CL"),
-    ("kfc-hu", "KFC", "Macaristan", None, "hu-HU"),
-    ("kfc-ro", "KFC", "Romanya", None, "ro-RO"),
-    ("kfc-bd", "KFC", "Bangladeş", None, "en-BD"),
+    ("kfc-hu", "KFC", "Macaristan", "https://kfc.hu/", "hu-HU"),
+    ("kfc-ro", "KFC", "Romanya", "https://kfc.ro/meniu/noutati", "ro-RO"),
+    ("kfc-bd", "KFC", "Bangladeş", "https://kfcbd.com/", "en-BD"),
     ("kfc-gu", "KFC", "Guam", None, "en-GU"),
     ("kfc-do", "KFC", "Dominik Cumhuriyeti", None, "es-DO"),
     ("kfc-hn", "KFC", "Honduras", None, "es-HN"),
     ("kfc-at", "KFC", "Avusturya", None, "de-AT"),
-    ("kfc-dk", "KFC", "Danimarka", None, "da-DK"),
-    ("kfc-gr", "KFC", "Yunanistan", None, "el-GR"),
-    ("kfc-it", "KFC", "İtalya", None, "it-IT"),
-    ("kfc-lv", "KFC", "Letonya", None, "lv-LV"),
+    ("kfc-dk", "KFC", "Danimarka", "https://kfc.dk/", "da-DK"),
+    ("kfc-gr", "KFC", "Yunanistan", "https://www.kfc.gr/", "el-GR"),
+    ("kfc-it", "KFC", "İtalya", "https://www.kfc.it/novita", "it-IT"),
+    ("kfc-lv", "KFC", "Letonya", "https://kfc.lv/", "lv-LV"),
     ("kfc-sk", "KFC", "Slovakya", None, "sk-SK"),
     ("kfc-ch", "KFC", "İsviçre", None, "de-CH"),
     ("kfc-by", "KFC", "Belarus", None, "ru-BY"),
-    ("kfc-hr", "KFC", "Hırvatistan", None, "hr-HR"),
-    ("kfc-lt", "KFC", "Litvanya", None, "lt-LT"),
-    ("kfc-mt", "KFC", "Malta", None, "en-MT"),
-    ("kfc-pt", "KFC", "Portekiz", None, "pt-PT"),
-    ("kfc-ua", "KFC", "Ukrayna", None, "uk-UA"),
+    ("kfc-hr", "KFC", "Hırvatistan", "https://kfc.hr/", "hr-HR"),
+    ("kfc-lt", "KFC", "Litvanya", "https://kfc.lt/", "lt-LT"),
+    ("kfc-mt", "KFC", "Malta", "https://www.kfc.com.mt/categories/what_s_new", "en-MT"),
+    ("kfc-pt", "KFC", "Portekiz", "https://www.kfc.pt/", "pt-PT"),
+    ("kfc-ua", "KFC", "Ukrayna", "https://kfc.ua/", "uk-UA"),
     ("kfc-bh", "KFC", "Bahreyn", None, "ar-BH"),
     ("kfc-om", "KFC", "Umman", None, "ar-OM"),
-    ("kfc-il", "KFC", "İsrail", None, "he-IL"),
-    ("kfc-pk", "KFC", "Pakistan", None, "en-PK"),
+    ("kfc-il", "KFC", "İsrail", "https://www.kfc.co.il/", "he-IL"),
+    ("kfc-pk", "KFC", "Pakistan", "https://www.kfcpakistan.com/", "en-PK"),
 ]
 
 # --------------------------------------------------------------------------------------
@@ -344,9 +347,90 @@ def site_durumu(status, baslik, metin):
     return "OK", ""
 
 
+MARKA_IZI = {
+    "Burger King": ["burgerking", "burger king", "bk.com", "hungryjack", "hungry jack", "バーガーキング", "버거킹", "汉堡王", "漢堡王"],
+    "Popeyes": ["popeyes", "ポパイズ", "파파이스", "派派思"],
+    "Arby's": ["arbys", "arby's", "arby"],
+    "Sbarro": ["sbarro"],
+    "Subway": ["subway", "サブウェイ", "서브웨이", "赛百味", "賽百味"],
+    "McDonald's": ["mcdonald", "マクドナルド", "맥도날드", "麦当劳", "麥當勞", "ماكدونالدز"],
+    "KFC": ["kfc", "kentucky", "ケンタッキー", "켄터키", "肯德基"],
+}
+
+
+def marka_sayfasi_mi(marka, url, baslik, metin):
+    """Açılan sayfa gerçekten bu markanın mı? (yanlış adres, park edilmiş alan adı, başka siteye yönlendirme)"""
+    izler = MARKA_IZI.get(marka)
+    if not izler:
+        return True
+    hedef = f"{urlparse(url or '').netloc} {baslik or ''} {(metin or '')[:6000]}".lower()
+    return any(i.lower() in hedef for i in izler)
+
+
+YEMEK_IZ = re.compile(
+    r"burger|chicken|pizza|sandwich|wrap|nugget|fries|menu|menü|menú|menù|cardápio|cardapio|speisekarte|restaurant|"
+    r"restaurante|ristorante|restoran|tavuk|hähnchen|poulet|pollo|frango|kurczak|kuře|csirke|ayam|manok|kip\b|kylling|"
+    r"étlap|jídelní|meniu|thực đơn|เมนู|ไก่|μενού|κοτόπουλο|меню|курица|курка|"
+    r"メニュー|ハンバーガー|チキン|菜单|菜單|漢堡|汉堡|炸鸡|炸雞|메뉴|버거|치킨|منيو|مطعم|وجبات", re.I)
+
+
+def yemek_sayfasi_mi(baslik, metin):
+    """Sayfa bir yiyecek zinciri sitesi gibi mi? (KFC GIDA gibi aynı adı taşıyan başka bir işletmeyi ayıklar)"""
+    bulunan = {m.group(0).lower() for m in YEMEK_IZ.finditer(f"{baslik or ''} {(metin or '')[:8000]}")}
+    return len(bulunan) >= 3
+
+
+# Ana sayfadaki "yeni ürünler" bağlantısını bulur (haber/basın/kariyer sayfalarını almaz).
+YENI_LINK_JS = r"""
+() => {
+  const re = /(^|[^a-z])(new|novedades|nuevo|nuevos|nueva|nuevas|neu|neuheiten|nouveau|nouveaut[ée]s?|novo|novos|novidades|novit[àa]|nowo[sś][cć]i?|nowe|yeni|yenilik(ler)?|nieuw|nyhed(er)?|uutuus|novinky|újdonság)([^a-z]|$)|新(商品|発売|登場|品|メニュー|款)|신메뉴|新品/i;
+  const kotu = /news(room)?|press|career|job|blog|invest|about|franchise|contact|locator|gift|privacy|terms|\bapp\b/i;
+  const host = location.hostname.replace(/^www\./, '');
+  const out = [], seen = new Set();
+  for (const a of document.querySelectorAll('a[href]')) {
+    const t = (a.innerText || a.getAttribute('aria-label') || '').trim();
+    if (!t || t.length > 40) continue;
+    let u; try { u = new URL(a.href, location.href); } catch (e) { continue; }
+    if (!/^https?:$/.test(u.protocol)) continue;
+    if (u.hostname.replace(/^www\./, '') !== host) continue;
+    if (u.pathname === location.pathname && !u.search) continue;
+    const key = u.origin + u.pathname + u.search;
+    if (seen.has(key)) continue; seen.add(key);
+    if (re.test(t) && !kotu.test(t) && !kotu.test(u.pathname)) out.push(u.href);
+  }
+  return out.slice(0, 3);
+}
+"""
+
+
+def _yeni_sayfa_al(page, kod, ana_url):
+    """Varsa sitenin 'yeni ürünler' sayfasının ekran görüntüsünü ve metnini döndürür; yoksa None. Hata fırlatmaz."""
+    try:
+        for link in page.evaluate(YENI_LINK_JS) or []:
+            try:
+                resp = page.goto(link, wait_until="domcontentloaded", timeout=30000)
+                if resp and resp.status >= 400:
+                    continue
+                page.wait_for_timeout(4000)
+                pencereleri_kapat(page)
+                page.wait_for_timeout(800)
+                baslik = page.title() or ""
+                metin = page.evaluate("document.body ? document.body.innerText : ''") or ""
+                if site_durumu(resp.status if resp else None, baslik, metin)[0] != "OK":
+                    continue
+                f = SHOTS / f"{kod}_3.jpg"
+                page.screenshot(path=str(f), type="jpeg", quality=80)
+                return f.name, page.url or link, metin[:4000]
+            except Exception:  # noqa: BLE001
+                continue
+    except Exception:  # noqa: BLE001
+        pass
+    return None
+
+
 def tara_site(browser, kod, marka, ulke, url, dil):
     r = {"kod": kod, "marka": marka, "ulke": ulke, "adres": url, "durum": "HATA", "neden": "",
-         "ekranlar": []}
+         "ekranlar": [], "sayfalar": [], "metinler": []}
     ctx = browser.new_context(viewport={"width": 1440, "height": 1600}, locale=dil, user_agent=UA)
     page = ctx.new_page()
     try:
@@ -365,8 +449,23 @@ def tara_site(browser, kod, marka, ulke, url, dil):
             dosyalar.append(f.name)
         baslik = page.title() or ""
         metin = page.evaluate("document.body ? document.body.innerText : ''") or ""
+        son_url = page.url or url
         r["durum"], r["neden"] = site_durumu(status, baslik, metin)
+        if r["durum"] == "OK" and not marka_sayfasi_mi(marka, son_url, baslik, metin):
+            r["durum"] = "HATA"
+            r["neden"] = f"Sayfada {marka} izi yok (adres yanlış ya da başka siteye yönlendi: {urlparse(son_url).netloc})"
+        elif r["durum"] == "OK" and not yemek_sayfasi_mi(baslik, metin):
+            r["durum"] = "HATA"
+            r["neden"] = "Yiyecek zinciri sitesi gibi görünmüyor (aynı adı taşıyan başka bir işletme olabilir)"
         r["ekranlar"] = dosyalar
+        r["sayfalar"] = [son_url, son_url]
+        r["metinler"] = [metin[:4000]]
+        if r["durum"] == "OK" and RESMI_MOD:
+            yeni = _yeni_sayfa_al(page, kod, son_url)
+            if yeni:
+                r["ekranlar"].append(yeni[0])
+                r["sayfalar"].append(yeni[1])
+                r["metinler"].append(yeni[2])
     except Exception as e:  # noqa: BLE001
         r["durum"] = "HATA"
         r["neden"] = f"{type(e).__name__}: {(str(e).splitlines() or [''])[0][:140]}"
@@ -388,7 +487,12 @@ MAX_USD = float(os.environ.get("MAX_USD") or "18")                  # bir çalı
 USD_GIRDI = float(os.environ.get("USD_GIRDI") or "0.75")            # 1M girdi tokeni
 USD_CIKTI = float(os.environ.get("USD_CIKTI") or "3.75")            # 1M çıktı (düşünme dahil) tokeni
 USD_ARAMA = float(os.environ.get("USD_ARAMA") or "0")               # aramalı sorgu başına; aylık 5000 sorgu ücretsiz olduğu için varsayılan 0
+# Gerçek fatura sayaçtan çok yüksek çıktığı için (13 Ekim) her çağrıya bir alt maliyet (taban) uygulanır.
+USD_TABAN = float(os.environ.get("USD_TABAN") or "0.02")            # aramasız çağrı başına en az
+USD_TABAN_ARAMA = float(os.environ.get("USD_TABAN_ARAMA") or "0.09")  # aramalı çağrı başına en az
 _harcama = {"usd": 0.0, "girdi": 0, "cikti": 0, "sorgu": 0, "cagri": 0}
+_cagri_sayaci = {"n": 0}         # denenen her istek (yeniden denemeler dahil); MAX_CAGRI sert sınırı buna bakar
+_duraklat = {"bitis": 0.0}       # geçici hız sınırında tüm iş parçacıkları birlikte bekler
 _kilit = threading.Lock()
 
 
@@ -396,7 +500,7 @@ class KrediBitti(RuntimeError):
     pass
 
 
-def harcama_isle(d):
+def harcama_isle(d, arama=False):
     """Yanıttaki token kullanımını sayar. Tavan aşılırsa sonraki çağrılar durur."""
     u = d.get("usageMetadata") or {}
     girdi = int(u.get("promptTokenCount") or 0) + int(u.get("toolUsePromptTokenCount") or 0)
@@ -408,8 +512,8 @@ def harcama_isle(d):
         _harcama["cikti"] += cikti
         _harcama["sorgu"] += sorgu
         _harcama["cagri"] += 1
-        _harcama["usd"] = (_harcama["girdi"] * USD_GIRDI + _harcama["cikti"] * USD_CIKTI) / 1e6 \
-            + _harcama["sorgu"] * USD_ARAMA
+        c = (girdi * USD_GIRDI + cikti * USD_CIKTI) / 1e6 + sorgu * USD_ARAMA
+        _harcama["usd"] += max(c, USD_TABAN_ARAMA if arama else USD_TABAN)
         if _harcama["usd"] >= MAX_USD and not _durdur["neden"]:
             _durdur["neden"] = (f"Çalışma başına harcama tavanı doldu (tahmini ${_harcama['usd']:.2f}, "
                                 f"tavan ${MAX_USD:g}). Kalan ürünler kontrol edilmedi.")
@@ -445,13 +549,22 @@ def cagri(parts, arama=False, json_cikti=False, sicaklik=0.2):
 
     son_hata = ""
     for deneme in range(6):
+        bekle = _duraklat["bitis"] - time.time()
+        if bekle > 0:
+            time.sleep(min(bekle, 130))
+        with _kilit:
+            _cagri_sayaci["n"] += 1
+            if MAX_CAGRI and _cagri_sayaci["n"] > MAX_CAGRI and not _durdur["neden"]:
+                _durdur["neden"] = f"Çağrı sınırı doldu (MAX_CAGRI={MAX_CAGRI}). Kalan işlemler yapılmadı."
+        if _durdur["neden"]:
+            raise KrediBitti(_durdur["neden"])
         istek = urllib.request.Request(
             url, data=json.dumps(govde).encode("utf-8"),
             headers={"Content-Type": "application/json", "x-goog-api-key": API_KEY}, method="POST")
         try:
             with urllib.request.urlopen(istek, timeout=180) as r:
                 d = json.loads(r.read().decode("utf-8"))
-            harcama_isle(d)
+            harcama_isle(d, arama)
             return _yanit_coz(d)
         except urllib.error.HTTPError as e:
             govde_hata = e.read().decode("utf-8", "replace")[:400]
@@ -463,8 +576,13 @@ def cagri(parts, arama=False, json_cikti=False, sicaklik=0.2):
                 else:
                     del govde["generationConfig"]["thinkingConfig"]  # bu model düzeyi kabul etmiyor
                 continue
+            if e.code == 429 and re.search(r"spend-based rate limit|spending rate|rate.?limit", govde_hata, re.I):
+                # Geçici harcama/hız sınırı: kredi bitmedi (kredi bitince 402 döner). Hepsi birlikte bekler, yeniden dener.
+                with _kilit:
+                    _duraklat["bitis"] = max(_duraklat["bitis"], time.time() + min(120, 30 * (deneme + 1)))
+                continue
             if e.code == 402 or (e.code in (403, 429) and re.search(
-                    r"credit|billing|prepay|exceeded your current quota|PERMISSION_DENIED.*billing", govde_hata, re.I)):
+                    r"credit|prepay|exceeded your current quota|PERMISSION_DENIED.*billing", govde_hata, re.I)):
                 _durdur["neden"] = (f"Gemini kredisi/kotası bitti (HTTP {e.code}). AI Studio'dan kredi ekleyin. "
                                     f"Ayrıntı: {govde_hata[:160]}")
                 raise KrediBitti(_durdur["neden"]) from None
@@ -562,9 +680,18 @@ def gorsel_adaylar(site):
     for ad in site["ekranlar"]:
         b = (SHOTS / ad).read_bytes()
         parts.append({"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(b).decode()}})
+    n_ekran = len(site["ekranlar"])
+    yeni_var = n_ekran >= 3
+    metinler = site.get("metinler") or []
+    yardim = ""
+    if metinler:
+        yardim = "\n\nSAYFA METNİ (yardımcı; ürün adlarını doğru yazmak için kullan, metinde olmayan ürün uydurma):\n" + \
+                 "\n".join(f"[{'Ana sayfa' if i == 0 else 'Yeni ürünler sayfası'}]\n{m[:2500]}" for i, m in enumerate(metinler))
     parts.append({"text": (
-        f"Bunlar {marka} markasının {ulke} resmi sitesinin ana sayfasından alınmış iki ekran görüntüsüdür "
-        "(aynı sayfa, birkaç saniye arayla; kaydırmalı bannerlar değişmiş olabilir).\n"
+        f"Bunlar {marka} markasının {ulke} resmi sitesinden alınmış {n_ekran} ekran görüntüsüdür. "
+        "1. ve 2. görüntü ana sayfadır (aynı sayfa, birkaç saniye arayla; kaydırmalı bannerlar değişmiş olabilir)."
+        + (" 3. görüntü sitenin 'yeni ürünler' bölümüdür." if yeni_var else "") + "\n"
+        f"Sayfa {marka} markasının resmi sitesi değilse (başka bir işletme, park edilmiş alan adı, hata sayfası) []  döndür.\n"
         "GÖREV: Yalnızca üzerinde AÇIKÇA yenilik ifadesi yazan yemek-içecek ÜRÜNLERİNİ listele. Yenilik ifadesi "
         "örnekleri: NEW, New!, Nuevo, Nueva, Neu, Nieuw, Nouveau, Novo, Nowość, Yeni, 新発売, 新登場, 新品, 신메뉴, "
         "Limited time, 期間限定, Only for a limited time, Just dropped. Ayrıca 'is back', 'returns', 'vuelve', "
@@ -574,12 +701,15 @@ def gorsel_adaylar(site):
         "Görüntüde olmayan hiçbir şeyi tahmin etme.\n"
         "Her ürün için JSON nesnesi: {\"ad\": ürün adı görüntüde yazdığı gibi, ÇEVİRMEDEN, \"aciklama\": 1 cümle Türkçe "
         "açıklama, \"yeni_ifadesi\": görüntüdeki yenilik ya da geri dönüş ifadesinin aynısı, \"geri_donus\": true/false, "
-        "\"fiyat\": görünüyorsa, \"ekran\": 1 veya 2, \"kutu\": [ymin, xmin, ymax, xmax] ürün görselini ve adını içeren "
+        f"\"fiyat\": görünüyorsa, \"ekran\": 1 ile {n_ekran} arası görüntü numarası, \"kutu\": [ymin, xmin, ymax, xmax] ürün görselini ve adını içeren "
         "alan, 0-1000 ölçeğinde}.\n"
-        "Aynı ürünü iki ekranda görürsen tek kez yaz. Yalnızca JSON dizisi döndür; uygun ürün yoksa []."
+        "Aynı ürünü birden çok görüntüde görürsen tek kez yaz. Yalnızca JSON dizisi döndür; uygun ürün yoksa []."
+        + yardim
     )})
     metin, _ = cagri(parts, json_cikti=True, sicaklik=0.0)
     veri = json_cikar(metin)
+    tum_metin = slug(" ".join(metinler))
+    sayfalar = site.get("sayfalar") or []
     sonuc = []
     if isinstance(veri, list):
         for x in veri:
@@ -589,15 +719,23 @@ def gorsel_adaylar(site):
             donus = x.get("geri_donus") in (True, "true", "evet")
             if not ifade and not donus:
                 continue                      # yenilik kanıtı yok -> alma
-            ekran_no = x.get("ekran") if x.get("ekran") in (1, 2) else 1
-            ekran_no = min(ekran_no, len(site["ekranlar"]))
+            try:
+                ekran_no = int(x.get("ekran"))
+            except (TypeError, ValueError):
+                ekran_no = 1
+            if not 1 <= ekran_no <= n_ekran:
+                ekran_no = 1
             kutu = x.get("kutu") if isinstance(x.get("kutu"), list) and len(x.get("kutu")) == 4 else None
+            ad = str(x["ad"]).strip()
+            metinde = any(len(slug(v)) >= 3 and slug(v) in tum_metin for v in ad_varyantlari(ad))
             sonuc.append({
-                "marka": marka, "ulke": ulke, "ad": str(x["ad"]).strip(),
+                "marka": marka, "ulke": ulke, "ad": ad,
                 "aciklama": str(x.get("aciklama", "") or "").strip(),
                 "etiket": ifade, "fiyat": str(x.get("fiyat", "") or "").strip(),
                 "kaynak_turu": ["site"], "ekran": site["ekranlar"][ekran_no - 1], "kutu": kutu,
-                "site_adresi": site["adres"], "kaynaklar": [], "site_geri_donus": donus,
+                "site_adresi": sayfalar[ekran_no - 1] if len(sayfalar) >= ekran_no else site["adres"],
+                "kaynaklar": [], "site_geri_donus": donus,
+                "resmi_kanit": True, "ad_metinde": metinde,
             })
     return sonuc
 
@@ -830,6 +968,18 @@ def sinif_ver(a):
         return a
     if ilk and ilk < bas_ay:
         a.update(sinif="elenen", guven=etiket_elenen(), neden=f"Bu ülkede ilk çıkış {ilk}: dönemden önce")
+        return a
+
+    # --- Resmi mod: kanıt markanın kendi sayfasındaki "yeni" ifadesidir (tarih sitede genellikle yoktur) ---
+    if RESMI_MOD and a.get("resmi_kanit") and not kaynak_var:
+        a["bagli_kaynak"] = 1
+        a["tespit_tarihi"] = BUGUN.isoformat()
+        if not a["kaynaklar"] and a.get("site_adresi"):
+            a["kaynaklar"] = [{"baslik": "Resmi site", "adres": a["site_adresi"], "destek": []}]
+        a["kanit"] = ("Ürün adı sayfa metninde de geçiyor." if a.get("ad_metinde")
+                      else "Ürün adı yalnızca görselde okundu (sayfa metninde bulunamadı); ekran görüntüsüyle karşılaştırın.")
+        a.update(sinif="ulke", guven="Doğrulandı",
+                 neden="Resmi sitede yeni ifadesiyle listeleniyor; çıkış tarihi sitede yer almıyor, tespit tarihi esas alındı")
         return a
 
     # --- Kaynak yok: hiçbir zaman Dünyada/Ülkede İlk olmaz ---
@@ -1263,6 +1413,9 @@ def kart_html(a, kok, kimlik=None, mk=""):
     dunya = a["sinif"] == "dunya"
     rozet = "<span class=\"rz rd\">Dünyada İlk</span>" if dunya else "<span class=\"rz ru\">Ülkede İlk</span>"
     tarih = tr_tarih(a.get("ulkede_ilk_cikis"))
+    if a.get("tespit_tarihi") and not dunya:             # yalnızca resmi sitede yeni olarak işaretli ürün
+        rozet = "<span class=\"rz ru\">Resmi sitede yeni</span>"
+        tarih = "tespit " + tr_tarih(a["tespit_tarihi"])
     if a.get("gorsel") and (kok / "gorseller" / a["gorsel"]).exists():
         g = f"<div class=\"gorsel\"><img src=\"{(kok / 'gorseller' / a['gorsel']).as_uri()}\"></div>"
     else:
@@ -1363,6 +1516,15 @@ a { color: inherit; text-decoration: none; }
 """
 
 
+def taranan(siteler):
+    """Resmi modda yalnızca gerçekten açılıp okunan siteler 'taranan' sayılır; eski modda hepsi (arama ile de tarandı)."""
+    return [s for s in siteler if s["durum"] == "OK"] if RESMI_MOD else list(siteler)
+
+
+def ulke_basligi():
+    return "Yeni ürün" if RESMI_MOD else "Ülkede İlk"
+
+
 def _sayilar(liste):
     return (sum(1 for a in liste if a["sinif"] == "dunya"), sum(1 for a in liste if a["sinif"] == "ulke"))
 
@@ -1374,9 +1536,18 @@ def ozet_maddeleri(v, liste):
     for a in liste:
         marka_say[a["marka"]] = marka_say.get(a["marka"], 0) + 1
         ulke_say[a["ulke"]] = ulke_say.get(a["ulke"], 0) + 1
-    m = [f"{len({s['marka'] for s in siteler})} marka ve {len({s['ulke'] for s in siteler})} ülkede toplam "
-         f"{len(siteler)} marka-ülke tarandı."]
-    m.append(f"Son {GUN} günde doğrulanmış <b>{len(liste)}</b> yeni ürün bulundu: <b>{nd}</b> Dünyada İlk, <b>{nu}</b> Ülkede İlk.")
+    ts = taranan(siteler)
+    if RESMI_MOD:
+        m = [f"{len({s['marka'] for s in ts})} marka ve {len({s['ulke'] for s in ts})} ülkede toplam "
+             f"{len(ts)} resmi site tarandı."]
+        nr = sum(1 for a in liste if a.get("tespit_tarihi"))
+        m.append(f"Resmi sitelerde “yeni” olarak öne çıkarılan <b>{len(liste)}</b> ürün bulundu"
+                 + (f" (bunların {len(liste) - nr} tanesi tarihli kaynakla doğrulandı, {nd} tanesi Dünyada İlk)." if len(liste) - nr else ".")
+                 + (f" {nr} ürünün çıkış tarihi sitede yazmadığı için tespit tarihi esas alındı." if nr else ""))
+    else:
+        m = [f"{len({s['marka'] for s in siteler})} marka ve {len({s['ulke'] for s in siteler})} ülkede toplam "
+             f"{len(siteler)} marka-ülke tarandı."]
+        m.append(f"Son {GUN} günde doğrulanmış <b>{len(liste)}</b> yeni ürün bulundu: <b>{nd}</b> Dünyada İlk, <b>{nu}</b> Ülkede İlk.")
     if marka_say:
         en = sorted(marka_say.items(), key=lambda x: (-x[1], marka_sirasi(x[0])))[:3]
         m.append("En çok yeni ürünü çıkaran markalar: " + ", ".join(f"{k} ({n})" for k, n in en) + ".")
@@ -1384,7 +1555,7 @@ def ozet_maddeleri(v, liste):
         en = sorted(ulke_say.items(), key=lambda x: (-x[1], tr_anahtar(x[0])))[:4]
         m.append("En çok yeni ürünün çıktığı ülkeler: " + ", ".join(f"{k} ({n})" for k, n in en) + ".")
     tr = [a for a in liste if a["ulke"] == TR_ULKE]
-    if any(s["ulke"] == TR_ULKE for s in siteler):
+    if any(s["ulke"] == TR_ULKE for s in ts):
         m.append(f"Türkiye: bu dönemde doğrulanmış {len(tr)} yeni ürün." if tr else
                  "Türkiye: bu dönemde doğrulanmış yeni ürün bulunmadı.")
     return m
@@ -1392,7 +1563,7 @@ def ozet_maddeleri(v, liste):
 
 def karsilastirma_html(v, liste, siteler):
     marka = {}
-    for s in siteler:
+    for s in taranan(siteler):
         marka.setdefault(s["marka"], {"ulke": set(), "d": 0, "u": 0})["ulke"].add(s["ulke"])
     ulke = {}
     for a in liste:
@@ -1410,13 +1581,38 @@ def karsilastirma_html(v, liste, siteler):
         f"<td><div class=bar style=\"min-width:110pt\"><i class=d style=\"width:{100 * x['d'] / umx:.1f}%\"></i><i class=u style=\"width:{100 * x['u'] / umx:.1f}%\"></i></div></td></tr>"
         for k, x in ux)
     return ("<div class=\"iki\"><div><table class=\"k\"><thead><tr><th>Marka</th><th class=s>Taranan ülke</th>"
-            "<th class=s>Dünyada İlk</th><th class=s>Ülkede İlk</th><th>Dağılım</th></tr></thead><tbody>" + satir
+            f"<th class=s>Dünyada İlk</th><th class=s>{e(ulke_basligi())}</th><th>Dağılım</th></tr></thead><tbody>" + satir
             + "</tbody></table></div><div><table class=\"k\"><thead><tr><th>En çok yenilik çıkan ülkeler</th><th class=s>Ürün</th>"
               "<th></th></tr></thead><tbody>" + (usatir or "<tr><td colspan=3 class=bos>Kayıt yok</td></tr>")
             + "</tbody></table></div></div>")
 
 
+def yontem_resmi_html(v, siteler, katmanlar, liste):
+    acik = sum(1 for s in siteler if s.get("adres") and s["durum"] == "OK")
+    denenen = [s for s in siteler if s.get("adres") and s["durum"] not in ("ATLANDI",)]
+    kapali = [s for s in denenen if s["durum"] != "OK"]
+    adlar = ", ".join(f"{s['marka']} {s['ulke']}" for s in kapali[:14]) + (" …" if len(kapali) > 14 else "")
+    return (
+        "<div class=\"yontem\"><p>Bu rapor, Burger King, Popeyes, Arby's, Sbarro, Subway, McDonald's ve KFC'nin resmi internet "
+        f"sitelerinde {DONEM_BAS.strftime('%d.%m.%Y')} – {BUGUN.strftime('%d.%m.%Y')} döneminde ({v['zaman']}) “yeni” olarak "
+        "öne çıkarılan ürünlere dayanır.</p><ul>"
+        f"<li><b>Nasıl bulundu?</b> {len(denenen)} resmi sitenin ana sayfası ve varsa “yeni ürünler” sayfası açıldı; "
+        f"{acik} tanesi okunabildi. Üzerinde açıkça yenilik ifadesi (New, Yeni, Nuevo, 新発売 gibi) yazan ürünler listelendi. "
+        "Her ürünün kaynağı, ürünün görüldüğü resmi sayfadır.</li>"
+        "<li><b>Tarih.</b> Resmi sitelerde çıkış tarihi çoğu zaman yazmaz. Bu ürünler için markanın kendi sitesinde yeni olarak "
+        "işaretlenmiş olması ve tespit tarihi esas alınmıştır; ürünün tam çıkış tarihi kanıtlanmamıştır. Daha önce görülen ya da "
+        "geri dönüş ifadesi taşıyan ürünler listeye alınmamıştır.</li>"
+        "<li><b>Dünyada İlk.</b> Resmi sayfalar başka ülkelerle karşılaştırma yapmadığı için bu yöntemle “dünyada ilk” "
+        "iddiası ortaya konmamıştır.</li></ul>"
+        "<p><b>Sınırlar.</b> Yalnızca resmi sitesi açılabilen marka-ülkeler taranmıştır"
+        + (f"; açılamayanlar: {e(adlar)}. " if kapali else ". ")
+        + "Tarama her ürünü yakalamayabilir; listede olmayan bir ürün “yok” anlamına gelmez. "
+        "Tüm satırlar, ekran görüntüleri ve kaynak bağlantıları ekteki Excel dosyasındadır.</p></div>")
+
+
 def yontem_html(v, siteler, katmanlar, liste):
+    if RESMI_MOD:
+        return yontem_resmi_html(v, siteler, katmanlar, liste)
     acik = sum(1 for s in siteler if s.get("adres") and s["durum"] == "OK")
     adresli = sum(1 for s in siteler if s.get("adres"))
     kapali = [s for s in siteler if s.get("adres") and s["durum"] != "OK"]
@@ -1485,9 +1681,9 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
              f"<div class=\"alt\">Burger King · Popeyes · Arby's · Sbarro · Subway · McDonald's · KFC</div>"
              f"<div class=\"amac\">Bu rapor, {'son 2 ayda' if GUN == 60 else f'son {GUN} günde'} yukarıdaki markaların dünyadaki yeni ürünlerini derlemek amacıyla hazırlanmıştır.</div>"
              f"<div class=\"kutular\"><div class=\"kutu d\"><b>{nd}</b><span>Dünyada İlk</span></div>"
-             f"<div class=\"kutu u\"><b>{nu}</b><span>Ülkede İlk</span></div>"
-             f"<div class=\"kutu\"><b>{len({s['ulke'] for s in siteler})}</b><span>taranan ülke</span></div>"
-             f"<div class=\"kutu\"><b>{len({s['marka'] for s in siteler})}</b><span>marka</span></div></div>"
+             f"<div class=\"kutu u\"><b>{nu}</b><span>{e(ulke_basligi())}</span></div>"
+             f"<div class=\"kutu\"><b>{len({s['ulke'] for s in taranan(siteler)})}</b><span>taranan ülke</span></div>"
+             f"<div class=\"kutu\"><b>{len({s['marka'] for s in taranan(siteler)})}</b><span>marka</span></div></div>"
              + "".join(f"<div class=\"uyari\"><b>UYARI:</b> {e(u)}</div>" for u in v.get("uyarilar", []))
              + "</section>")
     govde.append(kapak)
@@ -1500,18 +1696,18 @@ def rapor_html(v, kisa, sayfalar, isaretle=True):
     mt = "".join(f"<tr><td><b>{e(k)}</b></td><td class=s>{x[0]}</td><td class=s>{x[1]}</td></tr>"
                  for k, x in sorted(marka_t.items(), key=lambda kv: marka_sirasi(kv[0])))
     bolum("Özet", f"<div class=\"ozet-izgara\"><div><ul>{maddeler}</ul></div><div>"
-          "<table class=\"k\"><thead><tr><th>Marka</th><th class=s>Dünyada İlk</th><th class=s>Ülkede İlk</th></tr></thead>"
+          f"<table class=\"k\"><thead><tr><th>Marka</th><th class=s>Dünyada İlk</th><th class=s>{e(ulke_basligi())}</th></tr></thead>"
           f"<tbody>{mt or '<tr><td colspan=3 class=bos>Kayıt yok</td></tr>'}</tbody></table></div></div>")
 
     if top:
         bolum("Top ürünler", "<p class=\"bos\">Elle kontrol edilmiş ve kaynağıyla doğrulanmış, bu dönemin öne çıkan ürünleri.</p>"
               + izgara_html([kart_html(a, kok) for a in top]))
 
-    tr_markalar = sorted({s["marka"] for s in siteler if s["ulke"] == TR_ULKE}, key=marka_sirasi)
+    tr_markalar = sorted({s["marka"] for s in taranan(siteler) if s["ulke"] == TR_ULKE}, key=marka_sirasi)
     tr = [a for a in liste if a["ulke"] == TR_ULKE]
-    if tr_markalar:
+    if tr_markalar or (RESMI_MOD and tr):
         icerik = izgara_html([kart_html(a, kok) for a in tr]) if tr else (
-            f"<p class=\"bos\">Bu dönemde Türkiye'de taranan markalarda ({', '.join(tr_markalar)}) doğrulanmış yeni ürün bulunamadı.</p>")
+            f"<p class=\"bos\">Bu dönemde Türkiye'de taranan markalarda ({', '.join(tr_markalar)}) yeni ürün bulunamadı.</p>")
         bolum("Türkiye", icerik)
 
     yh = yorum_html(yorum)
@@ -1658,7 +1854,8 @@ def excel_yaz(katmanlar, siteler):
     ws = wb.create_sheet("Site durumu")
     ws.append(["Marka", "Ülke", "Resmi site", "Not", "Adres"])
     for s in siteler:
-        ws.append([s["marka"], s["ulke"], s["durum"], s["neden"], s["adres"] or "(yalnızca arama)"])
+        ws.append([s["marka"], s["ulke"], s["durum"], s["neden"],
+                   s["adres"] or ("(resmi adres tanımlı değil)" if RESMI_MOD else "(yalnızca arama)")])
     _bicim(ws, Font, PatternFill, Alignment)
     wb.save(OUT / "rapor.xlsx")
     return True
@@ -1707,11 +1904,21 @@ def topla(br, sites, hatalar):
     """Siteleri tarar, adayları bulur, doğrular, sınıflar, görselleri toplar, arşivi günceller."""
     # 1) Siteler
     siteler = []
+    secili = None
+    if MAX_SITE:
+        # Deneme: önce Türkiye ve büyük pazarlar; her ülkede markalar sırayla
+        oncelik = ["Türkiye", "ABD", "Birleşik Krallık", "Almanya", "Fransa", "Japonya", "Kanada", "İspanya", "İtalya",
+                   "Avustralya", "Brezilya", "Meksika", "Güney Kore", "Hollanda", "Polonya"]
+        adresli = [x for x in sites if x[3]]
+        adresli.sort(key=lambda x: (oncelik.index(x[2]) if x[2] in oncelik else len(oncelik), marka_sirasi(x[1])))
+        secili = {x[0] for x in adresli[:MAX_SITE]}
     for i, (kod, marka, ulke, url, dil) in enumerate(sites, 1):
-        if not url or SADECE_ARAMA:
+        if not url or SADECE_ARAMA or (secili is not None and kod not in secili):
             siteler.append({"kod": kod, "marka": marka, "ulke": ulke, "adres": url,
                             "durum": "ADRES YOK" if not url else "ATLANDI",
-                            "neden": "Yalnızca arama ile taranır", "ekranlar": []})
+                            "neden": ("Resmi adres tanımlı değil" if RESMI_MOD else "Yalnızca arama ile taranır")
+                            if not url else ("Deneme sınırı (MAX_SITE)" if secili is not None else "Atlandı"),
+                            "ekranlar": []})
             continue
         s = tara_site(br, kod, marka, ulke, url, dil)
         siteler.append(s)
@@ -1728,16 +1935,19 @@ def topla(br, sites, hatalar):
             else:
                 adaylar += sonuc
 
-    # 3) Aramalı keşif
-    print(f"Aramalı keşif: {len(sites)} marka x ülke", flush=True)
-    with ThreadPoolExecutor(PARALEL) as ex:
-        sirali_siteler = serpistir(sites, lambda s: s[1])
-        sonuclar = list(ex.map(lambda s: guvenli(arama_adaylar, s[1], s[2]), sirali_siteler))
-    for s, (sonuc, hata) in zip(sirali_siteler, sonuclar):
-        if hata:
-            hatalar.append(f"arama {s[1]}/{s[2]}: {hata}")
-        else:
-            adaylar += sonuc
+    # 3) Aramalı keşif (yalnızca eski modda; resmi modda ücretli arama yapılmaz)
+    if RESMI_MOD:
+        print("Resmi mod: aramalı keşif ve aramalı doğrulama yapılmaz.", flush=True)
+    else:
+        print(f"Aramalı keşif: {len(sites)} marka x ülke", flush=True)
+        with ThreadPoolExecutor(PARALEL) as ex:
+            sirali_siteler = serpistir(sites, lambda s: s[1])
+            sonuclar = list(ex.map(lambda s: guvenli(arama_adaylar, s[1], s[2]), sirali_siteler))
+        for s, (sonuc, hata) in zip(sirali_siteler, sonuclar):
+            if hata:
+                hatalar.append(f"arama {s[1]}/{s[2]}: {hata}")
+            else:
+                adaylar += sonuc
 
     # 4) Birleştir, arşivle karşılaştır
     adaylar = birlestir(adaylar)
@@ -1776,31 +1986,40 @@ def topla(br, sites, hatalar):
 
     adaylar = serpistir(adaylar, lambda a: a["marka"])
     # 5) Doğrulama
-    print(f"Doğrulama: {len(adaylar)} aday", flush=True)
-    with ThreadPoolExecutor(PARALEL) as ex:
-        sonuclar = list(ex.map(lambda a: guvenli(dogrula, a), adaylar))
-    for a, (sonuc, hata) in zip(adaylar, sonuclar):
-        if hata:
-            hatalar.append(f"doğrulama {a['marka']}/{a['ulke']}/{a['ad']}: {hata}")
-            a["dogrulama"], a["kaynaklar_dogrulama"] = {}, []
-        else:
-            a.update(sonuc)
-            a["_yeni_dogrulama"] = True
-        sinif_ver(a)
+    if RESMI_MOD:
+        print(f"Resmi mod: {len(adaylar)} aday resmi sayfa kanıtıyla sınıflanıyor (aramalı doğrulama yok)", flush=True)
+        for a in adaylar:
+            a["dogrulama"], a["kaynaklar_dogrulama"] = None, []
+            sinif_ver(a)
+    else:
+        print(f"Doğrulama: {len(adaylar)} aday", flush=True)
+        with ThreadPoolExecutor(PARALEL) as ex:
+            sonuclar = list(ex.map(lambda a: guvenli(dogrula, a), adaylar))
+        for a, (sonuc, hata) in zip(adaylar, sonuclar):
+            if hata:
+                hatalar.append(f"doğrulama {a['marka']}/{a['ulke']}/{a['ad']}: {hata}")
+                a["dogrulama"], a["kaynaklar_dogrulama"] = {}, []
+            else:
+                a.update(sonuc)
+                a["_yeni_dogrulama"] = True
+            sinif_ver(a)
     for a in on_elenen + atlanan:
         a["dogrulama"], a["kaynaklar_dogrulama"] = None, []
         sinif_ver(a)
     for a in atlanan:
         a.update(sinif="belirsiz", guven="Doğrulanamadı", neden="Doğrulama sınırı nedeniyle kontrol edilmedi")
     tum = adaylar + yeniden + on_elenen + atlanan
-    if not _durdur["neden"]:
+    if not _durdur["neden"] and not RESMI_MOD:
         print("Ülkeler arası kontrol", flush=True)
         n_tas = ulkeler_arasi_kontrol(tum, hatalar)
         print(f"  Dünyada İlk'ten Ülkede İlk'e taşınan: {n_tas}", flush=True)
     if _durdur["neden"]:
-        n_eksik = sum(1 for a in adaylar if a.get("dogrulama") == {})
-        RAPOR_UYARI.append(f"{_durdur['neden']} {n_eksik} ürün doğrulanamadı ve ülkeler arası kontrol yapılamadı. "
-                           "Bu rapor EKSİKTİR. Krediyi/tavanı kontrol edip yeniden çalıştırın.")
+        if RESMI_MOD:
+            RAPOR_UYARI.append(f"{_durdur['neden']} Okunamayan siteler olabilir; bu rapor EKSİKTİR.")
+        else:
+            n_eksik = sum(1 for a in adaylar if a.get("dogrulama") == {})
+            RAPOR_UYARI.append(f"{_durdur['neden']} {n_eksik} ürün doğrulanamadı ve ülkeler arası kontrol yapılamadı. "
+                               "Bu rapor EKSİKTİR. Krediyi/tavanı kontrol edip yeniden çalıştırın.")
     if atlanan:
         RAPOR_UYARI.append(f"{len(atlanan)} ürün doğrulama sınırı (MAX_ADAY) nedeniyle kontrol edilmedi.")
 
@@ -1835,17 +2054,19 @@ def topla(br, sites, hatalar):
 
 def veri_kaydet(tum, siteler, zaman):
     temiz = [{k: x for k, x in a.items() if k not in ("arsiv_kaydi", "dogrulama_metni")} for a in tum]
+    siteler_temiz = [{k: x for k, x in s.items() if k != "metinler"} for s in siteler]
     (OUT / "veri.json").write_text(json.dumps(
-        {"zaman": zaman, "bas": DONEM_BAS.isoformat(), "bugun": BUGUN.isoformat(), "gun": GUN,
-         "siteler": siteler, "tum": temiz, "uyarilar": RAPOR_UYARI}, ensure_ascii=False, default=str), encoding="utf-8")
+        {"zaman": zaman, "bas": DONEM_BAS.isoformat(), "bugun": BUGUN.isoformat(), "gun": GUN, "resmi_mod": RESMI_MOD,
+         "siteler": siteler_temiz, "tum": temiz, "uyarilar": RAPOR_UYARI}, ensure_ascii=False, default=str), encoding="utf-8")
 
 
 def veri_yukle():
     """SADECE_RAPOR=1: önceki çalışmanın verisinden ve görsellerinden raporu yeniden kurar (Gemini çağrısı yok)."""
-    global DONEM_BAS, BUGUN, GUN
+    global DONEM_BAS, BUGUN, GUN, RESMI_MOD
     import shutil
     d = json.loads((ARSIV.parent / "son-veri.json").read_text(encoding="utf-8"))
     BUGUN, DONEM_BAS, GUN = date.fromisoformat(d["bugun"]), date.fromisoformat(d["bas"]), int(d["gun"])
+    RESMI_MOD = bool(d.get("resmi_mod", False))           # eski veri aramalı moddan gelir
     RAPOR_UYARI[:] = d.get("uyarilar", [])
     kaynak = Path(os.environ.get("SON_GORSEL_DIR", "son-gorseller"))
     if kaynak.exists():
@@ -1915,7 +2136,7 @@ def main():
                 for k, ad in KATMAN)
             + f"\nToplam aday: {tum_n} · Resmi sitesi açılan: {acik_n}/{len(siteler)} · "
               f"Görseli olan: {sum(1 for a in tum if a.get('gorsel'))} · Hata/uyarı: {len(hatalar)} · "
-              f"Aramalı Gemini çağrısı: {_arama_sayaci['n']} · Tahmini harcama: ${_harcama['usd']:.2f} (tavan ${MAX_USD:g}; girdi {_harcama['girdi'] / 1e6:.2f}M, çıktı {_harcama['cikti'] / 1e6:.2f}M token, {_harcama['sorgu']} arama sorgusu)\n")
+              f"Gemini çağrısı: {_cagri_sayaci['n']} (aramalı {_arama_sayaci['n']}) · Tahmini harcama (çağrı başı taban dahil): ${_harcama['usd']:.2f} (tavan ${MAX_USD:g}; girdi {_harcama['girdi'] / 1e6:.2f}M, çıktı {_harcama['cikti'] / 1e6:.2f}M token, {_harcama['sorgu']} arama sorgusu)\n")
     for u in RAPOR_UYARI:
         ozet = f"> **UYARI:** {u}\n\n" + ozet
     if hatalar:
