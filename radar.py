@@ -686,6 +686,15 @@ def evet_hayir(x):
 # --------------------------------------------------------------------------------------
 # 1) Görüntü okuma (banner -> ürün adayları)
 # --------------------------------------------------------------------------------------
+# Ürün değil, sitenin "yeni ürünler" bölümünün başlığı olan adlar (ör. "WHAT'S NEW", "LO NUEVO") alınmaz.
+GENEL_AD = re.compile(
+    r"^\W*(what'?s\s*new|new(\s+(items?|arrivals?|products?|menu|launches|releases))?|yeni(\s+ürünler|\s+menü)?|novedades|lo\s+nuevo|nuevos?|"
+    r"neu(heiten)?|nouveaut[ée]s?|novit[àa]|novidades?|nowo[śs]ci|noutăți|noutati|uutuudet|nyheder|novinky|újdonságok|"
+    r"limited\s+time(\s+offers?)?|promotions?|deals?|offers?|campaigns?|kampanyalar?|新商品|新品|新着|신메뉴|신제품)\W*$", re.I)
+YENI_KELIME = re.compile(r"new|nuevo|nueva|neu\b|nouve|novo\b|nova\b|novit|nowo|nowy|yeni|nieuw|nyhed|uutuus|novink|újdonság|\bnou\b|naujiena|naujas|jaunums|新|신메뉴|신제품", re.I)
+DONUS_KELIME = re.compile(r"back|return|regres|vuelv|vuelta|zurück|zuruck|retour|volta|torna|ritorn|powr|geri|復活|复活|復刻|돌아|再登場|再販|reapar|de\s+nuevo", re.I)
+
+
 def gorsel_adaylar(site):
     marka, ulke = site["marka"], site["ulke"]
     parts = []
@@ -729,8 +738,12 @@ def gorsel_adaylar(site):
                 continue
             ifade = str(x.get("yeni_ifadesi", "") or "").strip()
             donus = x.get("geri_donus") in (True, "true", "evet")
+            if donus and ifade and YENI_KELIME.search(ifade) and not DONUS_KELIME.search(ifade):
+                donus = False                 # ifade yalnızca "yeni" diyor, geri dönüş değil (ör. 신메뉴)
             if not ifade and not donus:
                 continue                      # yenilik kanıtı yok -> alma
+            if GENEL_AD.match(str(x.get("ad", "")).strip()):
+                continue                      # bölüm başlığı, ürün değil
             try:
                 ekran_no = int(x.get("ekran"))
             except (TypeError, ValueError):
@@ -1355,7 +1368,7 @@ AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağu
 YORUM_DOSYASI = Path(os.environ.get("YORUM_DOSYASI", "yorum.json"))      # dikkat çeken noktalar, rapor sahibi
 TOP_DOSYASI = Path(os.environ.get("TOP_DOSYASI", "top_onay.json"))       # elle onaylanan Top ürünler
 PDF_MUHTEMELEN = os.environ.get("PDF_MUHTEMELEN") == "1"                 # 1: "Muhtemelen" satırlar da PDF'e girer
-RAPOR_SAHIBI = {"ad": "Merve Güzellet", "unvan": "Asistan"}      # yalnızca ad ve unvan; yorum.json içindeki "rapor_sahibi" ile değişir
+RAPOR_SAHIBI = {"ad": "Merve Saraç", "unvan": "Asistan"}      # yalnızca ad ve unvan; yorum.json içindeki "rapor_sahibi" ile değişir
 
 
 def json_oku(yol):
@@ -1624,7 +1637,11 @@ def yontem_resmi_html(v, siteler, katmanlar, liste):
     acik = sum(1 for s in siteler if s.get("adres") and s["durum"] == "OK")
     denenen = [s for s in siteler if s.get("adres") and s["durum"] not in ("ATLANDI",)]
     kapali = [s for s in denenen if s["durum"] != "OK"]
-    adlar = ", ".join(f"{s['marka']} {s['ulke']}" for s in kapali[:14]) + (" …" if len(kapali) > 14 else "")
+    grup = {}
+    for s in kapali:
+        grup.setdefault(s["marka"], []).append(s["ulke"])
+    adlar = "; ".join(f"{m} ({len(u)}): {', '.join(sorted(u, key=tr_anahtar))}"
+                      for m, u in sorted(grup.items(), key=lambda kv: marka_sirasi(kv[0])))
     return (
         "<div class=\"yontem\"><p>Bu rapor, Burger King, Popeyes, Arby's, Sbarro, Subway, McDonald's ve KFC'nin resmi internet "
         f"sitelerinde {DONEM_BAS.strftime('%d.%m.%Y')} – {BUGUN.strftime('%d.%m.%Y')} döneminde ({v['zaman']}) “yeni” olarak "
@@ -1636,7 +1653,7 @@ def yontem_resmi_html(v, siteler, katmanlar, liste):
         "işaretlenmiş olması ve tespit tarihi esas alınmıştır; ürünün tam çıkış tarihi kanıtlanmamıştır. Daha önce görülen ya da "
         "geri dönüş ifadesi taşıyan ürünler listeye alınmamıştır.</li></ul>"
         "<p><b>Sınırlar.</b> Yalnızca resmi sitesi açılabilen marka-ülkeler taranmıştır"
-        + (f"; açılamayanlar: {e(adlar)}. " if kapali else ". ")
+        + (f"; açılamayan {len(kapali)} site (siteler otomatik erişimi engellemiş ya da açılamamıştır): {e(adlar)}. " if kapali else ". ")
         + "Tarama her ürünü yakalamayabilir; listede olmayan bir ürün “yok” anlamına gelmez. "
         "Tüm satırlar, ekran görüntüleri ve kaynak bağlantıları ekteki Excel dosyasındadır.</p></div>")
 
