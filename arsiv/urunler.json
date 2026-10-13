@@ -77,7 +77,7 @@
    "slug": "honeychickenbiscuit",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Arby's",
@@ -85,7 +85,8 @@
    "ad": "BUFFALO RANCH CHICKEN SANDWICH",
    "slug": "buffaloranchchickensandwich",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   },
   {
    "marka": "Subway",
@@ -148,7 +149,7 @@
    "slug": "pineappletealemonade",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Popeyes",
@@ -166,7 +167,7 @@
    "slug": "steaknmacbowl",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "elenen"
+   "sinif": "ulke"
   },
   {
    "marka": "Arby's",
@@ -966,7 +967,7 @@
    "slug": "chickencheesesteakklasik",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "sinif": "ulke"
   },
   {
    "marka": "Arby's",
@@ -6882,6 +6883,24 @@
    "ilk_gorulme": "2026-10-13",
    "son_gorulme": "2026-10-13",
    "sinif": "elenen"
+  },
+  {
+   "marka": "Subway",
+   "ulke": "Türkiye",
+   "ad": "PROTEİN SERİSİ",
+   "slug": "proteinserisi",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Popeyes",
+   "ulke": "Türkiye",
+   "ad": "<3 Kalp Menü",
+   "slug": "3kalpmenu",
+   "ilk_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-13",
+   "sinif": "ulke"
   }
  ]
 }
