@@ -22,7 +22,7 @@ permissions:
 jobs:
   radar:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    timeout-minutes: 330
     steps:
       - name: Dosyaları al
         uses: actions/checkout@v4
@@ -47,6 +47,7 @@ jobs:
           SADECE_RAPOR: ${{ inputs.sadece_rapor == 'evet' && '1' || '0' }}
           EKRAN_KOPYALA: "1"
           VERI_KOPYALA: "1"
+          PARALEL: "8"
         run: python radar.py
 
       - name: PDF raporları yükle
@@ -56,7 +57,7 @@ jobs:
           name: PDF-rapor
           path: |
             rapor/rapor.pdf
-            rapor/yonetici-ozeti.pdf
+            rapor/ozet.pdf
           retention-days: 90
 
       - name: Tüm rapor dosyalarını yükle
@@ -72,7 +73,9 @@ jobs:
         run: |
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
-          git add arsiv son-ekran son-gorseller 2>/dev/null || true
+          for d in arsiv son-ekran son-gorseller; do
+            if [ -e "$d" ]; then git add "$d"; fi
+          done
           if git diff --cached --quiet; then
             echo "Kaydedilecek değişiklik yok."
           else
