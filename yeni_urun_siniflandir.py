@@ -21,7 +21,7 @@ MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
 API_KEY = os.environ.get("GEMINI_API_KEY", "")
 MAX_CAGRI = int(os.environ.get("MAX_CAGRI") or "1")  # varsayılan: tek çağrı (güvenli deneme)
 GRUP_BOYU = 25
-ZAMAN_ASIMI = 90
+ZAMAN_ASIMI = 180
 
 ISTEM = """Aşağıda fast food markalarıyla ilgili haber başlıkları var. Her başlık için karar ver:
 - yeni_urun: Başlık somut bir YENİ ürün, yeni menü öğesi, yeni tat/çeşit veya yeni menü lansmanını anlatıyor mu?
@@ -84,7 +84,7 @@ def siniflandir(basliklar, cagri=gemini_cagri, cagri_siniri=MAX_CAGRI):
         satirlar = "\n".join(f"{k}. {b['metin']} ({b['marka_site']})" for k, b in enumerate(grup))
         try:
             yanit = json_ayikla(cagri(ISTEM + satirlar))
-        except (urllib.error.URLError, ValueError, KeyError, IndexError, TypeError) as e:
+        except (OSError, ValueError, KeyError, IndexError, TypeError) as e:
             uyarilar.append(f"grup {n}: {type(e).__name__}: {str(e)[:120]}")
             continue
         for karar in yanit:

@@ -38,6 +38,19 @@ class SiniflandirmaTesti(unittest.TestCase):
         self.assertEqual(sayac["n"], 2)
         self.assertTrue(any("sınırına" in u for u in uyarilar))
 
+    def test_zaman_asimi_cokertmez_diger_gruplar_islenir(self):
+        basliklar = [{"metin": f"x{k}", "url": "", "marka_site": "KFC"} for k in range(30)]
+        sayac = {"n": 0}
+        def sahte(istem):
+            sayac["n"] += 1
+            if sayac["n"] == 1:
+                raise TimeoutError("The read operation timed out")
+            return '[{"i": 0, "yeni_urun": true, "marka": "KFC"}]'
+        kararlar, uyarilar = ys.siniflandir(basliklar, cagri=sahte, cagri_siniri=2)
+        self.assertEqual(sayac["n"], 2)
+        self.assertEqual(len(kararlar), 1)
+        self.assertTrue(any("TimeoutError" in u for u in uyarilar))
+
 
 if __name__ == "__main__":
     unittest.main()
