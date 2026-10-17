@@ -15,6 +15,7 @@ Kullanım:
 """
 import argparse
 import json
+import re
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -29,7 +30,16 @@ UA = "Mozilla/5.0 (compatible; GlobalUrunRadar/1.0)"
 ZAMAN_ASIMI = 20
 GERIYE_GUN = 60
 BASIN_IPUCU = ("press", "newsroom", "basin", "basın", "medya", "media", "haber", "news")
-YENI_IPUCU = ("yeni", "new", "launch", "introduc", "arrives")
+# Kelime sınırlı eşleşme: "news", "newsroom" gibi menü linkleri "new" sayılmasın diye.
+YENI_RE = re.compile(r"\b(?:new|yeni|launch\w*|introduc\w*|debut\w*)\b|신메뉴|신제품|新品", re.I)
+# Haber başlığında gerçek ürün/menü kelimesi aranır (Subway metrosu gibi haberleri elemek için).
+URUN_RE = re.compile(
+    r"\b(?:launch\w*|introduc\w*|debut\w*|limited|menu|nuggets?|chicken|burgers?|sandwich\w*|"
+    r"flavou?rs?|wraps?|fries|dips?|sauces?|items?|bundles?|combos?|bites?|drinks?|desserts?|"
+    r"coffee|biscuits?|pizza|meals?|snacks?)\b", re.I)
+GEZINME_TAM = {"news", "news & press", "newsroom", "more", "see more", "home", "homepage",
+               "contact", "detay", "detaylı", "daha fazla"}
+GEZINME_ICERIK = ("anasayfa", "ana sayfa", "hikayesi", "newsletter", "iletişim")
 
 
 class Baglantilar(HTMLParser):
@@ -68,17 +78,22 @@ def indir(url):
         return False, f"{type(e).__name__}: {str(e)[:100]}"
 
 
+def gezinme_mi(metin):
+    """Menü/gezinme bağlantısı mı (ürün değil)."""
+    m = metin.strip().lower()
+    return m in GEZINME_TAM or any(k in m for k in GEZINME_ICERIK)
+
+
 def aday_bul(sayfa, taban, marka=None):
     """Sayfada yeni-ürün ipucu ya da marka adı taşıyan bağlantılar."""
     ayristirici = Baglantilar()
     ayristirici.feed(sayfa)
     adaylar = []
     for href, metin in ayristirici.liste:
-        if not metin:
+        if not metin or gezinme_mi(metin):
             continue
-        ipucu = (href + " " + metin).lower()
         marka_var = marka is not None and marka.lower() in metin.lower()
-        if marka_var or any(k in ipucu for k in YENI_IPUCU):
+        if marka_var or YENI_RE.search(metin) or YENI_RE.search(href):
             adaylar.append({"metin": metin[:120], "url": urllib.parse.urljoin(taban, href)})
     return adaylar
 
@@ -156,7 +171,8 @@ def katman_haber(site, ctx):
         ogeler = rss_ogeleri(veri)
     except ET.ParseError as e:
         return "hata", f"RSS ayrıştırılamadı: {e}", []
-    ogeler = [o for o in ogeler if site["marka"].lower() in o["metin"].lower()]
+    ogeler = [o for o in ogeler
+              if site["marka"].lower() in o["metin"].lower() and URUN_RE.search(o["metin"])]
     if ogeler:
         return "ok", "", ogeler
     return "yok", f"son {GERIYE_GUN} günde haber yok", []
@@ -203,6 +219,16 @@ def zincir(site):
     }
 
 
+def tekillestir(sonuclar):
+    """Aynı başlık birden fazla ülkede geçiyorsa ilk görüleni dışındakileri 'tekrar' işaretler."""
+    gorulen = set()
+    for s in sonuclar:
+        for a in s["adaylar"]:
+            anahtar = a["metin"].lower()
+            a["tekrar"] = anahtar in gorulen
+            gorulen.add(anahtar)
+
+
 def ozet(sonuclar):
     print("Sonuç dağılımı:", dict(Counter(s["sonuc"] for s in sonuclar)))
     for s in sonuclar:
@@ -225,9 +251,12 @@ def main():
     with ThreadPoolExecutor(max_workers=8) as havuz:
         sonuclar = list(havuz.map(zincir, siteler))
 
+    tekillestir(sonuclar)
     with open(a.cikti, "w", encoding="utf-8") as f:
         json.dump(sonuclar, f, ensure_ascii=False, indent=2)
     ozet(sonuclar)
+    benzersiz = sum(1 for s in sonuclar for a in s["adaylar"] if not a["tekrar"])
+    print(f"Benzersiz aday metni: {benzersiz}")
 
 
 if __name__ == "__main__":

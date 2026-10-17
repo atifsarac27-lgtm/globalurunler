@@ -54,5 +54,41 @@ class ZincirTesti(unittest.TestCase):
         self.assertIn("launches", ogeler[0]["metin"])
 
 
+class EslesmeTesti(unittest.TestCase):
+    def test_menu_linkleri_aday_degil(self):
+        html = '<a href="/news">News</a><a href="/anasayfa">Anasayfa</a><a href="/nl">Newsletter</a>'
+        self.assertEqual(kz.aday_bul(html, "https://example.com/"), [])
+
+    def test_gercek_yeni_urun_linki_aday(self):
+        html = '<a href="/x">What\'s New</a><a href="/y">Popeyes yeni tavuk</a>'
+        adaylar = kz.aday_bul(html, "https://example.com/", "Popeyes")
+        self.assertEqual(len(adaylar), 2)
+
+    def test_urunsuz_haber_elenir(self):
+        rss = """<?xml version="1.0"?><rss><channel>
+        <item><title>Subway train crash in New York</title><link>https://n/1</link>
+        <pubDate>Thu, 15 Oct 2026 10:00:00 GMT</pubDate></item>
+        <item><title>Subway launches new chicken sandwich</title><link>https://n/2</link>
+        <pubDate>Thu, 15 Oct 2026 10:00:00 GMT</pubDate></item>
+        </channel></rss>"""
+        sahte = lambda url, *a, **k: (True, rss)
+        with mock.patch.object(kz, "indir", side_effect=sahte):
+            durum, _, adaylar = kz.katman_haber({"kod": "s", "marka": "Subway", "ulke": "Türkiye",
+                                                  "adres": None}, {})
+        self.assertEqual(durum, "ok")
+        self.assertEqual(len(adaylar), 1)
+        self.assertIn("chicken", adaylar[0]["metin"])
+
+    def test_ayni_baslik_ikinci_kez_tekrar_sayilir(self):
+        sonuclar = [
+            {"adaylar": [{"metin": "KFC launches Big Dip"}]},
+            {"adaylar": [{"metin": "KFC launches Big Dip"}, {"metin": "Popeyes new biscuit"}]},
+        ]
+        kz.tekillestir(sonuclar)
+        self.assertFalse(sonuclar[0]["adaylar"][0]["tekrar"])
+        self.assertTrue(sonuclar[1]["adaylar"][0]["tekrar"])
+        self.assertFalse(sonuclar[1]["adaylar"][1]["tekrar"])
+
+
 if __name__ == "__main__":
     unittest.main()
