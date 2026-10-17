@@ -26,6 +26,7 @@ ZAMAN_ASIMI = 90
 ISTEM = """Aşağıda fast food markalarıyla ilgili haber başlıkları var. Her başlık için karar ver:
 - yeni_urun: Başlık somut bir YENİ ürün, yeni menü öğesi, yeni tat/çeşit veya yeni menü lansmanını anlatıyor mu?
   Kampanya, fiyat, mağaza açılışı, hisse/finans, yorum/analiz, şirket haberi, reklam kampanyası, sadakat programı ise false.
+  Mevcut bir ürünün yenilenmesi, iyileştirilmesi veya yeniden tasarlanması da yeni ürün sayılır (ör. "yenilenmiş nugget", "yeni Whopper"). Personel, şirket stratejisi ve yorumlar bu kapsamda değildir.
 - marka: Başlıkta geçen ana marka (Burger King, Popeyes, Arby's, Subway, McDonald's, KFC, Sbarro veya diğer).
 Yalnızca şu biçimde JSON dizisi döndür: [{"i": 0, "yeni_urun": true, "marka": "KFC"}, ...]
 
