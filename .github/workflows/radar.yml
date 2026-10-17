@@ -16,10 +16,10 @@ on:
         description: "Kaç site taransın? deneme-12 (12 site, en çok 20 çağrı) · buyuk-50 (büyük pazarlar, en çok 130 çağrı) · hepsi (134 site, en çok 260 çağrı)"
         type: choice
         options: ["deneme-12", "buyuk-50", "hepsi"]
-        default: "deneme-12"
+        default: "hepsi"
       max_usd:
         description: "Bu çalışmada en çok tahmini harcama (dolar). Dolunca durur."
-        default: "4"
+        default: "8"
 
 permissions:
   contents: write   # arşivi, son ekran görüntülerini ve son rapor verisini depoya kaydetmek için
@@ -57,6 +57,24 @@ jobs:
           VERI_KOPYALA: "1"
           PARALEL: "8"
         run: python radar.py
+
+      - name: Haber katmanı (kaynak zinciri)
+        if: always()
+        continue-on-error: true
+        run: mkdir -p rapor && python kaynak_zinciri.py --veri arsiv/son-veri.json --cikti rapor/kaynak_sonuc.json
+
+      - name: Haber başlıklarını sınıflandır (Gemini)
+        if: always()
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          MAX_CAGRI: "12"
+        run: python yeni_urun_siniflandir.py --sonuc rapor/kaynak_sonuc.json --cikti rapor/haber_urunleri.json
+
+      - name: Resmi ve haber sonuçlarını birleştir
+        if: always()
+        continue-on-error: true
+        run: python birlestir.py --veri rapor/veri.json --haber rapor/haber_urunleri.json --cikti rapor/birlesik.xlsx
 
       - name: PDF raporları yükle
         if: always()
