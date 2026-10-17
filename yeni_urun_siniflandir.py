@@ -4,7 +4,7 @@ Girdi : kaynak_sonuc.json (kaynak_zinciri.py çıktısı)
 Çıktı : yeni_urunler.json (yalnızca "yeni ürün" olarak işaretlenen başlıklar + ham karar listesi)
 
 Ortam değişkeni: GEMINI_API_KEY (anahtarı sohbete ya da dosyaya yazmayın)
-İsteğe bağlı   : GEMINI_MODEL (varsayılan radar.py ile aynı), MAX_CAGRI (varsayılan 10)
+İsteğe bağlı   : GEMINI_MODEL (varsayılan radar.py ile aynı), MAX_CAGRI (varsayılan 1: tek çağrı, 25 başlık)
 
 Kullanım (Windows cmd, kaynak_sonuc.json ile aynı klasörde):
     set GEMINI_API_KEY=anahtarınız
@@ -19,7 +19,7 @@ import urllib.request
 
 MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
 API_KEY = os.environ.get("GEMINI_API_KEY", "")
-MAX_CAGRI = int(os.environ.get("MAX_CAGRI") or "10")
+MAX_CAGRI = int(os.environ.get("MAX_CAGRI") or "1")  # varsayılan: tek çağrı (güvenli deneme)
 GRUP_BOYU = 25
 ZAMAN_ASIMI = 90
 
