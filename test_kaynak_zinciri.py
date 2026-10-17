@@ -60,7 +60,7 @@ class EslesmeTesti(unittest.TestCase):
         self.assertEqual(kz.aday_bul(html, "https://example.com/"), [])
 
     def test_gercek_yeni_urun_linki_aday(self):
-        html = '<a href="/x">What\'s New</a><a href="/y">Popeyes yeni tavuk</a>'
+        html = '<a href="/x">New chicken wrap</a><a href="/y">Popeyes yeni tavuk</a>'
         adaylar = kz.aday_bul(html, "https://example.com/", "Popeyes")
         self.assertEqual(len(adaylar), 2)
 
@@ -94,6 +94,20 @@ class EslesmeTesti(unittest.TestCase):
                                                   "adres": None}, {})
         self.assertEqual(len(adaylar), 1)
         self.assertIn("nuggets", adaylar[0]["metin"])
+
+    def test_ulke_kodu_site_kodundan_ve_uk_gb(self):
+        self.assertEqual(kz.ulke_kodu({"kod": "kfc-cn"}), "CN")
+        self.assertEqual(kz.ulke_kodu({"kod": "bk-uk"}), "GB")
+
+    def test_haber_sorgusu_ulkeye_ozel(self):
+        vars_ = {}
+        def yakala(url, *a, **k):
+            vars_["url"] = url
+            return True, "<rss><channel></channel></rss>"
+        with mock.patch.object(kz, "indir", side_effect=yakala):
+            kz.katman_haber({"kod": "kfc-cn", "marka": "KFC", "ulke": "Çin", "adres": None}, {})
+        self.assertIn("gl=CN", vars_["url"])
+        self.assertIn("ceid=CN%3Aen", vars_["url"])
 
     def test_ayni_baslik_ikinci_kez_tekrar_sayilir(self):
         sonuclar = [

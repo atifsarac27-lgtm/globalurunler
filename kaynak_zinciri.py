@@ -41,11 +41,14 @@ URUN_RE = re.compile(
 KAMPANYA_RE = re.compile(
     r"\b(?:opens?|opening|opened|reopens?|stores?|restaurants?|drive[- ]?thru|outlets?|branch(?:es)?|"
     r"franchises?|jobs?|hiring|celebrat\w*|anniversary|years?|free|giveaway\w*|deals?|value|"
+    r"açıl\w*|kampanya\w*|indirim\w*|promosyon\w*|promotions?|promo|"
     r"sweepstakes|contest|stocks?|shares?|investors?|earnings|revenue|profits?|valuation|game|"
     r"crossover|charity|reviews?|tried|tasted|lawsuit|sued|campaign)\b|[£$€]", re.I)
 GEZINME_TAM = {"news", "news & press", "newsroom", "more", "see more", "home", "homepage",
                "contact", "detay", "detaylı", "daha fazla"}
-GEZINME_ICERIK = ("anasayfa", "ana sayfa", "hikayesi", "newsletter", "iletişim")
+GEZINME_ICERIK = ("anasayfa", "ana sayfa", "hikayesi", "newsletter", "iletişim",
+                  "read more", "términos", "terms and conditions", "dokümanı", "promociones",
+                  "what’s new", "what's new")
 
 
 class Baglantilar(HTMLParser):
@@ -99,6 +102,8 @@ def aday_bul(sayfa, taban, marka=None):
         if not metin or gezinme_mi(metin):
             continue
         marka_var = marka is not None and marka.lower() in metin.lower()
+        if KAMPANYA_RE.search(metin):
+            continue  # kampanya/mağaza/fiyat bağlantısı ürün değil
         if marka_var or YENI_RE.search(metin) or YENI_RE.search(href):
             adaylar.append({"metin": metin[:120], "url": urllib.parse.urljoin(taban, href)})
     return adaylar
@@ -166,10 +171,18 @@ def rss_ogeleri(xml_metni, simdi=None):
     return ogeler
 
 
+def ulke_kodu(site):
+    """Site kodundaki son ekten ülke kodu: bk-tr -> TR. Google Haberler için UK -> GB."""
+    cc = site["kod"].rsplit("-", 1)[-1].upper()
+    return {"UK": "GB"}.get(cc, cc)
+
+
 def katman_haber(site, ctx):
-    sorgu = f'"{site["marka"]}" (new OR launch OR yeni) {site["ulke"]}'
+    cc = ulke_kodu(site)
+    sorgu = f'"{site["marka"]}" (new OR launch OR yeni)'
+    # Ülkeye özel haber sonucu: aksi halde her ülke için ABD haberleri gelir.
     url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
-        {"q": sorgu, "hl": "en-US", "gl": "US", "ceid": "US:en"})
+        {"q": sorgu, "hl": "en-US", "gl": cc, "ceid": f"{cc}:en"})
     ok, veri = indir(url)
     if not ok:
         return "hata", veri, []
