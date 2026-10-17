@@ -1,0 +1,43 @@
+"""Sınıflandırıcı testleri. Gemini çağrısı sahte fonksiyonla değiştirilir."""
+import unittest
+
+import yeni_urun_siniflandir as ys
+
+
+class SiniflandirmaTesti(unittest.TestCase):
+    def test_json_ayikla_metin_icindeki_diziyi_bulur(self):
+        self.assertEqual(ys.json_ayikla('Tamam: [{"i": 0}]'), [{"i": 0}])
+
+    def test_benzersiz_basliklar_tekrarlari_almaz(self):
+        sonuclar = [
+            {"sonuc": "haber RSS", "marka": "KFC", "adaylar": [
+                {"metin": "KFC launches Big Dip", "url": "u1"}]},
+            {"sonuc": "haber RSS", "marka": "KFC", "adaylar": [
+                {"metin": "KFC launches Big Dip", "url": "u1", "tekrar": True}]},
+            {"sonuc": "resmi site", "marka": "KFC", "adaylar": [
+                {"metin": "Menü", "url": "u2"}]},
+        ]
+        self.assertEqual(len(ys.benzersiz_basliklar(sonuclar)), 1)
+
+    def test_siniflandir_karar_esler_ve_yeni_urunu_secer(self):
+        basliklar = [{"metin": "A ürünü", "url": "1", "marka_site": "KFC"},
+                     {"metin": "B kampanyası", "url": "2", "marka_site": "KFC"}]
+        sahte = lambda istem: '[{"i": 0, "yeni_urun": true, "marka": "KFC"}, {"i": 1, "yeni_urun": false, "marka": "KFC"}]'
+        kararlar, uyarilar = ys.siniflandir(basliklar, cagri=sahte)
+        self.assertEqual(uyarilar, [])
+        self.assertTrue(kararlar[0]["yeni_urun"])
+        self.assertFalse(kararlar[1]["yeni_urun"])
+
+    def test_cagri_siniri_asilirsa_uyari_verir(self):
+        basliklar = [{"metin": f"x{k}", "url": "", "marka_site": "KFC"} for k in range(60)]
+        sayac = {"n": 0}
+        def sahte(istem):
+            sayac["n"] += 1
+            return "[]"
+        _, uyarilar = ys.siniflandir(basliklar, cagri=sahte, cagri_siniri=2)
+        self.assertEqual(sayac["n"], 2)
+        self.assertTrue(any("sınırına" in u for u in uyarilar))
+
+
+if __name__ == "__main__":
+    unittest.main()
