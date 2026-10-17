@@ -79,6 +79,22 @@ class EslesmeTesti(unittest.TestCase):
         self.assertEqual(len(adaylar), 1)
         self.assertIn("chicken", adaylar[0]["metin"])
 
+    def test_kampanya_ve_magaza_haberi_elenir_urun_haberi_kalir(self):
+        rss = """<?xml version="1.0"?><rss><channel>
+        <item><title>Burger King opens new store in Surrey</title><link>https://n/1</link>
+        <pubDate>Thu, 15 Oct 2026 10:00:00 GMT</pubDate></item>
+        <item><title>Burger King giving away free Whoppers</title><link>https://n/2</link>
+        <pubDate>Thu, 15 Oct 2026 10:00:00 GMT</pubDate></item>
+        <item><title>Burger King launches new chicken nuggets</title><link>https://n/3</link>
+        <pubDate>Thu, 15 Oct 2026 10:00:00 GMT</pubDate></item>
+        </channel></rss>"""
+        sahte = lambda url, *a, **k: (True, rss)
+        with mock.patch.object(kz, "indir", side_effect=sahte):
+            durum, _, adaylar = kz.katman_haber({"kod": "b", "marka": "Burger King", "ulke": "ABD",
+                                                  "adres": None}, {})
+        self.assertEqual(len(adaylar), 1)
+        self.assertIn("nuggets", adaylar[0]["metin"])
+
     def test_ayni_baslik_ikinci_kez_tekrar_sayilir(self):
         sonuclar = [
             {"adaylar": [{"metin": "KFC launches Big Dip"}]},

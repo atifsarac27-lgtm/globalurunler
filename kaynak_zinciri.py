@@ -37,6 +37,12 @@ URUN_RE = re.compile(
     r"\b(?:launch\w*|introduc\w*|debut\w*|limited|menu|nuggets?|chicken|burgers?|sandwich\w*|"
     r"flavou?rs?|wraps?|fries|dips?|sauces?|items?|bundles?|combos?|bites?|drinks?|desserts?|"
     r"coffee|biscuits?|pizza|meals?|snacks?)\b", re.I)
+# Kampanya, mağaza açılışı, fiyat ve finans haberleri ürün değildir; bunları eler.
+KAMPANYA_RE = re.compile(
+    r"\b(?:opens?|opening|opened|reopens?|stores?|restaurants?|drive[- ]?thru|outlets?|branch(?:es)?|"
+    r"franchises?|jobs?|hiring|celebrat\w*|anniversary|years?|free|giveaway\w*|deals?|value|"
+    r"sweepstakes|contest|stocks?|shares?|investors?|earnings|revenue|profits?|valuation|game|"
+    r"crossover|charity|reviews?|tried|tasted|lawsuit|sued|campaign)\b|[£$€]", re.I)
 GEZINME_TAM = {"news", "news & press", "newsroom", "more", "see more", "home", "homepage",
                "contact", "detay", "detaylı", "daha fazla"}
 GEZINME_ICERIK = ("anasayfa", "ana sayfa", "hikayesi", "newsletter", "iletişim")
@@ -135,7 +141,7 @@ def katman_basin(site, ctx):
     ok, sayfa = indir(basin[0])
     if not ok:
         return "hata", f"basın sayfası: {sayfa}", []
-    adaylar = aday_bul(sayfa, basin[0], site["marka"])
+    adaylar = aday_bul(sayfa, basin[0])  # yalnızca "yeni" ipucu; marka adı yetmez (menü ürünleri yeni değil)
     if adaylar:
         return "ok", "", adaylar
     return "yok", "basın sayfasında marka ya da yeni bağlantısı yok", []
@@ -172,7 +178,9 @@ def katman_haber(site, ctx):
     except ET.ParseError as e:
         return "hata", f"RSS ayrıştırılamadı: {e}", []
     ogeler = [o for o in ogeler
-              if site["marka"].lower() in o["metin"].lower() and URUN_RE.search(o["metin"])]
+              if site["marka"].lower() in o["metin"].lower()
+              and URUN_RE.search(o["metin"])
+              and not KAMPANYA_RE.search(o["metin"])]
     if ogeler:
         return "ok", "", ogeler
     return "yok", f"son {GERIYE_GUN} günde haber yok", []
