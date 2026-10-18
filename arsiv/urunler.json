@@ -24,7 +24,7 @@
    "ad": "BABY BURGERS",
    "slug": "babyburgers",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -51,7 +51,7 @@
    "ad": "Crispy Chicken Tenders",
    "slug": "crispychickentenders",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -60,7 +60,7 @@
    "ad": "Crispy Chicken Curry",
    "slug": "crispychickencurry",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -69,7 +69,7 @@
    "ad": "Super Saiyan Whopper®",
    "slug": "supersaiyanwhopper",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -96,7 +96,7 @@
    "ad": "ザクタルグリルチキン",
    "slug": "サクタルクリルチキン",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -105,7 +105,7 @@
    "ad": "ザクタルえびブロッコリー",
    "slug": "サクタルえひフロッコリー",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -114,8 +114,8 @@
    "ad": "POPCORN CHICKEN",
    "slug": "popcornchicken",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -132,7 +132,7 @@
    "ad": "MOZZARELLA STICKS",
    "slug": "mozzarellasticks",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -141,7 +141,7 @@
    "ad": "DIPS",
    "slug": "dips",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -159,7 +159,7 @@
    "ad": "Mad Black Truffle Sour Crème",
    "slug": "madblacktrufflesourcreme",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -204,7 +204,7 @@
    "ad": "チーズチーズ倍月見 セット",
    "slug": "チースチース倍月見セット",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -222,7 +222,7 @@
    "ad": "NASI ACAR SAMBAL PADU",
    "slug": "nasiacarsambalpadu",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -559,7 +559,7 @@
    "ad": "Saiyan Whopper (Super Saiyan Combo)",
    "slug": "saiyanwhoppersupersaiyancombo",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -696,7 +696,7 @@
    "ad": "Sweet Bacon King (King's Selection)",
    "slug": "sweetbaconkingkingsselection",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -765,7 +765,7 @@
    "ad": "King’s Kofta Sandwich",
    "slug": "kingskoftasandwich",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -774,7 +774,7 @@
    "ad": "Nutella King Fusion",
    "slug": "nutellakingfusion",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -863,7 +863,7 @@
    "ad": "Krispper® Tenders",
    "slug": "krisppertenders",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -2040,7 +2040,7 @@
    "ad": "McCrispy Gochujang Butter (맥크리스피 고추장 버터)",
    "slug": "mccrispygochujangbutter맥크리스피고추장버터",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -2049,7 +2049,7 @@
    "ad": "McSpicy Gochujang Butter (맥스파이시 고추장 버터)",
    "slug": "mcspicygochujangbutter맥스파이시고추장버터",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -2949,7 +2949,7 @@
    "ad": "Hot Cruji Bravo (ve Hot Cruji Bravo Papa Pops)",
    "slug": "hotcrujibravovehotcrujibravopapapops",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -3604,7 +3604,7 @@
    "ad": "Popcorn Csirke (Popcorn Chicken) Serisi",
    "slug": "popcorncsirkepopcornchickenserisi",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -3613,7 +3613,7 @@
    "ad": "KFC x Doritos Loaded (Tex-Mex & Extra Spicy)",
    "slug": "kfcxdoritosloadedtexmexextraspicy",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -3630,7 +3630,8 @@
    "ad": "Crazy Cheezy Dip (50g / 110g)",
    "slug": "crazycheezydip50g110g",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -3638,7 +3639,7 @@
    "ad": "Cheezy Burger (Picant / Nepicant)",
    "slug": "cheezyburgerpicantnepicant",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -3655,7 +3656,7 @@
    "ad": "Loaded Cheezy Fries (Aioli / BBQ)",
    "slug": "loadedcheezyfriesaiolibbq",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -3723,8 +3724,8 @@
    "ad": "NEW BUFFALO RANCH CHICKEN IN THE MEAT & 3 BOX",
    "slug": "newbuffaloranchchickeninthemeat3box",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -3795,8 +3796,8 @@
    "ad": "ダブルビーフ＆ベーコン ビッグマウスギルティ",
    "slug": "タフルヒーフヘーコンヒックマウスキルティ",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -3804,8 +3805,8 @@
    "ad": "ビーフ＆ダブルハッシュ ビッグマウスギルティ",
    "slug": "ヒーフタフルハッシュヒックマウスキルティ",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
-   "sinif": "belirsiz"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -3813,8 +3814,8 @@
    "ad": "ピックルボールバーガー",
    "slug": "ヒックルホールハーカー",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12",
-   "sinif": "elenen"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "Burger King",
@@ -3993,7 +3994,7 @@
    "ad": "Full Flame (Carne / Pollo)",
    "slug": "fullflamecarnepollo",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "elenen"
   },
   {
@@ -4002,7 +4003,7 @@
    "ad": "Asian Fusion King",
    "slug": "asianfusionking",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -4227,7 +4228,7 @@
    "ad": "Ghost Pepper Sandwich",
    "slug": "ghostpeppersandwich",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "elenen"
   },
   {
@@ -4452,8 +4453,8 @@
    "ad": "月見マフィン (Tsukimi Muffin)",
    "slug": "月見マフィンtsukimimuffin",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
-   "sinif": "elenen"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -4479,8 +4480,8 @@
    "ad": "三角チョコパイ クッキー＆クリーム いちご味 (Sankaku Choco Pie Cookie & Cream Ichigo-aji)",
    "slug": "三角チョコハイクッキークリームいちこ味sankakuchocopiecookiecreamichigoaji",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12",
-   "sinif": "dunya"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -4488,8 +4489,8 @@
    "ad": "三角チョコパイ 黒 (Sankaku Choco Pie Kuro)",
    "slug": "三角チョコハイ黒sankakuchocopiekuro",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-12",
-   "sinif": "elenen"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "McDonald's",
@@ -4821,7 +4822,7 @@
    "ad": "진주 고추 크림치즈 머핀",
    "slug": "진주고추크림치즈머핀",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -4929,7 +4930,7 @@
    "ad": "哈囉迷你批 (Hello Mini Pie)",
    "slug": "哈囉迷你批hellominipie",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -4938,7 +4939,7 @@
    "ad": "大眼朱OREO® 麥旋風",
    "slug": "大眼朱oreo麥旋風",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -4947,7 +4948,7 @@
    "ad": "香烤雞翼（意式蕃茄）",
    "slug": "香烤雞翼意式蕃茄",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -4965,7 +4966,7 @@
    "ad": "熱情果椰果梳打",
    "slug": "熱情果椰果梳打",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -5478,7 +5479,7 @@
    "ad": "にんにく醤油チキン",
    "slug": "にんにく醤油チキン",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -5487,8 +5488,8 @@
    "ad": "갓쏘이치킨 (God Soy Chicken)",
    "slug": "갓쏘이치킨godsoychicken",
    "ilk_gorulme": "2026-10-12",
-   "son_gorulme": "2026-10-13",
-   "sinif": "elenen"
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   },
   {
    "marka": "KFC",
@@ -5667,7 +5668,7 @@
    "ad": "WHOPPER® CHILTEPÍN CRUNCH",
    "slug": "whopperchiltepincrunch",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -6918,7 +6919,7 @@
    "ad": "MEGABOX KETIRAS BURGER",
    "slug": "megaboxketirasburger",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -6936,7 +6937,7 @@
    "ad": "McCrispy Strips",
    "slug": "mccrispystrips",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -6945,7 +6946,7 @@
    "ad": "PICKLE OBSESSED BIJ KFC!",
    "slug": "pickleobsessedbijkfc",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -6972,7 +6973,7 @@
    "ad": "CHICKEN HAM & EGG TWISTER",
    "slug": "chickenhameggtwister",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -6981,7 +6982,7 @@
    "ad": "McDonald's K-Spicy Series",
    "slug": "mcdonaldskspicyseries",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -6999,7 +7000,7 @@
    "ad": "PRETZEL BACON BURGER",
    "slug": "pretzelbaconburger",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7008,7 +7009,7 @@
    "ad": "McCrispy Homestyle",
    "slug": "mccrispyhomestyle",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7017,7 +7018,7 @@
    "ad": "Loaded Chicken Fries BBQ",
    "slug": "loadedchickenfriesbbq",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7026,7 +7027,7 @@
    "ad": "CHEESY CHEESE BURGER",
    "slug": "cheesycheeseburger",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7053,7 +7054,7 @@
    "ad": "BUCKET FOR ONE NOT FOR SHARING",
    "slug": "bucketforonenotforsharing",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7089,7 +7090,7 @@
    "ad": "Doritos LOADED",
    "slug": "doritosloaded",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7107,7 +7108,7 @@
    "ad": "Doritos LOADED",
    "slug": "doritosloaded",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7134,7 +7135,7 @@
    "ad": "Doritos LOADED",
    "slug": "doritosloaded",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7143,7 +7144,7 @@
    "ad": "CROISSANDWICH",
    "slug": "croissandwich",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7152,7 +7153,7 @@
    "ad": "POPCORN PILETINA",
    "slug": "popcornpiletina",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7161,7 +7162,7 @@
    "ad": "FONDUE KING",
    "slug": "fondueking",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7170,7 +7171,7 @@
    "ad": "Doritos LOADED",
    "slug": "doritosloaded",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7179,7 +7180,7 @@
    "ad": "CHEDDAR QUEEN",
    "slug": "cheddarqueen",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7188,7 +7189,7 @@
    "ad": "Maišytas kibirėlis",
    "slug": "maisytaskibirelis",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7197,7 +7198,7 @@
    "ad": "KING'S SELECTION",
    "slug": "kingsselection",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7206,7 +7207,7 @@
    "ad": "NOVO MOLHO Cheetos Pandilla",
    "slug": "novomolhocheetospandilla",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7215,7 +7216,7 @@
    "ad": "NOVO SABOR Cheetos Pandilla",
    "slug": "novosaborcheetospandilla",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7224,7 +7225,7 @@
    "ad": "Plant-Based Crispy Chicken",
    "slug": "plantbasedcrispychicken",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7233,7 +7234,7 @@
    "ad": "The Royals",
    "slug": "theroyals",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7242,7 +7243,7 @@
    "ad": "Chili Cheese Lovers",
    "slug": "chilicheeselovers",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7251,7 +7252,7 @@
    "ad": "Gourmet Japanese Katsu",
    "slug": "gourmetjapanesekatsu",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7260,7 +7261,7 @@
    "ad": "Baby Chili Cheese",
    "slug": "babychilicheese",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7269,7 +7270,7 @@
    "ad": "MALTY DINOSAUR",
    "slug": "maltydinosaur",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7278,7 +7279,7 @@
    "ad": "Mushroom Le Gruyère AOP oder Classic Appenzeller",
    "slug": "mushroomlegruyereaopoderclassicappenzeller",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "elenen"
   },
   {
@@ -7287,7 +7288,7 @@
    "ad": "Quarter Chicken Leg",
    "slug": "quarterchickenleg",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "elenen"
   },
   {
@@ -7296,7 +7297,7 @@
    "ad": "INTRODUCING SIGNATURE RICE BOWLS",
    "slug": "introducingsignaturericebowls",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7314,7 +7315,7 @@
    "ad": "sub cravers",
    "slug": "subcravers",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7350,7 +7351,7 @@
    "ad": "MINIONS BURGER",
    "slug": "minionsburger",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7359,7 +7360,7 @@
    "ad": "MINIONS SOLO BUCKET",
    "slug": "minionssolobucket",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7377,7 +7378,7 @@
    "ad": "Ultimate Chili Cheese",
    "slug": "ultimatechilicheese",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7397,6 +7398,96 @@
    "ilk_gorulme": "2026-10-13",
    "son_gorulme": "2026-10-13",
    "sinif": "ulke"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "Kanada",
+   "ad": "Arby's Sips",
+   "slug": "arbyssips",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "McCRISPY HALLOWEEN",
+   "slug": "mccrispyhalloween",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Polonya",
+   "ad": "PIERNIKOWA LATTE",
+   "slug": "piernikowalatte",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Filipinler",
+   "ad": "TENDERS TWISTER",
+   "slug": "tenderstwister",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İspanya",
+   "ad": "King Fusion y King Shake Pistacho White",
+   "slug": "kingfusionykingshakepistachowhite",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Yeni Zelanda",
+   "ad": "King Fusion Made with KitKat®",
+   "slug": "kingfusionmadewithkitkat",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Yeni Zelanda",
+   "ad": "King Fusion Boysenberry Crunch",
+   "slug": "kingfusionboysenberrycrunch",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avusturya",
+   "ad": "SWEET CINNAMON KINGS",
+   "slug": "sweetcinnamonkings",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "İsrail",
+   "ad": "קומבו זוגי רד בול ו KFC",
+   "slug": "קומבוזוגירדבולוkfc",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Hollanda",
+   "ad": "Freakingdel",
+   "slug": "freakingdel",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "elenen"
   }
  ]
 }
