@@ -1,13 +1,13 @@
-name: Site erişim denemesi
+name: Haber görseli testi
 
-# "Run workflow" düğmesiyle elle başlatılır. Kendiliğinden çalışmaz.
+# Elle başlatılır. Gemini kullanmaz; birkaç haber bağlantısında görsel çekmeyi dener.
 on:
   workflow_dispatch:
 
 jobs:
   deneme:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
     steps:
       - name: Dosyaları al
         uses: actions/checkout@v4
@@ -17,18 +17,25 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Tarayıcıyı kur
+      - name: Bağlantı çözücüyü kur
+        continue-on-error: true
+        run: pip install googlenewsdecoder
+
+      - name: Haber adaylarını topla
+        run: mkdir -p rapor && python kaynak_zinciri.py --veri arsiv/son-veri.json --cikti rapor/kaynak_sonuc.json --limit 40
+
+      - name: Görsel testini çalıştır
+        run: python haber_gorsel_testi.py --kaynak rapor/kaynak_sonuc.json --cikti rapor/gorsel_testi.md --adet 10
+
+      - name: Sonucu özet olarak göster
+        if: always()
         run: |
-          pip install playwright==1.49.1
-          playwright install --with-deps chromium
+          if [ -f rapor/gorsel_testi.md ]; then cat rapor/gorsel_testi.md >> "$GITHUB_STEP_SUMMARY"; fi
 
-      - name: Denemeyi çalıştır
-        run: python deneme.py
-
-      - name: Sonuçları yükle
+      - name: Sonucu yükle
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: deneme-sonuclari
-          path: sonuc/
+          name: gorsel-testi
+          path: rapor/gorsel_testi.md
           retention-days: 14
