@@ -77,6 +77,11 @@ jobs:
         continue-on-error: true
         run: python haber_gorsel.py --haber rapor/haber_urunleri.json --kok rapor
 
+      - name: Marka logolarını çek
+        if: always()
+        continue-on-error: true
+        run: python logo_indir.py --veri arsiv/son-veri.json --kok rapor
+
       - name: Resmi ve haber sonuçlarını birleştir
         if: always()
         continue-on-error: true

@@ -14,6 +14,8 @@ import argparse
 import html
 import json
 import os
+import re
+import unicodedata
 import urllib.parse
 from datetime import datetime, timedelta
 from itertools import groupby
@@ -35,6 +37,7 @@ section.sayfa { break-before: page; }
 h1 { font-size: 34pt; margin: 0 0 8pt; letter-spacing: -.015em; line-height: 1.1; }
 h2 { font-size: 19pt; margin: 0 0 10pt; padding-bottom: 5pt; border-bottom: 2.2pt solid #1d1d1b; break-after: avoid; }
 h2 .sayi { font-size: 10pt; color: #6b6b66; font-weight: 400; margin-left: 6pt; }
+h2 .logo { height: 17pt; width: auto; max-width: 48pt; vertical-align: -4pt; margin-right: 8pt; }
 h3.ulke { font-size: 12pt; margin: 12pt 0 6pt; padding-bottom: 3pt; border-bottom: 1pt solid #d8d7d0; break-after: avoid; }
 h3.ulke .sayi { font-size: 8.5pt; color: #6b6b66; font-weight: 400; margin-left: 6pt; }
 .ust-yazi { font-size: 9pt; letter-spacing: .15em; color: #6b6b66; margin-bottom: 10pt; }
@@ -147,6 +150,19 @@ def marka_rengi(marka):
     return next((renk for parca, renk in MARKA_RENK if parca in m), KUTU_VARSAYILAN_RENK)
 
 
+def marka_slug(marka):
+    """'Burger King' -> 'burger-king', \"McDonald's\" -> 'mcdonalds'. Logo dosya adı için."""
+    s = unicodedata.normalize("NFKD", marka or "").encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z0-9]+", "-", s.replace("'", "").replace("’", "")).strip("-")
+
+
+def marka_logosu(marka, kok):
+    """logolar/<marka>.<uzantı> dosyası varsa başlıkta gösterilecek küçük logo."""
+    klasor = Path(kok) / "logolar"
+    dosyalar = sorted(klasor.glob(marka_slug(marka) + ".*")) if klasor.exists() else []
+    return f'<img class="logo" src="{dosyalar[0].as_uri()}">' if dosyalar else ""
+
+
 def resmi_urunleri(veri):
     urunler = []
     for a in veri.get("tum", []):
@@ -224,7 +240,7 @@ def kart_html(u, kok):
 
 def marka_bolumu(marka, urunler, kok):
     if not urunler:
-        return (f'<section class="sayfa"><h2>{e(marka)}<span class="sayi">bulunamadı</span></h2>'
+        return (f'<section class="sayfa"><h2>{marka_logosu(marka, kok)}{e(marka)}<span class="sayi">bulunamadı</span></h2>'
                 '<p class="not">Bu dönemde bu markada yeni ürün bulunamadı.</p></section>')
     bloklar = []
     for ulke, grup in groupby(sirala(urunler), key=lambda u: u["ulke"]):
@@ -232,7 +248,7 @@ def marka_bolumu(marka, urunler, kok):
         kartlar = "".join(kart_html(u, kok) for u in grup)
         bloklar.append(f'<h3 class="ulke">{e(ulke)}<span class="sayi">{len(grup)} ürün</span></h3>'
                        f'<div class="grid">{kartlar}</div>')
-    return (f'<section class="sayfa"><h2>{e(marka)}<span class="sayi">{len(urunler)} ürün</span></h2>'
+    return (f'<section class="sayfa"><h2>{marka_logosu(marka, kok)}{e(marka)}<span class="sayi">{len(urunler)} ürün</span></h2>'
             f'{"".join(bloklar)}</section>')
 
 
@@ -264,7 +280,7 @@ def rapor_html(urunler, kok, bas, bit, gun, uyarilar):
     resmi = sum(1 for u in urunler if u["etiket"] == RESMI)
     ulke_sayisi = len({u["ulke"] for u in urunler if u["ulke"] != BILINMEYEN_ULKE})
     uyari_html = "".join(f'<div class="uyari"><b>UYARI:</b> {e(u)}</div>' for u in uyarilar)
-    kapak = (f'<section class="kapak"><div class="ust-yazi">GLOBAL YENİ ÜRÜNLER</div>'
+    kapak = (f'<section class="kapak"><div class="ust-yazi">Tab Gıda Reklam Üssü · Global Yeni Ürünler</div>'
              f'<h1>{tr_tarih(bas)} – {tr_tarih(bit)}</h1>'
              f'<div class="alt">{e(" · ".join(MARKA_SIRA))}</div>'
              f'<p class="not">Bu rapor, son {gun} günde yukarıdaki markaların resmi sitelerinde öne çıkardığı '
