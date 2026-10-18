@@ -1,0 +1,96 @@
+{
+  "adres": "https://www.sbarro.com.tr/",
+  "sayfalar": [
+    {
+      "url": "https://www.sbarro.com.tr/",
+      "img_sayisi": 31,
+      "alt_metinli": 22
+    },
+    {
+      "url": "https://www.sbarro.com.tr/urunler",
+      "img_sayisi": 14,
+      "alt_metinli": 14
+    },
+    {
+      "url": "https://www.sbarro.com.tr/urunler/pizzalar",
+      "img_sayisi": 24,
+      "alt_metinli": 24
+    },
+    {
+      "url": "https://www.sbarro.com.tr/urunler/turka-serisi",
+      "img_sayisi": 19,
+      "alt_metinli": 19
+    },
+    {
+      "url": "https://www.sbarro.com.tr/urunler/makarnalar",
+      "img_sayisi": 11,
+      "alt_metinli": 11
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "Tiklagelsin",
+      "src": "https://www.sbarro.com.tr/Assets/Img/tiklagelsin-img-logo.png",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "Ne Yedigini Bil!",
+      "src": "https://www.sbarro.com.tr/Assets/Img/NYB_Logo-02.webp",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "Pizzalar",
+      "src": "https://www.sbarro.com.tr/cmsfiles/categories/urunler/pizzalar-icon.jpg",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "Turka Serisi",
+      "src": "https://www.sbarro.com.tr/cmsfiles/categories/urunler/turka-serisi-icon.jpg",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "Makarnalar",
+      "src": "https://www.sbarro.com.tr/cmsfiles/categories/urunler/makarnalar-icon.jpg",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "Ek Ürünler",
+      "src": "https://www.sbarro.com.tr/cmsfiles/categories/urunler/ek-urunler-icon.jpg",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "Tatlılar",
+      "src": "https://www.sbarro.com.tr/cmsfiles/categories/urunler/tatlilar-icon-1.jpg",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "İçecekler",
+      "src": "https://www.sbarro.com.tr/cmsfiles/categories/urunler/icecekler-icon-1.jpg",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "Slide background",
+      "src": "https://www.sbarro.com.tr/CmsFiles/SliderImages/60/sosyal-9.jpg",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "Slide background",
+      "src": "https://www.sbarro.com.tr/CmsFiles/SliderImages/85/9.jpg",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "2 Orta",
+      "src": "https://www.sbarro.com.tr/cmsfiles/tiklagelsinwidgets/2-ortali-menu.png",
+      "durum": "indirilemedi: Error"
+    },
+    {
+      "alt": "Kova Kanat Kampanyası",
+      "src": "https://www.sbarro.com.tr/cmsfiles/tiklagelsinwidgets/kova-kanat-kampanyasi.png",
+      "durum": "indirilemedi: Error"
+    }
+  ],
+  "baslik": "İtalyan Mutfağı Yemekleri | İtalyan Makarna ve Pizza | Sbarro Türkiye",
+  "metin_ornek": "Sbarro - Nefis Italyan Lezzetleri ÜRÜNLER KAMPANYALAR RESTORANLAR EN ÇOK SATANLAR 2 Orta'lı Menü Kova Kanat Kampanyası Orta'lı Menü Pro Gamer Menü Sbarro® Ekonomİkili DENEDİNİZ Mİ? Stuffed Pizza İki kat özel Sbarro® hamuru arasında mozzarella peyniri... Stuffed Pizza İki kat özel Sbarro® hamuru aras",
+  "toplam_img": 99,
+  "alt_metinli_img": 90
+}

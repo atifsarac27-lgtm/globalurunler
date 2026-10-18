@@ -1,0 +1,115 @@
+{
+  "adres": "https://www.popeyes.com/",
+  "sayfalar": [
+    {
+      "url": "https://www.popeyes.com/",
+      "img_sayisi": 25,
+      "alt_metinli": 13
+    },
+    {
+      "url": "https://www.popeyes.com/menu",
+      "img_sayisi": 33,
+      "alt_metinli": 19
+    },
+    {
+      "url": "https://www.popeyes.com/menu/picker/465530f4-3cef-4789-a16f-1522f716e832",
+      "img_sayisi": 28,
+      "alt_metinli": 14
+    },
+    {
+      "url": "https://www.popeyes.com/menu",
+      "img_sayisi": 33,
+      "alt_metinli": 19
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "Honey Chicken Biscuit",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/513702aa8880de6d8398df99e2bf4b049a3ef46f-1050x432.png?q=70&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_00.png",
+      "bayt": 563068
+    },
+    {
+      "alt": "[6/29] 4Pc Signature chicken with a side",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/f46e0da7dfda968e9564c974fa37066f4a2573d3-2100x864.png?w=1280&amp;q=70&amp;fit=max&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_01.png",
+      "bayt": 890009
+    },
+    {
+      "alt": "[5/18] 2 Chicken Sandwiches + Side for $12",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/136718d3d9a8248b008aa431b90a3e4b9176cb72-2100x864.png?w=1280&amp;q=70&amp;fit=max&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_02.png",
+      "bayt": 915981
+    },
+    {
+      "alt": "Product 3 Piece Signature Chicken",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/84bbcd43ce0d00ab85cc40e4c23f007e19501d21-2000x1333.png?w=1280&amp;q=70&amp;fit=max&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_03.png",
+      "bayt": 970155
+    },
+    {
+      "alt": "Product 3 Piece Tenders",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/47bde75d4494e8632f6218b876ff6759e26b3772-2000x1333.png?w=1280&amp;q=70&amp;fit=max&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_04.png",
+      "bayt": 1062682
+    },
+    {
+      "alt": "Product Chicken Wrap",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/454338028ecf0cbd4c9eef1e4aa29e7c07d30f98-831x572.png?q=70&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_05.png",
+      "bayt": 781376
+    },
+    {
+      "alt": "Product Classic Chicken Sandwich",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/f39c9409309e826af31f3fd98164ed50f6d53dfa-2000x1333.png?w=1280&amp;q=70&amp;fit=max&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_06.png",
+      "bayt": 1660413
+    },
+    {
+      "alt": "September 28 Launch",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/5205064a624786eb0955437e0d33b1538905cfe3-1350x675.png?w=1280&amp;q=70&amp;fit=max&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_07.png",
+      "bayt": 2257358
+    },
+    {
+      "alt": "Pineapple Tea &amp; Lemonade",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/6493d66fb7dbf06d2aead6a4a7056c1cb1ade004-1800x900.png?w=1280&amp;q=70&amp;fit=max&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_08.png",
+      "bayt": 1208936
+    },
+    {
+      "alt": "Order Ahead",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/ee0524a57a32cf343eb0a9f2434419449aa948a0-1800x900.png?w=1280&amp;q=70&amp;fit=max&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_09.png",
+      "bayt": 1943613
+    },
+    {
+      "alt": "Popeyes Foundation ℠",
+      "src": "https://www.popeyes.com/images/czqk28jt/prod_plk_us/ce6b01010e4e31a8870ad35b7dbd9a63b159d6ae-967x484.png?q=70&amp;auto=format",
+      "durum": "indirildi",
+      "dosya": "img_10.png",
+      "bayt": 27768
+    },
+    {
+      "alt": "Popeyes Logo",
+      "src": "https://cdn.cookielaw.org/logos/7ae425dd-1c76-46b0-a1b4-2422a364fae3/7f9755f6-23da-4ba3-8d85-bb798efa47e7/1b172aca-0a03-4387-9035-df2b63869856/popeyes-logo.png",
+      "durum": "indirildi",
+      "dosya": "img_11.png",
+      "bayt": 45180
+    }
+  ],
+  "baslik": "Popeyes Chicken",
+  "metin_ornek": " Menu Restaurants Offers Catering Sign Up  Bag  Order Pickup Order Delivery Try out our crowd favorites 3Pc Signature Chicken 3Pc Tenders Chicken Wrap Classic Chicken Sandwich Honey, We Brought Chicken And put it on a biscuit. The NEW Honey Chicken Biscuit is officially here. Better get to Popeye",
+  "toplam_img": 119,
+  "alt_metinli_img": 65
+}

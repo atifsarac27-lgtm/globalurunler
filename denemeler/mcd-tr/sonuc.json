@@ -1,0 +1,87 @@
+{
+  "adres": "https://www.mcdonalds.com.tr/",
+  "sayfalar": [
+    {
+      "url": "https://www.mcdonalds.com.tr/",
+      "img_sayisi": 12,
+      "alt_metinli": 0
+    },
+    {
+      "url": "https://www.mcdonalds.com.tr/mcdonalds-lezzetleri/burgerler",
+      "img_sayisi": 26,
+      "alt_metinli": 0
+    },
+    {
+      "url": "https://www.mcdonalds.com.tr/mcdonalds-lezzetleri/mccafe/menu/9",
+      "img_sayisi": 8,
+      "alt_metinli": 0
+    },
+    {
+      "url": "https://www.mcdonalds.com.tr/bulezzeteguven/urunlerimiz-hakkinda-merak-edilenler",
+      "img_sayisi": 12,
+      "alt_metinli": 8
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "...",
+      "src": "https://www.mcdonalds.com.tr/Files/bulezzeteguven/dana-eti.jpg",
+      "durum": "indirildi",
+      "dosya": "img_00.jpg",
+      "bayt": 159071
+    },
+    {
+      "alt": "...",
+      "src": "https://www.mcdonalds.com.tr/Files/bulezzeteguven/tavukv2.jpg",
+      "durum": "indirildi",
+      "dosya": "img_01.jpg",
+      "bayt": 77246
+    },
+    {
+      "alt": "...",
+      "src": "https://www.mcdonalds.com.tr/Files/bulezzeteguven/bitkisel-yag.jpg",
+      "durum": "indirildi",
+      "dosya": "img_02.jpg",
+      "bayt": 148543
+    },
+    {
+      "alt": "...",
+      "src": "https://www.mcdonalds.com.tr/Files/bulezzeteguven/dondurmav2.jpg",
+      "durum": "indirildi",
+      "dosya": "img_03.jpg",
+      "bayt": 208045
+    },
+    {
+      "alt": "...",
+      "src": "https://www.mcdonalds.com.tr/Files/bulezzeteguven/ekmekv2.jpg",
+      "durum": "indirildi",
+      "dosya": "img_04.jpg",
+      "bayt": 185375
+    },
+    {
+      "alt": "...",
+      "src": "https://www.mcdonalds.com.tr/Files/bulezzeteguven/happy-meal.jpg",
+      "durum": "indirildi",
+      "dosya": "img_05.jpg",
+      "bayt": 78620
+    },
+    {
+      "alt": "...",
+      "src": "https://www.mcdonalds.com.tr/Files/bulezzeteguven/patates.jpg",
+      "durum": "indirildi",
+      "dosya": "img_06.jpg",
+      "bayt": 155810
+    },
+    {
+      "alt": "...",
+      "src": "https://www.mcdonalds.com.tr/Files/bulezzeteguven/kontrol-noktasi.jpg",
+      "durum": "indirildi",
+      "dosya": "img_07.jpg",
+      "bayt": 208711
+    }
+  ],
+  "baslik": "McDonald's Gibisi Yok",
+  "metin_ornek": "McDonald's McDONALD'S LEZZETLERİ KAMPANYALAR HAKKIMIZDA BU LEZZETE GÜVEN RESTORANLAR OYUN ALANLARI MyMcDonald’s Ödüllerim Doğum Günü Partisi İnsan Kaynakları – İş Başvurusu 444 62 62 SİPARİŞ VER Kapat 1 2 3 4 5 KAMPANYALARI GÖR HEMEN İNDİR KEŞFET BİZİ TAKİP EDİN /McDonaldsTurkiye @McDonaldsTR @mcdon",
+  "toplam_img": 58,
+  "alt_metinli_img": 8
+}

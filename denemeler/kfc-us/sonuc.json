@@ -1,0 +1,6 @@
+{
+  "adres": "https://www.kfc.com/",
+  "sayfalar": [],
+  "gorseller": [],
+  "hata": "ana sayfa açılamadı: Error: Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.kfc.com/\nCall log:\n  - navigating to \"https://www.kfc.com/\", waiting until \"domcontentloaded\"\n"
+}

@@ -1,0 +1,120 @@
+{
+  "adres": "https://www.burgerking.com.tr/",
+  "sayfalar": [
+    {
+      "url": "https://www.burgerking.com.tr/",
+      "img_sayisi": 42,
+      "alt_metinli": 27
+    },
+    {
+      "url": "https://www.burgerking.com.tr/",
+      "img_sayisi": 42,
+      "alt_metinli": 27
+    },
+    {
+      "url": "https://www.burgerking.com.tr/urunler",
+      "img_sayisi": 22,
+      "alt_metinli": 10
+    },
+    {
+      "url": "https://www.burgerking.com.tr/kampanyalar#paket-servis-kampanyalari",
+      "img_sayisi": 54,
+      "alt_metinli": 34
+    },
+    {
+      "url": "https://www.burgerking.com.tr/kids-menu",
+      "img_sayisi": 27,
+      "alt_metinli": 13
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "Ne Yediğini Bil!",
+      "src": "https://www.burgerking.com.tr/Assets/Img/NYB_Logo-01.webp",
+      "durum": "indirildi",
+      "dosya": "img_00.webp",
+      "bayt": 38022
+    },
+    {
+      "alt": "Menüler",
+      "src": "https://www.burgerking.com.tr/cmsfiles/categories/urunler/menuler-icon.png?v=900",
+      "durum": "indirildi",
+      "dosya": "img_01.png",
+      "bayt": 2657
+    },
+    {
+      "alt": "Burgerler",
+      "src": "https://www.burgerking.com.tr/cmsfiles/categories/urunler/burgerler-icon.png?v=900",
+      "durum": "indirildi",
+      "dosya": "img_02.png",
+      "bayt": 1570
+    },
+    {
+      "alt": "King Delight® Ürünler",
+      "src": "https://www.burgerking.com.tr/cmsfiles/categories/urunler/king-delight-urunler-icon.png?v=900",
+      "durum": "indirildi",
+      "dosya": "img_03.png",
+      "bayt": 1825
+    },
+    {
+      "alt": "Çıtır Lezzetler",
+      "src": "https://www.burgerking.com.tr/cmsfiles/categories/urunler/citir-lezzetler-icon.png?v=900",
+      "durum": "indirildi",
+      "dosya": "img_04.png",
+      "bayt": 1641
+    },
+    {
+      "alt": "Kahvaltı Ürünleri",
+      "src": "https://www.burgerking.com.tr/cmsfiles/categories/urunler/kahvalti-urunleri-icon.png?v=900",
+      "durum": "indirildi",
+      "dosya": "img_05.png",
+      "bayt": 1863
+    },
+    {
+      "alt": "Kids Menüler",
+      "src": "https://www.burgerking.com.tr/cmsfiles/categories/urunler/kids-menuler-icon.png?v=900",
+      "durum": "indirildi",
+      "dosya": "img_06.png",
+      "bayt": 1750
+    },
+    {
+      "alt": "Tatlılar",
+      "src": "https://www.burgerking.com.tr/cmsfiles/categories/urunler/tatlilar-icon.png?v=900",
+      "durum": "indirildi",
+      "dosya": "img_07.png",
+      "bayt": 1718
+    },
+    {
+      "alt": "İçecekler",
+      "src": "https://www.burgerking.com.tr/cmsfiles/categories/urunler/icecekler-icon.png?v=900",
+      "durum": "indirildi",
+      "dosya": "img_08.png",
+      "bayt": 1175
+    },
+    {
+      "alt": "Soslar",
+      "src": "https://www.burgerking.com.tr/cmsfiles/categories/urunler/soslar-icon.png?v=900",
+      "durum": "indirildi",
+      "dosya": "img_09.png",
+      "bayt": 1179
+    },
+    {
+      "alt": "Slide background",
+      "src": "https://www.burgerking.com.tr/CmsFiles/SliderImages/1227/8.jpg",
+      "durum": "indirildi",
+      "dosya": "img_10.jpg",
+      "bayt": 754775
+    },
+    {
+      "alt": "Slide background",
+      "src": "https://www.burgerking.com.tr/CmsFiles/SliderImages/1271/1.jpg",
+      "durum": "indirildi",
+      "dosya": "img_11.jpg",
+      "bayt": 277889
+    }
+  ],
+  "baslik": "Whopper®’ın Adresi | Fast Food | Online Sipariş | Burger King®",
+  "metin_ornek": "Burger King® Türkiye ANA SAYFA ÜRÜNLER KAMPANYALAR KIDS BURGER KING® CAFÉ RESTORANLAR HAKKIMIZDA EN ÇOK SATANLAR Big King Menü Double King Chicken® Menü Whopper® Menü Benim İkilim 3'lü Whopper® Fırsatı Kral İkili BURGER KING® CAFÉ Burger King® Cafe'nin birbirinden lezzetli ve taze ürünleri sıcak yaz",
+  "toplam_img": 187,
+  "alt_metinli_img": 111
+}

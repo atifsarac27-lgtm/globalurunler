@@ -1,0 +1,116 @@
+{
+  "adres": "https://www.subway.com.tr/",
+  "sayfalar": [
+    {
+      "url": "https://www.subway.com.tr/",
+      "img_sayisi": 18,
+      "alt_metinli": 18
+    },
+    {
+      "url": "https://www.subway.com.tr/urunler",
+      "img_sayisi": 11,
+      "alt_metinli": 11
+    },
+    {
+      "url": "https://www.subway.com.tr/urunler/sef-serisi",
+      "img_sayisi": 25,
+      "alt_metinli": 25
+    },
+    {
+      "url": "https://www.subway.com.tr/urunler/protein-serisi",
+      "img_sayisi": 15,
+      "alt_metinli": 15
+    },
+    {
+      "url": "https://www.subway.com.tr/urunler/sub30-sandvicler",
+      "img_sayisi": 22,
+      "alt_metinli": 22
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "Şef Serisi",
+      "src": "https://www.subway.com.tr/cmsfiles/categories/urunler/sef-serisi.png?v=131",
+      "durum": "indirildi",
+      "dosya": "img_00.png",
+      "bayt": 63750
+    },
+    {
+      "alt": "Protein Serisi",
+      "src": "https://www.subway.com.tr/cmsfiles/categories/urunler/protein-serisi-1.png?v=131",
+      "durum": "indirildi",
+      "dosya": "img_01.png",
+      "bayt": 65752
+    },
+    {
+      "alt": "Sub30 Sandviçler",
+      "src": "https://www.subway.com.tr/cmsfiles/categories/urunler/sub30-sandvicler.webp?v=131",
+      "durum": "uygun değil (HTTP 200, application/unknown)"
+    },
+    {
+      "alt": "Bowl Ürünleri",
+      "src": "https://www.subway.com.tr/cmsfiles/categories/urunler/bowl-urunleri.png?v=131",
+      "durum": "indirildi",
+      "dosya": "img_03.png",
+      "bayt": 53135
+    },
+    {
+      "alt": "Sub15 Sandviçler",
+      "src": "https://www.subway.com.tr/cmsfiles/categories/urunler/sub15-sandvicler.webp?v=131",
+      "durum": "uygun değil (HTTP 200, application/unknown)"
+    },
+    {
+      "alt": "Salatalar",
+      "src": "https://www.subway.com.tr/cmsfiles/categories/urunler/salatalar.png?v=131",
+      "durum": "indirildi",
+      "dosya": "img_05.png",
+      "bayt": 63729
+    },
+    {
+      "alt": "Dürümler",
+      "src": "https://www.subway.com.tr/cmsfiles/categories/urunler/durumler-1.png?v=131",
+      "durum": "indirildi",
+      "dosya": "img_06.png",
+      "bayt": 35209
+    },
+    {
+      "alt": "Ek Ürünler",
+      "src": "https://www.subway.com.tr/cmsfiles/categories/urunler/ek-urunler.png?v=131",
+      "durum": "indirildi",
+      "dosya": "img_07.png",
+      "bayt": 101462
+    },
+    {
+      "alt": "İçecekler",
+      "src": "https://www.subway.com.tr/cmsfiles/categories/urunler/icecekler-1.png?v=131",
+      "durum": "indirildi",
+      "dosya": "img_08.png",
+      "bayt": 10911
+    },
+    {
+      "alt": "Subway",
+      "src": "https://www.subway.com.tr/Assets/img/logo.png",
+      "durum": "indirildi",
+      "dosya": "img_09.png",
+      "bayt": 3710
+    },
+    {
+      "alt": "Ne Yediğini Bil!",
+      "src": "https://www.subway.com.tr/Assets/Img/NYB_Logo-01.webp",
+      "durum": "indirildi",
+      "dosya": "img_10.webp",
+      "bayt": 130284
+    },
+    {
+      "alt": "...",
+      "src": "https://www.subway.com.tr/CmsFiles/SliderImages/119/5.jpg",
+      "durum": "indirildi",
+      "dosya": "img_11.jpg",
+      "bayt": 222206
+    }
+  ],
+  "baslik": "Subway Türkiye",
+  "metin_ornek": "Subway Sandviçleri ve Menüleri ÜRÜNLER RESTORANLAR BESİN KAMPANYALAR HAKKIMIZDA Previous Next TAB Gıda güvencesiyle sunulan ve öncelikle tazeliğe önem verilen Subway® ürünlerinde, kaliteden asla ödün verilmemektedir. Subway® franchise olanakları ve başvuru formu için tıklayınız. Ürünler Şef Serisi P",
+  "toplam_img": 91,
+  "alt_metinli_img": 91
+}

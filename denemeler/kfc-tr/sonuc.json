@@ -1,0 +1,16 @@
+{
+  "adres": "https://www.kfcturkiye.com/",
+  "sayfalar": [
+    {
+      "url": "https://www.kfcturkiye.com/",
+      "img_sayisi": 0,
+      "alt_metinli": 0
+    }
+  ],
+  "gorseller": [],
+  "baslik": "403 Forbidden",
+  "metin_ornek": "403 Forbidden",
+  "toplam_img": 0,
+  "alt_metinli_img": 0,
+  "not": "Az görsel var; sayfa büyük ihtimalle JavaScript ile yükleniyor."
+}

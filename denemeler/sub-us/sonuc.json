@@ -1,0 +1,6 @@
+{
+  "adres": "https://www.subway.com/en-us",
+  "sayfalar": [],
+  "gorseller": [],
+  "hata": "ana sayfa açılamadı: Error: Page.goto: net::ERR_HTTP2_PROTOCOL_ERROR at https://www.subway.com/en-us\nCall log:\n  - navigating to \"https://www.subway.com/en-us\", waiting until \"do"
+}

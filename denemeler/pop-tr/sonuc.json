@@ -1,0 +1,118 @@
+{
+  "adres": "https://www.popeyes.com.tr/",
+  "sayfalar": [
+    {
+      "url": "https://www.popeyes.com.tr/",
+      "img_sayisi": 32,
+      "alt_metinli": 20
+    },
+    {
+      "url": "https://www.popeyes.com.tr/urunler",
+      "img_sayisi": 30,
+      "alt_metinli": 19
+    },
+    {
+      "url": "https://www.popeyes.com.tr/urunler/menuler",
+      "img_sayisi": 48,
+      "alt_metinli": 31
+    },
+    {
+      "url": "https://www.popeyes.com.tr/urunler/menuler/kemikli-tavuk-menuleri/2-parca-tavuk-menu-1",
+      "img_sayisi": 30,
+      "alt_metinli": 11
+    },
+    {
+      "url": "https://www.popeyes.com.tr/urunler/menuler/kemikli-tavuk-menuleri/3-parca-tavuk-menu-1",
+      "img_sayisi": 30,
+      "alt_metinli": 11
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "Menüler",
+      "src": "https://www.popeyes.com.tr/cmsfiles/categories/urunler/menuler-icon.png?v=339",
+      "durum": "indirildi",
+      "dosya": "img_00.png",
+      "bayt": 5415
+    },
+    {
+      "alt": "Kovalar",
+      "src": "https://www.popeyes.com.tr/cmsfiles/categories/urunler/kovalar-icon.png?v=339",
+      "durum": "indirildi",
+      "dosya": "img_01.png",
+      "bayt": 5998
+    },
+    {
+      "alt": "Tek Tavuk Ürünleri",
+      "src": "https://www.popeyes.com.tr/cmsfiles/categories/urunler/tek-tavuk-urunleri-icon.png?v=339",
+      "durum": "indirildi",
+      "dosya": "img_02.png",
+      "bayt": 3898
+    },
+    {
+      "alt": "Sandviçler ve Salatalar",
+      "src": "https://www.popeyes.com.tr/cmsfiles/categories/urunler/sandvicler-ve-salatalar-icon-1.png?v=339",
+      "durum": "indirildi",
+      "dosya": "img_03.png",
+      "bayt": 4652
+    },
+    {
+      "alt": "Kids",
+      "src": "https://www.popeyes.com.tr/cmsfiles/categories/urunler/kids-icon.png?v=339",
+      "durum": "indirildi",
+      "dosya": "img_04.png",
+      "bayt": 3496
+    },
+    {
+      "alt": "Ek Lezzetler ve Yan Ürünler",
+      "src": "https://www.popeyes.com.tr/cmsfiles/categories/urunler/ek-lezzetler-ve-yan-urunler-icon-1.png?v=339",
+      "durum": "indirildi",
+      "dosya": "img_05.png",
+      "bayt": 6205
+    },
+    {
+      "alt": "Tatlılar",
+      "src": "https://www.popeyes.com.tr/cmsfiles/categories/urunler/tatlilar-icon.png?v=339",
+      "durum": "indirildi",
+      "dosya": "img_06.png",
+      "bayt": 3913
+    },
+    {
+      "alt": "İçecekler",
+      "src": "https://www.popeyes.com.tr/cmsfiles/categories/urunler/icecekler-icon.png?v=339",
+      "durum": "indirildi",
+      "dosya": "img_07.png",
+      "bayt": 3301
+    },
+    {
+      "alt": "Soslar",
+      "src": "https://www.popeyes.com.tr/cmsfiles/categories/urunler/soslar-icon.png?v=339",
+      "durum": "indirildi",
+      "dosya": "img_08.png",
+      "bayt": 3504
+    },
+    {
+      "alt": "Ne Yediğini Bil!",
+      "src": "https://www.popeyes.com.tr/Assets/Img/NYB_Logo-01.webp",
+      "durum": "indirildi",
+      "dosya": "img_09.webp",
+      "bayt": 146946
+    },
+    {
+      "alt": "Slide background",
+      "src": "https://www.popeyes.com.tr/CmsFiles/SliderImages/115/1.jpg",
+      "durum": "indirildi",
+      "dosya": "img_10.jpg",
+      "bayt": 598486
+    },
+    {
+      "alt": "3 Kişilik Doyuran Kova Menü",
+      "src": "https://www.popeyes.com.tr/cmsfiles/tiklagelsinwidgets/3-kisilik-doyuran-kova-menu.webp?v=339",
+      "durum": "uygun değil (HTTP 200, application/unknown)"
+    }
+  ],
+  "baslik": "Louisana Usulü Leziz Kızarmış Tavuk | Popeyes®",
+  "metin_ornek": "ANASAYFA ÜRÜNLER KAMPANYALAR RESTORANLAR HAKKIMIZDA SİPARİŞE BAŞLA Menüler Kovalar Tek Tavuk Ürünleri Sandviçler ve Salatalar Kids Ek Lezzetler ve Yan Ürünler Tatlılar İçecekler Soslar EN ÇOK SATANLAR 3 Kişilik Doyuran Kova Menü 2 Kişilik Fırsat Menüsü Maxi Popchicken Menü Maxi XL Menü Ekonomix Menü",
+  "toplam_img": 170,
+  "alt_metinli_img": 92
+}

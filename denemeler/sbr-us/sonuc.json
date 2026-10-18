@@ -1,0 +1,68 @@
+{
+  "adres": "https://sbarro.com/",
+  "sayfalar": [
+    {
+      "url": "https://sbarro.com/",
+      "img_sayisi": 6,
+      "alt_metinli": 4
+    },
+    {
+      "url": "https://sbarro.com/menu/",
+      "img_sayisi": 3,
+      "alt_metinli": 1
+    },
+    {
+      "url": "https://sbarro.com/in-the-news/",
+      "img_sayisi": 3,
+      "alt_metinli": 1
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "Sbarro is celebrating their 70th anniversary of serving the original New York Pizza",
+      "src": "https://sbarro.com/wp-content/uploads/2022/10/blank.png",
+      "durum": "indirildi",
+      "dosya": "img_00.png",
+      "bayt": 8626
+    },
+    {
+      "alt": "Order Now",
+      "src": "https://sbarro.com/wp-content/uploads/2019/12/cta-transparent-image.png",
+      "durum": "indirildi",
+      "dosya": "img_01.png",
+      "bayt": 3779
+    },
+    {
+      "alt": "Large NY Cheese or Pepperoni Pizza for only $9.99 with coupon code 999",
+      "src": "https://sbarro.com/wp-content/uploads/2022/10/blank-1024x576.png",
+      "durum": "indirildi",
+      "dosya": "img_02.png",
+      "bayt": 1351
+    },
+    {
+      "alt": "Great Place to Work Certified June 2024 - June 2025 USA",
+      "src": "https://sbarro.com/wp-content/uploads/2024/06/Sbarro_US_English_2024_Certification_Badge-scaled.webp",
+      "durum": "indirildi",
+      "dosya": "img_03.webp",
+      "bayt": 63772
+    },
+    {
+      "alt": "Great Place to Work Certified June 2024 - June 2025 USA",
+      "src": "https://sbarro.com/wp-content/uploads/2024/06/Sbarro_US_English_2024_Certification_Badge-scaled.webp",
+      "durum": "indirildi",
+      "dosya": "img_04.webp",
+      "bayt": 63772
+    },
+    {
+      "alt": "Great Place to Work Certified June 2024 - June 2025 USA",
+      "src": "https://sbarro.com/wp-content/uploads/2024/06/Sbarro_US_English_2024_Certification_Badge-scaled.webp",
+      "durum": "indirildi",
+      "dosya": "img_05.webp",
+      "bayt": 63772
+    }
+  ],
+  "baslik": "Home of the Original XL NY Pizza | Sbarro Pizza",
+  "metin_ornek": "Enable accessibility × CAREERS CATERING ABOUT MENU NEWSROOM FAQ CONTACT TURKEY HILL AVERY RD OPEN TODAY, 9:00 AM - 8:00 PM (CHANGE) 380-204-7995 DIRECTIONS ORDER Sbarro ORDER LOCATIONS FRANCHISE ORDER PICKUP/DELIVERY TELL US HOW WE’RE DOING. OR IF YOU NEED HELP NAVIGATING THIS PAGE Click Here Contac",
+  "toplam_img": 12,
+  "alt_metinli_img": 6
+}

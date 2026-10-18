@@ -1,0 +1,52 @@
+{
+  "adres": "https://www.bk.com/",
+  "sayfalar": [
+    {
+      "url": "https://www.bk.com/",
+      "img_sayisi": 18,
+      "alt_metinli": 3
+    },
+    {
+      "url": "https://www.bk.com/store-locator?redirectUrl=%2Fmenu",
+      "img_sayisi": 21,
+      "alt_metinli": 2
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "Burger King Whopper with the text: Whopper Wednesday",
+      "src": "https://cdn.sanity.io/images/kjfd81ul/prod_bk_us/28a5acd3ddfad81b4a34ba68244b89b113b5eca7-2100x1050.png?w=900&amp;q=75&amp;fit=max&amp;auto=format&amp;tag=bk-app%3BWEB-7.84.0",
+      "durum": "indirildi",
+      "dosya": "img_00.png",
+      "bayt": 752667
+    },
+    {
+      "alt": "Burger King Logo",
+      "src": "https://cdn.cookielaw.org/logos/7ae425dd-1c76-46b0-a1b4-2422a364fae3/ad540e5e-3a61-48d7-9ed5-0ca2499725c7/1d0d6035-8774-4dc4-b482-6d8782023e95/bk_logo.png",
+      "durum": "indirildi",
+      "dosya": "img_01.png",
+      "bayt": 19776
+    },
+    {
+      "alt": "Powered by Onetrust",
+      "src": "https://cdn.cookielaw.org/logos/static/powered_by_logo.svg",
+      "durum": "uygun değil (HTTP 200, image/svg+xml)"
+    },
+    {
+      "alt": "Burger King Logo",
+      "src": "https://cdn.cookielaw.org/logos/7ae425dd-1c76-46b0-a1b4-2422a364fae3/ad540e5e-3a61-48d7-9ed5-0ca2499725c7/1d0d6035-8774-4dc4-b482-6d8782023e95/bk_logo.png",
+      "durum": "indirildi",
+      "dosya": "img_03.png",
+      "bayt": 19776
+    },
+    {
+      "alt": "Powered by Onetrust",
+      "src": "https://cdn.cookielaw.org/logos/static/powered_by_logo.svg",
+      "durum": "uygun değil (HTTP 200, image/svg+xml)"
+    }
+  ],
+  "baslik": "Burger King",
+  "metin_ornek": "Skip to main content   6  View Cart Good Afternoon! ☀️ The Whopper® Has Never Tasted Better.  Order Pickup  Order Delivery At participating U.S. Burger King® restaurants. Save $$$ With offers on demand Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other count",
+  "toplam_img": 39,
+  "alt_metinli_img": 5
+}

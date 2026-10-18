@@ -1,0 +1,90 @@
+{
+  "adres": "https://www.arbys.com/",
+  "sayfalar": [
+    {
+      "url": "https://www.arbys.com/",
+      "img_sayisi": 21,
+      "alt_metinli": 6
+    },
+    {
+      "url": "https://www.arbys.com/menu/",
+      "img_sayisi": 27,
+      "alt_metinli": 5
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "Arby",
+      "src": "https://www.arbys.com/assets/icons/arbys-header-logo.svg",
+      "durum": "uygun değil (HTTP 200, image/svg+xml)"
+    },
+    {
+      "alt": "Facebook",
+      "src": "https://imagedelivery.net/cyuZzWywsYlsu7DPQZIgOg/81c57f6c-367e-4d4a-5d9b-46371c79ce00/f=avif,w=44,q=80",
+      "durum": "indirildi",
+      "dosya": "img_01.jpg",
+      "bayt": 1192
+    },
+    {
+      "alt": "Twitter",
+      "src": "https://imagedelivery.net/cyuZzWywsYlsu7DPQZIgOg/a2025198-c070-4101-c362-236602b51f00/f=avif,w=44,q=80",
+      "durum": "indirildi",
+      "dosya": "img_02.jpg",
+      "bayt": 1271
+    },
+    {
+      "alt": "Instagram",
+      "src": "https://imagedelivery.net/cyuZzWywsYlsu7DPQZIgOg/9c706c2a-d525-40de-d667-e4be72871300/f=avif,w=44,q=80",
+      "durum": "indirildi",
+      "dosya": "img_03.jpg",
+      "bayt": 1197
+    },
+    {
+      "alt": "FREE Small Fry With $5+",
+      "src": "https://imagedelivery.net/cyuZzWywsYlsu7DPQZIgOg/arbys-menu/aa1887c3-4b92-4ed1-2f41-e4dfad387a00/f=avif,w=600,q=80",
+      "durum": "indirildi",
+      "dosya": "img_04.jpg",
+      "bayt": 31325
+    },
+    {
+      "alt": "dot image pixel",
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&amp;d=Sun%2C%2018%20Oct%202026%2013%3A42%3A57%20GMT&amp;n=0&amp;b=Arby",
+      "durum": "uygun değil (HTTP 200, application/x-javascript)"
+    },
+    {
+      "alt": "Arby",
+      "src": "https://www.arbys.com/assets/icons/arbys-header-logo.svg",
+      "durum": "uygun değil (HTTP 200, image/svg+xml)"
+    },
+    {
+      "alt": "Facebook",
+      "src": "https://imagedelivery.net/cyuZzWywsYlsu7DPQZIgOg/81c57f6c-367e-4d4a-5d9b-46371c79ce00/f=avif,w=44,q=80",
+      "durum": "indirildi",
+      "dosya": "img_07.jpg",
+      "bayt": 1192
+    },
+    {
+      "alt": "Twitter",
+      "src": "https://imagedelivery.net/cyuZzWywsYlsu7DPQZIgOg/a2025198-c070-4101-c362-236602b51f00/f=avif,w=44,q=80",
+      "durum": "indirildi",
+      "dosya": "img_08.jpg",
+      "bayt": 1271
+    },
+    {
+      "alt": "Instagram",
+      "src": "https://imagedelivery.net/cyuZzWywsYlsu7DPQZIgOg/9c706c2a-d525-40de-d667-e4be72871300/f=avif,w=44,q=80",
+      "durum": "indirildi",
+      "dosya": "img_09.jpg",
+      "bayt": 1197
+    },
+    {
+      "alt": "dot image pixel",
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&amp;d=Sun%2C%2018%20Oct%202026%2013%3A43%3A21%20GMT&amp;n=0&amp;b=Arby",
+      "durum": "uygun değil (HTTP 200, application/x-javascript)"
+    }
+  ],
+  "baslik": "Arby's | Meats®",
+  "metin_ornek": "Our online services use cookies and similar technologies to provide a personalized experience, assist functionality, support marketing and advertising, and understand how visitors interact with the service. Some uses of these technologies involve sharing information about your use of our online serv",
+  "toplam_img": 48,
+  "alt_metinli_img": 11
+}

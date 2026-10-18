@@ -1,0 +1,120 @@
+{
+  "adres": "https://www.arbys.com.tr/",
+  "sayfalar": [
+    {
+      "url": "https://www.arbys.com.tr/",
+      "img_sayisi": 25,
+      "alt_metinli": 25
+    },
+    {
+      "url": "https://www.arbys.com.tr/urunler",
+      "img_sayisi": 17,
+      "alt_metinli": 17
+    },
+    {
+      "url": "https://www.arbys.com.tr/urunler/kirmizi-et-urunleri",
+      "img_sayisi": 24,
+      "alt_metinli": 24
+    },
+    {
+      "url": "https://www.arbys.com.tr/urunler/tavuk-urunleri",
+      "img_sayisi": 20,
+      "alt_metinli": 20
+    },
+    {
+      "url": "https://www.arbys.com.tr/urunler/yan-urunler-ve-patatesler",
+      "img_sayisi": 19,
+      "alt_metinli": 19
+    }
+  ],
+  "gorseller": [
+    {
+      "alt": "Tıklagelsin",
+      "src": "https://www.arbys.com.tr/assets/img/tiklagelsin-img-logo.png",
+      "durum": "indirildi",
+      "dosya": "img_00.png",
+      "bayt": 6624
+    },
+    {
+      "alt": "Kırmızı Et Ürünleri",
+      "src": "https://www.arbys.com.tr/cmsfiles/categories/urunler/small/kirmizi-et-urunleri-1.png?v=175",
+      "durum": "indirildi",
+      "dosya": "img_01.png",
+      "bayt": 12844
+    },
+    {
+      "alt": "Tavuk Ürünleri",
+      "src": "https://www.arbys.com.tr/cmsfiles/categories/urunler/small/tavuk-urunleri.png?v=175",
+      "durum": "indirildi",
+      "dosya": "img_02.png",
+      "bayt": 15763
+    },
+    {
+      "alt": "Yan Ürünler &amp; Patatesler",
+      "src": "https://www.arbys.com.tr/cmsfiles/categories/urunler/small/yan-urunler-patatesler.png?v=175",
+      "durum": "indirildi",
+      "dosya": "img_03.png",
+      "bayt": 7678
+    },
+    {
+      "alt": "Kids Menü",
+      "src": "https://www.arbys.com.tr/cmsfiles/categories/urunler/small/kids-menu.png?v=175",
+      "durum": "indirildi",
+      "dosya": "img_04.png",
+      "bayt": 11619
+    },
+    {
+      "alt": "Salatalar",
+      "src": "https://www.arbys.com.tr/cmsfiles/categories/urunler/small/salatalar-1.png?v=175",
+      "durum": "indirildi",
+      "dosya": "img_05.png",
+      "bayt": 12612
+    },
+    {
+      "alt": "Tatlılar",
+      "src": "https://www.arbys.com.tr/cmsfiles/categories/urunler/small/tatlilar.png?v=175",
+      "durum": "indirildi",
+      "dosya": "img_06.png",
+      "bayt": 7785
+    },
+    {
+      "alt": "İçecekler",
+      "src": "https://www.arbys.com.tr/cmsfiles/categories/urunler/small/icecekler.png?v=175",
+      "durum": "indirildi",
+      "dosya": "img_07.png",
+      "bayt": 5019
+    },
+    {
+      "alt": "Soslar",
+      "src": "https://www.arbys.com.tr/cmsfiles/categories/urunler/small/soslar-1.png?v=175",
+      "durum": "indirildi",
+      "dosya": "img_08.png",
+      "bayt": 6973
+    },
+    {
+      "alt": "Ne Yediğini Bil!",
+      "src": "https://www.arbys.com.tr/Assets/Img/NYB_Logo-01.png",
+      "durum": "indirildi",
+      "dosya": "img_09.png",
+      "bayt": 202973
+    },
+    {
+      "alt": "Slide background",
+      "src": "https://www.arbys.com.tr/CmsFiles/SliderImages/93/2.jpg",
+      "durum": "indirildi",
+      "dosya": "img_10.jpg",
+      "bayt": 604112
+    },
+    {
+      "alt": "Slide background",
+      "src": "https://www.arbys.com.tr/CmsFiles/SliderImages/76/4.jpg",
+      "durum": "indirildi",
+      "dosya": "img_11.jpg",
+      "bayt": 449178
+    }
+  ],
+  "baslik": "Arby's Sandviç ve Diğer Tüm Arby's Ürünleri | Arby's Türkiye",
+  "metin_ornek": "Arby's Türkiye ÜRÜNLER KAMPANYALAR RESTORANLAR EN ÇOK SATANLAR Ete Doyuran Teklif Kaburga Peynirli Baget Menü Smoky Chicken Sandviç Menü Beef'n Cheddar XL Menü BİFTEK PHILLY BAGET Özel baharatlarıyla 12 saat marine edilmiş 4 saat ağır ağır fırınlanmış biftek eti, fırından çıkmış taptaze baget ekmeği",
+  "toplam_img": 105,
+  "alt_metinli_img": 105
+}
