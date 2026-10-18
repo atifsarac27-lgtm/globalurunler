@@ -105,6 +105,15 @@ class BirlestirPdfTesti(unittest.TestCase):
         self.assertIn("BURGER KİNG", kart)
         self.assertNotIn("<img", kart)
 
+    def test_latin_olmayan_haber_basligi_kartta_basilmaz(self):
+        haber = {"yeni_urun": [{"metin": "【大食い】ケンタッキーのバーガーがリニューアル！ (rquAMG2vKT) - Unisba Media",
+                                "url": "https://h/7", "marka_site": "KFC", "ulke_tespit": "Japonya",
+                                "urun_turu": "burger", "urun_adi": "",
+                                "aciklama": "KFC burgerlerini yenileyerek 3 yeni ürün sundu."}]}
+        kart = bp.kart_html(bp.haber_urunleri(haber)[0], Path("."))
+        self.assertNotIn("大食い", kart)
+        self.assertEqual(kart.count("KFC burgerlerini yenileyerek"), 1)
+
     def test_turkce_buyuk_harf(self):
         self.assertEqual(bp.tr_buyuk("içecek"), "İÇECEK")
         self.assertEqual(bp.tr_buyuk("sandviç"), "SANDVİÇ")

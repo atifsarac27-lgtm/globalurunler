@@ -487,12 +487,14 @@ def kart_html(u, kok):
     resmi = u["etiket"] == RESMI
     rozet_sinif, rozet = ("rr", "Resmi sitede yeni") if resmi else ("rh", "Haber: yeni ürün")
     yol = kok / u["gorsel_yolu"] if u["gorsel_yolu"] else None
+    kutuda = False
     if yol and yol.exists():
         gorsel = f'<div class="gorsel"><img src="{yol.as_uri()}"></div>'
     elif resmi:
         gorsel = '<div class="gorsel gy">Görsel yok</div>'
     elif u.get("urun_adi") or u.get("tur") or u.get("kutu_aciklama"):
         gorsel = kutu_html(u)
+        kutuda = True
     else:
         gorsel = f'<div class="gorsel hab">{e(kisalt(u["kaynak_adi"], 30) or HABER)}</div>'
     tarih = tr_tarih(u["tarih"])
@@ -507,13 +509,18 @@ def kart_html(u, kok):
     if resmi and ozet and latin_orani(u["ad"]) < 0.8:
         # Ürün adı Latin harfli değilse (Japonca, Çince vb.) Türkçe açıklama başlık olur; orijinal ad altta küçük yazılır.
         baslik, ozet, alt_ad = ozet, "", u["ad"]
+    elif not resmi and latin_orani(u["ad"]) < 0.8 and (kutuda or u.get("kutu_aciklama")):
+        # Haber başlığı Latin harfli değilse orijinal başlık kartta basılmaz; Türkçe özet kullanılır.
+        # Kutu aynı özeti zaten yazıyorsa alt başlık tekrar edilmez.
+        baslik, ozet = ("" if kutuda else u["kutu_aciklama"]), ""
     if alt_ad:
         aciklama = f'<div class="ac">{e(alt_ad)}</div>'
     else:
         aciklama = f'<div class="ac">{e(kisalt(ozet, 140))}</div>' if ozet else ""
+    ad_html = f'<div class="ad">{e(kisalt(baslik, 90))}</div>' if baslik else ""
     return (f'<div class="kart">{gorsel}<div class="govde">'
             f'<div class="ust"><span class="rz {rozet_sinif}">{rozet}</span><span>{ust_sag}</span></div>'
-            f'<div class="ad">{e(kisalt(baslik, 90))}</div>{aciklama}'
+            f'{ad_html}{aciklama}'
             f'<div class="kn"><span class="etk">Kaynak: {e(u["etiket"])}</span> · {kaynak}</div>'
             "</div></div>")
 
