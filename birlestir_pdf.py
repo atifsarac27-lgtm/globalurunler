@@ -17,7 +17,8 @@ import os
 import re
 import unicodedata
 import urllib.parse
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
+from difflib import SequenceMatcher
 from itertools import groupby
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -196,6 +197,59 @@ def haber_urunleri(haber):
     return urunler
 
 
+HABER_GUN = 30            # haberler: son 1 ay
+RESMI_GUN = 90            # resmi siteler: son 3 ay (tespit tarihine göre)
+SBARRO = "Sbarro"
+SBARRO_EN_AZ_URUN = 2     # Sbarro'da en az bu kadar ürün bulunana kadar geriye gidilir
+SBARRO_EN_FAZLA_GUN = 180 # ...ama en fazla bu kadar geriye
+
+
+def tarih_oku(s):
+    try:
+        return date.fromisoformat((s or "")[:10])
+    except ValueError:
+        return None
+
+
+def anahtar_baslik(metin):
+    return re.sub(r"\W+", " ", (metin or "").lower()).strip()
+
+
+def benzer_haberleri_birlestir(haberler):
+    """Aynı haberin farklı kaynaklardaki kopyalarını tek karta indirir; ek kaynak sayısını 'ek_kaynak' alanına yazar."""
+    tutulan = []
+    for u in sorted(haberler, key=lambda x: x["tarih"] or "", reverse=True):
+        a = anahtar_baslik(u["ad"])
+        esi = next((t for t in tutulan if t["marka"] == u["marka"]
+                    and SequenceMatcher(None, anahtar_baslik(t["ad"]), a).ratio() >= 0.85), None)
+        if esi:
+            esi["ek_kaynak"] = esi.get("ek_kaynak", 0) + 1
+        else:
+            tutulan.append(u)
+    return tutulan
+
+
+def haber_penceresi(haberler, bit):
+    """Haberler son HABER_GUN güne göre süzülür. Sbarro'da en az 2 ürün olana kadar en fazla 180 güne kadar bakılır."""
+    sinir = bit - timedelta(days=HABER_GUN)
+    sinir_sbarro = bit - timedelta(days=SBARRO_EN_FAZLA_GUN)
+    sonuc = []
+    for marka, grup in groupby(sorted(haberler, key=lambda u: u["marka"]), key=lambda u: u["marka"]):
+        grup = sorted(grup, key=lambda u: u["tarih"] or "", reverse=True)
+        tarihli = lambda u: tarih_oku(u["tarih"]) or date.min
+        if marka == SBARRO:
+            yakin = sum(1 for u in grup if tarihli(u) >= sinir)
+            sonuc += [u for u in grup if tarihli(u) >= sinir_sbarro][:max(yakin, SBARRO_EN_AZ_URUN)]
+        else:
+            sonuc += [u for u in grup if tarihli(u) >= sinir]
+    return sonuc
+
+
+def resmi_penceresi(resmi, bit):
+    sinir = bit - timedelta(days=RESMI_GUN)
+    return [u for u in resmi if (tarih_oku(u["tarih"]) or date.min) >= sinir]
+
+
 def sirala(urunler):
     return sorted(urunler, key=lambda u: (u["ulke"] == BILINMEYEN_ULKE, anahtar(u["ulke"]),
                                           0 if u["etiket"] == RESMI else 1, anahtar(u["ad"])))
@@ -230,6 +284,8 @@ def kart_html(u, kok):
     ust_sag = e(tarih)
     kaynak_metni = e(kisalt(u["kaynak_adi"], 40))
     kaynak = f'<a href="{e(u["adres"])}">{kaynak_metni}</a>' if u["adres"] else kaynak_metni
+    if u.get("ek_kaynak"):
+        kaynak += f' (+{u["ek_kaynak"]} kaynak)'
     aciklama = f'<div class="ac">{e(kisalt(u["aciklama"], 140))}</div>' if u["aciklama"] else ""
     return (f'<div class="kart">{gorsel}<div class="govde">'
             f'<div class="ust"><span class="rz {rozet_sinif}">{rozet}</span><span>{ust_sag}</span></div>'
@@ -270,6 +326,7 @@ def ozet_html(urunler, markalar):
 YONTEM = """<section class="sayfa"><h2>Yöntem ve kaynaklar</h2><ul class="yon">
 <li><b>Resmi site:</b> Markanın kendi sitesinde yeni olarak öne çıkardığı ürünler. Sitede çıkış tarihi yazmadığında tespit tarihi esas alınır.</li>
 <li><b>Haber:</b> Google Haberler'de marka ve yeni ürün kelimeleriyle geçen başlıklar. Yeni ürün olup olmadıkları ve hangi ülkeye ait oldukları başlıktan otomatik belirlendi; ülke belirtilmeyenler "Ülke belirtilmemiş" altında yer alır. Haber kaynağı başlığın sonundan alındı. Görsel, haber sayfasındaki paylaşım görselidir; bulunamazsa marka renkli bir kutu gösterilir: ürün türü, ürün adı ve kısa açıklama başlıktan alınır, uydurma bilgi eklenmez.</li>
+<li><b>Dönem:</b> Resmi siteler son 90 gün (tespit tarihine göre), haberler son 30 gün. Sbarro'da en az 2 ürün bulunana kadar en fazla 180 gün geriye bakıldı. Aynı haberin farklı kaynaklardaki kopyaları tek kartta gösterildi.</li>
 <li><b>Sınır:</b> Haber listesi otomatik derlendiği için ürün dışı ya da tekrar eden başlıklar bulunabilir.</li>
 </ul></section>"""
 
@@ -341,8 +398,9 @@ def main():
         uyarilar.append("Haber sonuçları yok; yalnızca resmi siteler yazıldı")
         haber = {}
 
-    resmi_liste = resmi_urunleri(veri)
-    haber_liste = haber_urunleri(haber)
+    bit = datetime.now(ISTANBUL).date()
+    resmi_liste = resmi_penceresi(resmi_urunleri(veri), bit)
+    haber_liste = haber_penceresi(benzer_haberleri_birlestir(haber_urunleri(haber)), bit)
     urunler = resmi_liste + haber_liste
     if not urunler:
         print("UYARI: yazılacak ürün yok, PDF üretilmedi")
@@ -350,7 +408,6 @@ def main():
 
     cikti = Path(a.cikti)
     cikti.parent.mkdir(parents=True, exist_ok=True)
-    bit = datetime.now(ISTANBUL).date()
     bas = bit - timedelta(days=a.gun)
     html_metni = rapor_html(urunler, cikti.resolve().parent, bas, bit, a.gun, uyarilar)
     pdf_yaz(html_metni, cikti, f"Global Yeni Ürünler · {tr_tarih(bas)} – {tr_tarih(bit)}")

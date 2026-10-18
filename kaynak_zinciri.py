@@ -29,6 +29,11 @@ from html.parser import HTMLParser
 UA = "Mozilla/5.0 (compatible; GlobalUrunRadar/1.0)"
 ZAMAN_ASIMI = 20
 GERIYE_GUN = 60
+SBARRO_GERIYE_GUN = 180  # Sbarro'da 2 ürün bulunana kadar en fazla bu kadar geriye bakılır
+
+
+def geriye_gun(marka):
+    return SBARRO_GERIYE_GUN if marka == "Sbarro" else GERIYE_GUN
 BASIN_IPUCU = ("press", "newsroom", "basin", "basın", "medya", "media", "haber", "news")
 # Kelime sınırlı eşleşme: "news", "newsroom" gibi menü linkleri "new" sayılmasın diye.
 YENI_RE = re.compile(r"\b(?:new|yeni|launch\w*|introduc\w*|debut\w*)\b|신메뉴|신제품|新品", re.I)
@@ -152,10 +157,10 @@ def katman_basin(site, ctx):
     return "yok", "basın sayfasında marka ya da yeni bağlantısı yok", []
 
 
-def rss_ogeleri(xml_metni, simdi=None):
-    """RSS'teki son GERIYE_GUN günlük haber başlıkları."""
+def rss_ogeleri(xml_metni, simdi=None, gun=None):
+    """RSS'teki son `gun` günlük haber başlıkları (verilmezse GERIYE_GUN)."""
     simdi = simdi or datetime.now(timezone.utc)
-    sinir = simdi - timedelta(days=GERIYE_GUN)
+    sinir = simdi - timedelta(days=gun or GERIYE_GUN)
     ogeler = []
     for item in ET.fromstring(xml_metni).iter("item"):
         baslik = (item.findtext("title") or "").strip()
@@ -198,7 +203,7 @@ YEREL_ARAMA = {
 }
 
 
-def haber_sorgula(marka, hl, gl, ceid, terimler):
+def haber_sorgula(marka, hl, gl, ceid, terimler, gun=None):
     """Google Haberler RSS'inde tek bir arama yapar. (öğeler, hata) döndürür; öğeler None ise hata var."""
     url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
         {"q": f'"{marka}" {terimler}', "hl": hl, "gl": gl, "ceid": ceid})
@@ -206,7 +211,7 @@ def haber_sorgula(marka, hl, gl, ceid, terimler):
     if not ok:
         return None, veri
     try:
-        return rss_ogeleri(veri), ""
+        return rss_ogeleri(veri, gun=gun), ""
     except ET.ParseError as e:
         return None, f"RSS ayrıştırılamadı: {e}"
 
@@ -223,19 +228,20 @@ def katman_haber(site, ctx):
     cc = ulke_kodu(site)
     marka = site["marka"]
     # Ülkeye özel haber sonucu: aksi halde her ülke için ABD haberleri gelir.
-    ogeler, hata = haber_sorgula(marka, "en-US", cc, f"{cc}:en", "(new OR launch OR yeni)")
+    gun = geriye_gun(marka)
+    ogeler, hata = haber_sorgula(marka, "en-US", cc, f"{cc}:en", "(new OR launch OR yeni)", gun)
     if ogeler is None:
         return "hata", hata, []
     ogeler = haber_filtrele(ogeler, marka)
     if cc in YEREL_ARAMA:
         hl, ceid, terimler, uyum = YEREL_ARAMA[cc]
-        yerel, _ = haber_sorgula(marka, hl, cc, ceid, terimler)
+        yerel, _ = haber_sorgula(marka, hl, cc, ceid, terimler, gun)
         if yerel:
             goruldu = {o["url"] for o in ogeler}
             ogeler += [o for o in haber_filtrele(yerel, marka, uyum) if o["url"] not in goruldu]
     if ogeler:
         return "ok", "", ogeler
-    return "yok", f"son {GERIYE_GUN} günde haber yok", []
+    return "yok", f"son {gun} günde haber yok", []
 
 
 KATMANLAR = [
