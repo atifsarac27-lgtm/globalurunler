@@ -58,6 +58,13 @@ class BirlestirPdfTesti(unittest.TestCase):
             html_metni = bp.rapor_html(urunler, Path(d), date(2026, 8, 19), date(2026, 10, 18), 60, [])
         self.assertLess(html_metni.index("<h2>Popeyes"), html_metni.index("<h2>KFC"))
 
+    def test_veri_olmayan_marka_bulunamadi_yazar(self):
+        urunler = bp.resmi_urunleri(VERI) + bp.haber_urunleri(HABER)
+        with tempfile.TemporaryDirectory() as d:
+            html_metni = bp.rapor_html(urunler, Path(d), date(2026, 8, 19), date(2026, 10, 18), 60, [])
+        self.assertIn("<h2>Sbarro", html_metni)
+        self.assertIn("bulunamadı", html_metni)
+
     def test_pdf_dosyasi_uretilir(self):
         urunler = bp.resmi_urunleri(VERI) + bp.haber_urunleri(HABER)
         try:

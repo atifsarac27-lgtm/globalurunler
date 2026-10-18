@@ -174,6 +174,9 @@ def kart_html(u, kok):
 
 
 def marka_bolumu(marka, urunler, kok):
+    if not urunler:
+        return (f'<section class="sayfa"><h2>{e(marka)}<span class="sayi">bulunamadı</span></h2>'
+                '<p class="not">Bu dönemde bu markada yeni ürün bulunamadı.</p></section>')
     kartlar = "".join(kart_html(u, kok) for u in sirala(urunler))
     return (f'<section class="sayfa"><h2>{e(marka)}<span class="sayi">{len(urunler)} ürün</span></h2>'
             f'<div class="grid">{kartlar}</div></section>')
@@ -184,6 +187,9 @@ def ozet_html(urunler, markalar):
     for m in markalar:
         r = sum(1 for u in urunler if u["marka"] == m and u["etiket"] == RESMI)
         h = sum(1 for u in urunler if u["marka"] == m and u["etiket"] == HABER)
+        if r + h == 0:
+            satirlar.append(f'<tr><td><b>{e(m)}</b></td><td class="s" colspan="3">bulunamadı</td></tr>')
+            continue
         satirlar.append(f'<tr><td><b>{e(m)}</b></td><td class="s">{r}</td><td class="s">{h}</td>'
                         f'<td class="s">{r + h}</td></tr>')
     return ('<section class="sayfa"><h2>Özet</h2><table class="k"><thead><tr><th>Marka</th>'
@@ -199,7 +205,8 @@ YONTEM = """<section class="sayfa"><h2>Yöntem ve kaynaklar</h2><ul class="yon">
 
 
 def rapor_html(urunler, kok, bas, bit, gun, uyarilar):
-    markalar = sorted({u["marka"] for u in urunler}, key=marka_sirasi)
+    # Veri olmayan markalar da (bulunamadı olarak) raporda yer alır.
+    markalar = sorted(set(MARKA_SIRA) | {u["marka"] for u in urunler}, key=marka_sirasi)
     resmi = sum(1 for u in urunler if u["etiket"] == RESMI)
     ulke_sayisi = len({u["ulke"] for u in urunler if u["ulke"] != "-"})
     uyari_html = "".join(f'<div class="uyari"><b>UYARI:</b> {e(u)}</div>' for u in uyarilar)
