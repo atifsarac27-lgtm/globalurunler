@@ -5,8 +5,8 @@ Kullanım:
 
 Kurallar:
 - Her ürün kartında kaynak yazar: "Kaynak: Resmi site" ya da "Kaynak: Haber" (haber sitesinin adıyla).
-- Markalar MARKA_SIRA sırasıyla gelir; her markada ülkeye, sonra kaynağa göre sıralanır.
-- Görseli olmayan resmi ürün ve tüm haber kartları görsel yerine bir kutu gösterir.
+- Markalar MARKA_SIRA sırasıyla gelir; her markanın altında ülke başlıkları vardır (ülkesi bilinmeyenler en sonda).
+- Haber kartında görsel yoksa kutuda haber sitesinin adı yazar. Resmi üründe görsel yoksa "Görsel yok" yazar.
 - Dönem uzunluğu DONEM_GUN ortam değişkeninden alınır (varsayılan 60).
 - Haber dosyası yoksa yalnızca resmi siteler yazılır.
 """
@@ -16,6 +16,7 @@ import json
 import os
 import urllib.parse
 from datetime import datetime, timedelta
+from itertools import groupby
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -24,6 +25,7 @@ AYLAR = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
          "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
 ISTANBUL = ZoneInfo("Europe/Istanbul")
 RESMI, HABER = "Resmi site", "Haber"
+BILINMEYEN_ULKE = "Ülke belirtilmemiş"
 
 PDF_CSS = """
 @page { size: A4 landscape; }
@@ -33,6 +35,8 @@ section.sayfa { break-before: page; }
 h1 { font-size: 34pt; margin: 0 0 8pt; letter-spacing: -.015em; line-height: 1.1; }
 h2 { font-size: 19pt; margin: 0 0 10pt; padding-bottom: 5pt; border-bottom: 2.2pt solid #1d1d1b; break-after: avoid; }
 h2 .sayi { font-size: 10pt; color: #6b6b66; font-weight: 400; margin-left: 6pt; }
+h3.ulke { font-size: 12pt; margin: 12pt 0 6pt; padding-bottom: 3pt; border-bottom: 1pt solid #d8d7d0; break-after: avoid; }
+h3.ulke .sayi { font-size: 8.5pt; color: #6b6b66; font-weight: 400; margin-left: 6pt; }
 .ust-yazi { font-size: 9pt; letter-spacing: .15em; color: #6b6b66; margin-bottom: 10pt; }
 .alt { color: #6b6b66; font-size: 10pt; }
 .not { color: #44443f; font-size: 9.5pt; margin: 10pt 0; }
@@ -46,7 +50,7 @@ h2 .sayi { font-size: 10pt; color: #6b6b66; font-weight: 400; margin-left: 6pt; 
 .gorsel { height: 110pt; background: #f4f3ef; display: flex; align-items: center; justify-content: center; }
 .gorsel img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .gorsel.gy { color: #8a8a84; font-size: 9pt; }
-.gorsel.hab { background: #eef2f8; color: #2b4f8a; font-size: 11pt; font-weight: 700; letter-spacing: .08em; }
+.gorsel.hab { background: #eef2f8; color: #2b4f8a; font-size: 10pt; font-weight: 700; padding: 0 12pt; text-align: center; line-height: 1.25; }
 .govde { padding: 7pt 9pt 8pt; }
 .ust { display: flex; justify-content: space-between; align-items: center; gap: 6pt; font-size: 8pt; color: #6b6b66; margin-bottom: 4pt; }
 .rz { padding: 1pt 7pt; border-radius: 99pt; font-weight: 700; font-size: 7.5pt; white-space: nowrap; }
@@ -115,6 +119,12 @@ def json_oku(yol):
         return None
 
 
+def ulke_adi(s):
+    """Ülke adı yoksa ya da belirsizse 'Ülke belirtilmemiş' döner."""
+    s = (s or "").strip()
+    return s if s and s.lower() not in ("-", "belirsiz") else BILINMEYEN_ULKE
+
+
 def resmi_urunleri(veri):
     urunler = []
     for a in veri.get("tum", []):
@@ -122,10 +132,11 @@ def resmi_urunleri(veri):
             continue
         adres = (a.get("kaynaklar") or [{}])[0].get("adres") or a.get("site_adresi") or ""
         urunler.append({
-            "etiket": RESMI, "marka": a.get("marka") or "Diğer", "ulke": a.get("ulke") or "-",
+            "etiket": RESMI, "marka": a.get("marka") or "Diğer", "ulke": ulke_adi(a.get("ulke")),
             "ad": a.get("ad", ""),
             "aciklama": " ".join(x for x in [a.get("aciklama"), a.get("fiyat")] if x),
-            "tarih": a.get("tespit_tarihi") or "", "gorsel": a.get("gorsel") or "",
+            "tarih": a.get("tespit_tarihi") or "",
+            "gorsel_yolu": f"gorseller/{a['gorsel']}" if a.get("gorsel") else "",
             "adres": adres, "kaynak_adi": alan_adi(adres),
         })
     return urunler
@@ -138,31 +149,32 @@ def haber_urunleri(haber):
         adres = k.get("url") or ""
         urunler.append({
             "etiket": HABER, "marka": k.get("marka_site") or k.get("marka") or "Diğer",
-            "ulke": k.get("ulke") or "-", "ad": baslik, "aciklama": "",
-            "tarih": k.get("tarih") or "", "gorsel": "", "adres": adres,
+            "ulke": ulke_adi(k.get("ulke_tespit")), "ad": baslik, "aciklama": "",
+            "tarih": k.get("tarih") or "", "gorsel_yolu": k.get("gorsel") or "", "adres": adres,
             "kaynak_adi": kaynak or alan_adi(adres),
         })
     return urunler
 
 
 def sirala(urunler):
-    return sorted(urunler, key=lambda u: (anahtar(u["ulke"]), 0 if u["etiket"] == RESMI else 1, anahtar(u["ad"])))
+    return sorted(urunler, key=lambda u: (u["ulke"] == BILINMEYEN_ULKE, anahtar(u["ulke"]),
+                                          0 if u["etiket"] == RESMI else 1, anahtar(u["ad"])))
 
 
 def kart_html(u, kok):
     resmi = u["etiket"] == RESMI
     rozet_sinif, rozet = ("rr", "Resmi sitede yeni") if resmi else ("rh", "Haber: yeni ürün")
-    yol = kok / "gorseller" / u["gorsel"] if u["gorsel"] else None
+    yol = kok / u["gorsel_yolu"] if u["gorsel_yolu"] else None
     if yol and yol.exists():
         gorsel = f'<div class="gorsel"><img src="{yol.as_uri()}"></div>'
     elif resmi:
         gorsel = '<div class="gorsel gy">Görsel yok</div>'
     else:
-        gorsel = '<div class="gorsel hab">HABER</div>'
+        gorsel = f'<div class="gorsel hab">{e(kisalt(u["kaynak_adi"], 30) or HABER)}</div>'
     tarih = tr_tarih(u["tarih"])
     if tarih and resmi:
         tarih = "tespit " + tarih
-    ust_sag = e(u["ulke"]) + (" · " + e(tarih) if tarih else "")
+    ust_sag = e(tarih)
     kaynak_metni = e(kisalt(u["kaynak_adi"], 40))
     kaynak = f'<a href="{e(u["adres"])}">{kaynak_metni}</a>' if u["adres"] else kaynak_metni
     aciklama = f'<div class="ac">{e(kisalt(u["aciklama"], 140))}</div>' if u["aciklama"] else ""
@@ -177,9 +189,14 @@ def marka_bolumu(marka, urunler, kok):
     if not urunler:
         return (f'<section class="sayfa"><h2>{e(marka)}<span class="sayi">bulunamadı</span></h2>'
                 '<p class="not">Bu dönemde bu markada yeni ürün bulunamadı.</p></section>')
-    kartlar = "".join(kart_html(u, kok) for u in sirala(urunler))
+    bloklar = []
+    for ulke, grup in groupby(sirala(urunler), key=lambda u: u["ulke"]):
+        grup = list(grup)
+        kartlar = "".join(kart_html(u, kok) for u in grup)
+        bloklar.append(f'<h3 class="ulke">{e(ulke)}<span class="sayi">{len(grup)} ürün</span></h3>'
+                       f'<div class="grid">{kartlar}</div>')
     return (f'<section class="sayfa"><h2>{e(marka)}<span class="sayi">{len(urunler)} ürün</span></h2>'
-            f'<div class="grid">{kartlar}</div></section>')
+            f'{"".join(bloklar)}</section>')
 
 
 def ozet_html(urunler, markalar):
@@ -199,7 +216,7 @@ def ozet_html(urunler, markalar):
 
 YONTEM = """<section class="sayfa"><h2>Yöntem ve kaynaklar</h2><ul class="yon">
 <li><b>Resmi site:</b> Markanın kendi sitesinde yeni olarak öne çıkardığı ürünler. Sitede çıkış tarihi yazmadığında tespit tarihi esas alınır.</li>
-<li><b>Haber:</b> Google Haberler'de marka ve yeni ürün kelimeleriyle geçen başlıklar. Yeni ürün olup olmadıkları otomatik olarak sınıflandırıldı. Haber kaynağı başlığın sonundan alındı.</li>
+<li><b>Haber:</b> Google Haberler'de marka ve yeni ürün kelimeleriyle geçen başlıklar. Yeni ürün olup olmadıkları ve hangi ülkeye ait oldukları başlıktan otomatik belirlendi; ülke belirtilmeyenler "Ülke belirtilmemiş" altında yer alır. Haber kaynağı başlığın sonundan alındı. Görsel, haber sayfasındaki paylaşım görselidir; bulunamazsa kaynağın adı yazılır.</li>
 <li><b>Sınır:</b> Haber listesi otomatik derlendiği için ürün dışı ya da tekrar eden başlıklar bulunabilir.</li>
 </ul></section>"""
 
@@ -208,7 +225,7 @@ def rapor_html(urunler, kok, bas, bit, gun, uyarilar):
     # Veri olmayan markalar da (bulunamadı olarak) raporda yer alır.
     markalar = sorted(set(MARKA_SIRA) | {u["marka"] for u in urunler}, key=marka_sirasi)
     resmi = sum(1 for u in urunler if u["etiket"] == RESMI)
-    ulke_sayisi = len({u["ulke"] for u in urunler if u["ulke"] != "-"})
+    ulke_sayisi = len({u["ulke"] for u in urunler if u["ulke"] != BILINMEYEN_ULKE})
     uyari_html = "".join(f'<div class="uyari"><b>UYARI:</b> {e(u)}</div>' for u in uyarilar)
     kapak = (f'<section class="kapak"><div class="ust-yazi">GLOBAL YENİ ÜRÜNLER</div>'
              f'<h1>{tr_tarih(bas)} – {tr_tarih(bit)}</h1>'

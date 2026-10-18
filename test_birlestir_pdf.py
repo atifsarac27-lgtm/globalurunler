@@ -14,7 +14,7 @@ VERI = {"tum": [
 ]}
 HABER = {"yeni_urun": [
     {"metin": "Popeyes launches new biscuit - Nation's Restaurant News", "url": "https://n/1",
-     "marka_site": "Popeyes", "ulke": "ABD", "tarih": "2026-10-10"},
+     "marka_site": "Popeyes", "ulke_tespit": "ABD", "tarih": "2026-10-10"},
 ]}
 
 
@@ -64,6 +64,47 @@ class BirlestirPdfTesti(unittest.TestCase):
             html_metni = bp.rapor_html(urunler, Path(d), date(2026, 8, 19), date(2026, 10, 18), 60, [])
         self.assertIn("<h2>Sbarro", html_metni)
         self.assertIn("bulunamadı", html_metni)
+
+    def test_haber_ulkesi_yalnizca_basliktan_gelir(self):
+        haber = {"yeni_urun": [{"metin": "Popeyes yeni tavuk - X", "url": "https://n/2",
+                                "marka_site": "Popeyes", "ulke": "Kanada"}]}
+        self.assertEqual(bp.haber_urunleri(haber)[0]["ulke"], bp.BILINMEYEN_ULKE)
+
+    def test_ulke_adi_belirsizse_bilinmeyen(self):
+        self.assertEqual(bp.ulke_adi("belirsiz"), bp.BILINMEYEN_ULKE)
+        self.assertEqual(bp.ulke_adi(""), bp.BILINMEYEN_ULKE)
+        self.assertEqual(bp.ulke_adi("Singapur"), "Singapur")
+
+    def test_haber_gorseli_varsa_resim_yazilir(self):
+        with tempfile.TemporaryDirectory() as d:
+            kok = Path(d)
+            (kok / "haber_gorseller").mkdir()
+            (kok / "haber_gorseller" / "a.jpg").write_bytes(b"\xff\xd8\xff")
+            haber = {"yeni_urun": [{"metin": "Popeyes yeni tavuk - Hürriyet", "url": "https://h/1",
+                                    "marka_site": "Popeyes", "ulke_tespit": "Türkiye",
+                                    "gorsel": "haber_gorseller/a.jpg"}]}
+            kart = bp.kart_html(bp.haber_urunleri(haber)[0], kok)
+        self.assertIn("<img src=", kart)
+
+    def test_haber_gorseli_yoksa_kaynak_sitesi_adi_yazar(self):
+        with tempfile.TemporaryDirectory() as d:
+            kart = bp.kart_html(bp.haber_urunleri(HABER)[0], Path(d))
+        self.assertIn('class="gorsel hab">Nation', kart)
+        self.assertNotIn("<img", kart)
+
+    def test_ulke_basliklari_marka_icinde_sirali(self):
+        haber = {"yeni_urun": [
+            {"metin": "Popeyes yeni A - X", "url": "https://h/1", "marka_site": "Popeyes", "ulke_tespit": "Singapur"},
+            {"metin": "Popeyes yeni B - Y", "url": "https://h/2", "marka_site": "Popeyes", "ulke_tespit": "belirsiz"},
+            {"metin": "Popeyes yeni C - Z", "url": "https://h/3", "marka_site": "Popeyes", "ulke_tespit": "Japonya"},
+        ]}
+        with tempfile.TemporaryDirectory() as d:
+            html_metni = bp.rapor_html(bp.haber_urunleri(haber), Path(d), date(2026, 8, 19), date(2026, 10, 18), 60, [])
+        japonya = html_metni.index('<h3 class="ulke">Japonya')
+        singapur = html_metni.index('<h3 class="ulke">Singapur')
+        bilinmeyen = html_metni.index(f'<h3 class="ulke">{bp.BILINMEYEN_ULKE}')
+        self.assertLess(japonya, singapur)
+        self.assertLess(singapur, bilinmeyen)
 
     def test_pdf_dosyasi_uretilir(self):
         urunler = bp.resmi_urunleri(VERI) + bp.haber_urunleri(HABER)

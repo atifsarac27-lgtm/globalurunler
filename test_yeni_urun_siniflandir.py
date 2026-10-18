@@ -28,6 +28,15 @@ class SiniflandirmaTesti(unittest.TestCase):
         self.assertTrue(kararlar[0]["yeni_urun"])
         self.assertFalse(kararlar[1]["yeni_urun"])
 
+    def test_ulke_basliktan_alinir_yoksa_belirsiz(self):
+        basliklar = [{"metin": "A", "url": "1", "marka_site": "KFC"},
+                     {"metin": "B", "url": "2", "marka_site": "KFC"}]
+        sahte = lambda istem: ('[{"i": 0, "yeni_urun": true, "marka": "KFC", "ulke": "Singapur"}, '
+                               '{"i": 1, "yeni_urun": true, "marka": "KFC"}]')
+        kararlar, _ = ys.siniflandir(basliklar, cagri=sahte)
+        self.assertEqual(kararlar[0]["ulke_tespit"], "Singapur")
+        self.assertEqual(kararlar[1]["ulke_tespit"], "belirsiz")
+
     def test_cagri_siniri_asilirsa_uyari_verir(self):
         basliklar = [{"metin": f"x{k}", "url": "", "marka_site": "KFC"} for k in range(60)]
         sayac = {"n": 0}

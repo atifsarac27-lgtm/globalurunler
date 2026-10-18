@@ -28,7 +28,9 @@ ISTEM = """Aşağıda fast food markalarıyla ilgili haber başlıkları var. He
   Kampanya, fiyat, mağaza açılışı, hisse/finans, yorum/analiz, şirket haberi, reklam kampanyası, sadakat programı ise false.
   Mevcut bir ürünün yenilenmesi, iyileştirilmesi veya yeniden tasarlanması da yeni ürün sayılır (ör. "yenilenmiş nugget", "yeni Whopper"). Personel, şirket stratejisi ve yorumlar bu kapsamda değildir.
 - marka: Başlıkta geçen ana marka (Burger King, Popeyes, Arby's, Subway, McDonald's, KFC, Sbarro veya diğer).
-Yalnızca şu biçimde JSON dizisi döndür: [{"i": 0, "yeni_urun": true, "marka": "KFC"}, ...]
+- ulke: Yeni ürünün çıktığı ülke, başlıkta açıkça geçiyorsa Türkçe adıyla (ör. "Singapur", "Japonya", "ABD").
+  Başlıkta açıkça geçmiyorsa "belirsiz" yaz. Tahmin etme.
+Yalnızca şu biçimde JSON dizisi döndür: [{"i": 0, "yeni_urun": true, "marka": "KFC", "ulke": "Singapur"}, ...]
 
 Başlıklar:
 """
@@ -71,7 +73,7 @@ def benzersiz_basliklar(sonuclar):
         for a in s["adaylar"]:
             if s["sonuc"] == "haber RSS" and not a.get("tekrar"):
                 liste.append({"metin": a["metin"], "url": a["url"], "marka_site": s["marka"],
-                              "ulke": s.get("ulke", ""), "tarih": a.get("tarih", "")})
+                              "tarih": a.get("tarih", "")})
     return liste
 
 
@@ -92,7 +94,8 @@ def siniflandir(basliklar, cagri=gemini_cagri, cagri_siniri=MAX_CAGRI):
             k = karar.get("i")
             if isinstance(k, int) and 0 <= k < len(grup):
                 kararlar.append({**grup[k], "yeni_urun": bool(karar.get("yeni_urun")),
-                                 "marka": karar.get("marka", "")})
+                                 "marka": karar.get("marka", ""),
+                                 "ulke_tespit": str(karar.get("ulke") or "belirsiz").strip()})
     return kararlar, uyarilar
 
 
