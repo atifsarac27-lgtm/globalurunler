@@ -4,9 +4,6 @@ name: Haber görseli testi
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write   # sonucu test_sonuc/ klasörüne kaydetmek için
-
 jobs:
   deneme:
     runs-on: ubuntu-latest
@@ -34,26 +31,3 @@ jobs:
         if: always()
         run: |
           if [ -f rapor/gorsel_testi.md ]; then cat rapor/gorsel_testi.md >> "$GITHUB_STEP_SUMMARY"; fi
-
-      - name: Sonucu depoya kaydet
-        if: always()
-        run: |
-          if [ -f rapor/gorsel_testi.md ]; then mkdir -p test_sonuc && cp rapor/gorsel_testi.md test_sonuc/; fi
-          git config user.name "radar-bot"
-          git config user.email "radar-bot@users.noreply.github.com"
-          git add test_sonuc
-          if git diff --cached --quiet; then
-            echo "Kaydedilecek sonuç yok."
-          else
-            git commit -m "Görsel testi sonucu"
-            git pull -q --rebase
-            git push -q
-          fi
-
-      - name: Sonucu yükle
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: gorsel-testi
-          path: rapor/gorsel_testi.md
-          retention-days: 14
