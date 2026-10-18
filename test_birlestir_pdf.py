@@ -92,6 +92,23 @@ class BirlestirPdfTesti(unittest.TestCase):
         self.assertIn('class="gorsel hab">Nation', kart)
         self.assertNotIn("<img", kart)
 
+    def test_haber_kutusu_tur_ad_ve_marka_rengi(self):
+        haber = {"yeni_urun": [{"metin": "Burger King nugget yenilendi - X", "url": "https://h/9",
+                                "marka_site": "Burger King", "ulke_tespit": "ABD",
+                                "urun_turu": "nugget", "urun_adi": "Le Nugguette",
+                                "aciklama": "Nugget'a yeni bir dokunuş geldi."}]}
+        kart = bp.kart_html(bp.haber_urunleri(haber)[0], Path("."))
+        self.assertIn('class="gorsel mkt"', kart)
+        self.assertIn("background:#D62300", kart)
+        self.assertIn("YENİ NUGGET", kart)
+        self.assertIn("Le Nugguette", kart)
+        self.assertIn("BURGER KİNG", kart)
+        self.assertNotIn("<img", kart)
+
+    def test_turkce_buyuk_harf(self):
+        self.assertEqual(bp.tr_buyuk("içecek"), "İÇECEK")
+        self.assertEqual(bp.tr_buyuk("sandviç"), "SANDVİÇ")
+
     def test_ulke_basliklari_marka_icinde_sirali(self):
         haber = {"yeni_urun": [
             {"metin": "Popeyes yeni A - X", "url": "https://h/1", "marka_site": "Popeyes", "ulke_tespit": "Singapur"},

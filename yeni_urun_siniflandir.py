@@ -30,7 +30,11 @@ ISTEM = """Aşağıda fast food markalarıyla ilgili haber başlıkları var. He
 - marka: Başlıkta geçen ana marka (Burger King, Popeyes, Arby's, Subway, McDonald's, KFC, Sbarro veya diğer).
 - ulke: Yeni ürünün çıktığı ülke, başlıkta açıkça geçiyorsa Türkçe adıyla (ör. "Singapur", "Japonya", "ABD").
   Başlıkta açıkça geçmiyorsa "belirsiz" yaz. Tahmin etme.
-Yalnızca şu biçimde JSON dizisi döndür: [{"i": 0, "yeni_urun": true, "marka": "KFC", "ulke": "Singapur"}, ...]
+- urun_turu: yeni_urun true ise ürünün türü, Türkçe ve kısa (ör. "nugget", "sandviç", "içecek", "menü", "tatlı", "atıştırmalık"). Başlıkta yoksa "" yaz.
+- urun_adi: yeni_urun true ise başlıkta geçen ürün adı, başlıktaki yazımıyla (ör. "Le Nugguette"). Başlıkta yoksa "" yaz.
+- aciklama: yeni_urun true ise başlığa dayanarak tek kısa Türkçe cümle (en fazla 90 karakter). Yalnızca başlıkta yazan bilgiyi kullan, bir şey ekleme ve tahmin yürütme.
+Yeni ürün değilse bu üç alan "" olsun.
+Yalnızca şu biçimde JSON dizisi döndür: [{"i": 0, "yeni_urun": true, "marka": "KFC", "ulke": "Singapur", "urun_turu": "menü", "urun_adi": "Cheetos ile menü", "aciklama": "KFC ve Cheetos ortak yeni bir menü çıkardı."}, ...]
 
 Başlıklar:
 """
@@ -95,7 +99,10 @@ def siniflandir(basliklar, cagri=gemini_cagri, cagri_siniri=MAX_CAGRI):
             if isinstance(k, int) and 0 <= k < len(grup):
                 kararlar.append({**grup[k], "yeni_urun": bool(karar.get("yeni_urun")),
                                  "marka": karar.get("marka", ""),
-                                 "ulke_tespit": str(karar.get("ulke") or "belirsiz").strip()})
+                                 "ulke_tespit": str(karar.get("ulke") or "belirsiz").strip(),
+                                 "urun_turu": str(karar.get("urun_turu") or "").strip(),
+                                 "urun_adi": str(karar.get("urun_adi") or "").strip(),
+                                 "aciklama": str(karar.get("aciklama") or "").strip()[:120]})
     return kararlar, uyarilar
 
 

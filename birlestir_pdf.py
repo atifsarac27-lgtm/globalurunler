@@ -51,6 +51,11 @@ h3.ulke .sayi { font-size: 8.5pt; color: #6b6b66; font-weight: 400; margin-left:
 .gorsel img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .gorsel.gy { color: #8a8a84; font-size: 9pt; }
 .gorsel.hab { background: #eef2f8; color: #2b4f8a; font-size: 10pt; font-weight: 700; padding: 0 12pt; text-align: center; line-height: 1.25; }
+.gorsel.mkt { height: auto; min-height: 118pt; display: block; text-align: left; padding: 10pt 12pt; box-sizing: border-box; color: #fff; overflow: hidden; }
+.mkt .mk { font-size: 7.5pt; letter-spacing: .14em; opacity: .92; }
+.mkt .tu { font-size: 8.5pt; font-weight: 700; letter-spacing: .06em; margin-top: 9pt; }
+.mkt .ua { font-size: 14pt; font-weight: 700; line-height: 1.15; margin-top: 1pt; }
+.mkt .ak { font-size: 8.5pt; line-height: 1.35; margin-top: 6pt; }
 .govde { padding: 7pt 9pt 8pt; }
 .ust { display: flex; justify-content: space-between; align-items: center; gap: 6pt; font-size: 8pt; color: #6b6b66; margin-bottom: 4pt; }
 .rz { padding: 1pt 7pt; border-radius: 99pt; font-weight: 700; font-size: 7.5pt; white-space: nowrap; }
@@ -125,6 +130,23 @@ def ulke_adi(s):
     return s if s and s.lower() not in ("-", "belirsiz") else BILINMEYEN_ULKE
 
 
+MARKA_RENK = [  # (marka adında geçen parça, kutu rengi)
+    ("burger king", "#D62300"), ("popeyes", "#F47A2B"), ("kfc", "#E4002B"),
+    ("mcdonald", "#DA291C"), ("subway", "#00703C"), ("arby", "#2E3B55"), ("sbarro", "#A6192E"),
+]
+KUTU_VARSAYILAN_RENK = "#4a4a45"
+
+
+def tr_buyuk(s):
+    """Türkçe büyük harf: 'i' -> 'İ' (Python varsayılanı 'I' yapar)."""
+    return (s or "").replace("i", "İ").upper()
+
+
+def marka_rengi(marka):
+    m = (marka or "").lower()
+    return next((renk for parca, renk in MARKA_RENK if parca in m), KUTU_VARSAYILAN_RENK)
+
+
 def resmi_urunleri(veri):
     urunler = []
     for a in veri.get("tum", []):
@@ -152,6 +174,8 @@ def haber_urunleri(haber):
             "ulke": ulke_adi(k.get("ulke_tespit")), "ad": baslik, "aciklama": "",
             "tarih": k.get("tarih") or "", "gorsel_yolu": k.get("gorsel") or "", "adres": adres,
             "kaynak_adi": kaynak or alan_adi(adres),
+            "tur": k.get("urun_turu") or "", "urun_adi": k.get("urun_adi") or "",
+            "kutu_aciklama": k.get("aciklama") or "",
         })
     return urunler
 
@@ -159,6 +183,17 @@ def haber_urunleri(haber):
 def sirala(urunler):
     return sorted(urunler, key=lambda u: (u["ulke"] == BILINMEYEN_ULKE, anahtar(u["ulke"]),
                                           0 if u["etiket"] == RESMI else 1, anahtar(u["ad"])))
+
+
+def kutu_html(u):
+    """Haber görseli yoksa: marka renkli kutu (marka, ürün türü, ürün adı, kısa açıklama)."""
+    tur = f"YENİ {tr_buyuk(u['tur'])}" if u.get("tur") else "YENİ ÜRÜN"
+    ad = kisalt(u.get("urun_adi") or u["ad"], 40)
+    aciklama = f'<div class="ak">{e(kisalt(u["kutu_aciklama"], 110))}</div>' if u.get("kutu_aciklama") else ""
+    return (f'<div class="gorsel mkt" style="background:{marka_rengi(u["marka"])}">'
+            f'<div class="mk">{e(tr_buyuk(u["marka"]))}</div>'
+            f'<div class="tu">{e(tur)}</div>'
+            f'<div class="ua">{e(ad)}</div>{aciklama}</div>')
 
 
 def kart_html(u, kok):
@@ -169,6 +204,8 @@ def kart_html(u, kok):
         gorsel = f'<div class="gorsel"><img src="{yol.as_uri()}"></div>'
     elif resmi:
         gorsel = '<div class="gorsel gy">Görsel yok</div>'
+    elif u.get("urun_adi") or u.get("tur") or u.get("kutu_aciklama"):
+        gorsel = kutu_html(u)
     else:
         gorsel = f'<div class="gorsel hab">{e(kisalt(u["kaynak_adi"], 30) or HABER)}</div>'
     tarih = tr_tarih(u["tarih"])
@@ -216,7 +253,7 @@ def ozet_html(urunler, markalar):
 
 YONTEM = """<section class="sayfa"><h2>Yöntem ve kaynaklar</h2><ul class="yon">
 <li><b>Resmi site:</b> Markanın kendi sitesinde yeni olarak öne çıkardığı ürünler. Sitede çıkış tarihi yazmadığında tespit tarihi esas alınır.</li>
-<li><b>Haber:</b> Google Haberler'de marka ve yeni ürün kelimeleriyle geçen başlıklar. Yeni ürün olup olmadıkları ve hangi ülkeye ait oldukları başlıktan otomatik belirlendi; ülke belirtilmeyenler "Ülke belirtilmemiş" altında yer alır. Haber kaynağı başlığın sonundan alındı. Görsel, haber sayfasındaki paylaşım görselidir; bulunamazsa kaynağın adı yazılır.</li>
+<li><b>Haber:</b> Google Haberler'de marka ve yeni ürün kelimeleriyle geçen başlıklar. Yeni ürün olup olmadıkları ve hangi ülkeye ait oldukları başlıktan otomatik belirlendi; ülke belirtilmeyenler "Ülke belirtilmemiş" altında yer alır. Haber kaynağı başlığın sonundan alındı. Görsel, haber sayfasındaki paylaşım görselidir; bulunamazsa marka renkli bir kutu gösterilir: ürün türü, ürün adı ve kısa açıklama başlıktan alınır, uydurma bilgi eklenmez.</li>
 <li><b>Sınır:</b> Haber listesi otomatik derlendiği için ürün dışı ya da tekrar eden başlıklar bulunabilir.</li>
 </ul></section>"""
 
