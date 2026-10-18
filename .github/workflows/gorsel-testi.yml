@@ -1,0 +1,36 @@
+name: Haber görseli testi
+
+# Elle başlatılır. Gemini kullanmaz; yalnızca birkaç haber bağlantısında görsel çekmeyi dener.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Dosyaları al
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bağlantı çözücüyü kur
+        continue-on-error: true
+        run: pip install googlenewsdecoder
+
+      - name: Haber adaylarını topla
+        run: mkdir -p rapor && python kaynak_zinciri.py --veri arsiv/son-veri.json --cikti rapor/kaynak_sonuc.json --limit 40
+
+      - name: Görsel testini çalıştır
+        run: python haber_gorsel_testi.py --kaynak rapor/kaynak_sonuc.json --cikti rapor/gorsel_testi.md --adet 10
+
+      - name: Sonucu özet olarak göster
+        if: always()
+        run: |
+          if [ -f rapor/gorsel_testi.md ]; then cat rapor/gorsel_testi.md >> "$GITHUB_STEP_SUMMARY"; fi
