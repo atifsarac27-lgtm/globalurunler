@@ -1,13 +1,16 @@
-name: Haber görseli testi
+name: Foto denemesi
 
-# Elle başlatılır. Gemini kullanmaz; birkaç haber bağlantısında görsel çekmeyi dener.
+# Elle başlatılır. Tek marka sitesinden ürün adı ve fotoğraf denemesi yapar. Gemini kullanmaz.
 on:
   workflow_dispatch:
+
+permissions:
+  contents: write   # sonucu ayrı bir dala (foto-denemesi) yazmak için
 
 jobs:
   deneme:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 20
     steps:
       - name: Dosyaları al
         uses: actions/checkout@v4
@@ -17,17 +20,21 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Bağlantı çözücüyü kur
-        continue-on-error: true
-        run: pip install googlenewsdecoder "selectolax<1.0"
+      - name: Deneme sitesini tara
+        run: python foto_denemesi.py --adres https://www.kfcturkiye.com/ --kok rapor/foto_deneme
 
-      - name: Haber adaylarını topla
-        run: mkdir -p rapor && python kaynak_zinciri.py --veri arsiv/son-veri.json --cikti rapor/kaynak_sonuc.json --limit 40
-
-      - name: Görsel testini çalıştır
-        run: python haber_gorsel_testi.py --kaynak rapor/kaynak_sonuc.json --cikti rapor/gorsel_testi.md --adet 10
-
-      - name: Sonucu özet olarak göster
+      - name: Sonucu foto-denemesi dalına kaydet
         if: always()
         run: |
-          if [ -f rapor/gorsel_testi.md ]; then cat rapor/gorsel_testi.md >> "$GITHUB_STEP_SUMMARY"; fi
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git checkout -q -B foto-denemesi
+          mkdir -p denemeler && rm -rf denemeler/* && cp -r rapor/foto_deneme/. denemeler/
+          git add -f denemeler
+          git commit -q -m "Foto denemesi sonucu" || echo "Değişiklik yok"
+          git push -q -f origin foto-denemesi
+
+      - name: Özet
+        if: always()
+        run: |
+          if [ -f rapor/foto_deneme/sonuc.json ]; then cat rapor/foto_deneme/sonuc.json >> "$GITHUB_STEP_SUMMARY"; fi

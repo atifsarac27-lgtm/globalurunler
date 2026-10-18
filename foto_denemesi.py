@@ -1,0 +1,107 @@
+"""Deneme: bir markanın sitesinden ürün adı (görselin alt metni) ve fotoğraf adreslerini çeker. Gemini kullanmaz.
+
+Kullanım:
+    python foto_denemesi.py --adres https://www.kfcturkiye.com/ --kok rapor/foto_deneme
+"""
+import argparse
+import json
+import re
+import urllib.parse
+from pathlib import Path
+
+from haber_gorsel import ATTR_RE, UZANTI, indir
+
+IMG_RE = re.compile(r"<img\s[^>]*>", re.I)
+A_RE = re.compile(r"<a\s[^>]*href=[\"']([^\"']+)[\"']", re.I)
+MENU_RE = re.compile(r"menu|menü|urun|ürün|product|new|yeni|burger|chicken|sandwich", re.I)
+EN_FAZLA_SAYFA = 4
+EN_FAZLA_INDIRME = 12
+
+
+def gorselleri_ayikla(html, taban):
+    """Sayfadaki <img> etiketlerinden mutlak fotoğraf adreslerini ve alt metinlerini çıkarır."""
+    sonuc, gorulen = [], set()
+    for etiket in IMG_RE.findall(html):
+        o = {k.lower(): v for k, v in ATTR_RE.findall(etiket)}
+        kaynak = (o.get("src") or o.get("data-src") or o.get("data-lazy-src") or "").strip()
+        if not kaynak or kaynak.startswith("data:"):
+            continue
+        adres = urllib.parse.urljoin(taban, kaynak)
+        if adres in gorulen:
+            continue
+        gorulen.add(adres)
+        alt = re.sub(r"\s+", " ", o.get("alt") or o.get("title") or "").strip()
+        sonuc.append({"alt": alt, "src": adres})
+    return sonuc
+
+
+def menu_baglantilari(html, taban):
+    """Aynı siteye ait, menü ya da yeni ürün gibi görünen bağlantıları döndürür."""
+    kok = urllib.parse.urlparse(taban).netloc
+    adaylar = []
+    for h in A_RE.findall(html):
+        adres = urllib.parse.urljoin(taban, h)
+        if urllib.parse.urlparse(adres).netloc == kok and MENU_RE.search(adres) and adres not in adaylar:
+            adaylar.append(adres)
+    return adaylar[:EN_FAZLA_SAYFA]
+
+
+def main():
+    p = argparse.ArgumentParser(description="Marka sitesinden ürün adı ve fotoğraf denemesi")
+    p.add_argument("--adres", required=True)
+    p.add_argument("--kok", required=True)
+    a = p.parse_args()
+
+    kok = Path(a.kok)
+    kok.mkdir(parents=True, exist_ok=True)
+    rapor = {"adres": a.adres, "sayfalar": [], "gorseller": []}
+
+    try:
+        veri, _, son = indir(a.adres, azami=1_500_000)
+    except Exception as e:  # noqa: BLE001
+        rapor["hata"] = f"ana sayfa açılamadı: {type(e).__name__}: {str(e)[:120]}"
+        (kok / "sonuc.json").write_text(json.dumps(rapor, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(rapor["hata"])
+        return
+    taban = son or a.adres
+    html = veri.decode("utf-8", errors="ignore")
+    sayfalar = [(taban, html)]
+    for link in menu_baglantilari(html, taban):
+        try:
+            v, _, s = indir(link, azami=1_500_000)
+            sayfalar.append((s or link, v.decode("utf-8", errors="ignore")))
+        except Exception:  # noqa: BLE001
+            rapor["sayfalar"].append({"url": link, "durum": "açılamadı"})
+
+    tum = []
+    for s_url, s_html in sayfalar:
+        gorseller = gorselleri_ayikla(s_html, s_url)
+        rapor["sayfalar"].append({"url": s_url, "img_sayisi": len(gorseller),
+                                  "alt_metinli": sum(1 for g in gorseller if len(g["alt"]) >= 3)})
+        tum += gorseller
+
+    aday = [g for g in tum if len(g["alt"]) >= 3]
+    for n, g in enumerate(aday[:EN_FAZLA_INDIRME]):
+        try:
+            veri, tur, _ = indir(g["src"], azami=2_000_000)
+            uzanti = UZANTI.get(tur.split(";")[0].strip().lower())
+            if not uzanti:
+                g.update({"durum": f"uygun değil ({tur[:30]})"})
+                continue
+            ad = f"img_{n:02d}{uzanti}"
+            (kok / ad).write_bytes(veri)
+            g.update({"durum": "indirildi", "dosya": ad, "bayt": len(veri)})
+        except Exception as e:  # noqa: BLE001
+            g.update({"durum": f"indirilemedi: {type(e).__name__}"})
+    rapor["gorseller"] = aday[:EN_FAZLA_INDIRME]
+    rapor["toplam_img"] = len(tum)
+    rapor["alt_metinli_img"] = len(aday)
+    if len(tum) < 5:
+        rapor["not"] = "Az görsel var; sayfa büyük ihtimalle JavaScript ile yükleniyor."
+    (kok / "sonuc.json").write_text(json.dumps(rapor, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Toplam görsel: {len(tum)}, alt metinli: {len(aday)}, indirilen: "
+          f"{sum(1 for g in rapor['gorseller'] if g.get('durum') == 'indirildi')}")
+
+
+if __name__ == "__main__":
+    main()
