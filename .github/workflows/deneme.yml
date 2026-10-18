@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   deneme:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # ubuntu-latest 19 Ekim 2026'da Ubuntu 26'ya geçiyor; ortamı sabitliyoruz
     timeout-minutes: 60
     steps:
       - name: Dosyaları al
