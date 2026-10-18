@@ -20,6 +20,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Tarayıcıyı kur
+        run: |
+          pip install playwright==1.49.1
+          playwright install --with-deps chromium
+
       - name: Deneme sitesini tara
         run: python foto_denemesi.py --adres https://www.kfcturkiye.com/ --kok rapor/foto_deneme
 
