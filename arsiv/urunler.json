@@ -5489,7 +5489,7 @@
    "slug": "갓쏘이치킨godsoychicken",
    "ilk_gorulme": "2026-10-12",
    "son_gorulme": "2026-10-18",
-   "sinif": "ulke"
+   "sinif": "elenen"
   },
   {
    "marka": "KFC",
@@ -6955,7 +6955,7 @@
    "ad": "Sips",
    "slug": "sips",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7063,7 +7063,7 @@
    "ad": "牛气厚酱小皇堡",
    "slug": "牛气厚酱小皇堡",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7342,7 +7342,7 @@
    "ad": "黑松露紫菜味調味粉",
    "slug": "黑松露紫菜味調味粉",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7569,6 +7569,15 @@
    "ilk_gorulme": "2026-10-18",
    "son_gorulme": "2026-10-18",
    "sinif": "elenen"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "ABD",
+   "ad": "Game Day Menu",
+   "slug": "gamedaymenu",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
   }
  ]
 }
