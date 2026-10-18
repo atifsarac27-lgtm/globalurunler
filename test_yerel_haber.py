@@ -32,7 +32,7 @@ class YerelHaberTesti(unittest.TestCase):
         yerel = [oge("Burger King yeni menüsünü tanıttı - Hürriyet", "https://h/1"),
                  oge("Burger King launches new Whopper - Eater", "https://e/1")]
 
-        def sahte(marka, hl, gl, ceid, terimler):
+        def sahte(marka, hl, gl, ceid, terimler, gun=None):
             return (ingilizce, "") if hl == "en-US" else (yerel, "")
 
         with mock.patch.object(kz, "haber_sorgula", side_effect=sahte):
@@ -43,7 +43,7 @@ class YerelHaberTesti(unittest.TestCase):
     def test_yerel_arama_hata_verirse_ingilizce_kalir(self):
         ingilizce = [oge("Burger King launches new Whopper - Eater", "https://e/1")]
 
-        def sahte(marka, hl, gl, ceid, terimler):
+        def sahte(marka, hl, gl, ceid, terimler, gun=None):
             return (ingilizce, "") if hl == "en-US" else (None, "zaman aşımı")
 
         with mock.patch.object(kz, "haber_sorgula", side_effect=sahte):

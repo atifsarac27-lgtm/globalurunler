@@ -117,9 +117,9 @@ class BirlestirPdfTesti(unittest.TestCase):
         ]}
         with tempfile.TemporaryDirectory() as d:
             html_metni = bp.rapor_html(bp.haber_urunleri(haber), Path(d), date(2026, 8, 19), date(2026, 10, 18), 60, [])
-        japonya = html_metni.index('<h3 class="ulke">Japonya')
-        singapur = html_metni.index('<h3 class="ulke">Singapur')
-        bilinmeyen = html_metni.index(f'<h3 class="ulke">{bp.BILINMEYEN_ULKE}')
+        japonya = html_metni.index('<h3 class="ulke">Japan')
+        singapur = html_metni.index('<h3 class="ulke">Singapore')
+        bilinmeyen = html_metni.index(f'<h3 class="ulke">{bp.BILINMEYEN_ULKE_EN}')
         self.assertLess(japonya, singapur)
         self.assertLess(singapur, bilinmeyen)
 
@@ -134,6 +134,79 @@ class BirlestirPdfTesti(unittest.TestCase):
                 self.assertEqual(hedef.read_bytes()[:4], b"%PDF")
         except ImportError:
             self.skipTest("Playwright kurulu değil")
+
+
+class YeniKurallarTesti(unittest.TestCase):
+    def test_ulke_adlari_ingilizce(self):
+        self.assertEqual(bp.ulke_goster("Çin"), "China")
+        self.assertEqual(bp.ulke_goster("Türkiye"), "Turkey")
+        self.assertEqual(bp.ulke_goster(bp.BILINMEYEN_ULKE), bp.BILINMEYEN_ULKE_EN)
+        self.assertEqual(bp.ulke_goster("Listede yok"), "Listede yok")
+
+    def test_haber_ulkesi_aciklama_once(self):
+        self.assertEqual(bp.haber_ulkesi("Singapur", "Milenio", "x"), "Singapur")
+
+    def test_haber_ulkesi_yayin_adindan(self):
+        self.assertEqual(bp.haber_ulkesi("belirsiz", "Milenio", "Subway lanza un pan"), "Meksika")
+        self.assertEqual(bp.haber_ulkesi("belirsiz", "Yahoo Finance", "Popeyes sandwich"), "ABD")
+
+    def test_haber_ulkesi_yazi_dilinden(self):
+        self.assertEqual(bp.haber_ulkesi("belirsiz", "", "【大食い】ケンタッキーのバーガー"), "Japonya")
+        self.assertEqual(bp.haber_ulkesi("belirsiz", "", "KFC yeni menü"), bp.BILINMEYEN_ULKE)
+
+    def test_haber_urunleri_ulke_tahmini_kaynaktan(self):
+        haber = {"yeni_urun": [{"metin": "Popeyes Just Launched A New Sandwich - Yahoo Finance",
+                                "url": "https://n/5", "marka_site": "Popeyes", "ulke_tespit": "belirsiz"}]}
+        self.assertEqual(bp.haber_urunleri(haber)[0]["ulke"], "ABD")
+
+    def test_kisalt_kelime_sinirinda_keser(self):
+        self.assertEqual(bp.kisalt("aaaa bbbb cccc dddd", 12), "aaaa bbbb…")
+        self.assertEqual(bp.kisalt("kısa", 12), "kısa")
+
+    def test_latin_orani(self):
+        self.assertEqualFloat(bp.latin_orani("Gochujang"), 1.0)
+        self.assertEqualFloat(bp.latin_orani("ザクタル"), 0.0)
+
+    def assertEqualFloat(self, a, b):
+        self.assertAlmostEqual(a, b, places=6)
+
+    def test_latin_olmayan_resmi_ad_altta_kalir(self):
+        u = {"etiket": bp.RESMI, "marka": "Subway", "ulke": "Japonya", "ad": "ザクタル",
+             "aciklama": "Sonbahara özel sandviç.", "tarih": "2026-10-12", "gorsel_yolu": "",
+             "adres": "https://subway.co.jp", "kaynak_adi": "subway.co.jp"}
+        kart = bp.kart_html(u, Path("."))
+        self.assertIn('<div class="ad">Sonbahara özel sandviç.</div>', kart)
+        self.assertIn('<div class="ac">ザクタル</div>', kart)
+
+    def test_latin_haber_kutusu_urun_adi_kullanir(self):
+        haber = {"yeni_urun": [{"metin": "KFC yeni - X", "url": "https://h/3", "marka_site": "KFC",
+                                "ulke_tespit": "ABD", "urun_turu": "menü", "urun_adi": "Go Buckets",
+                                "aciklama": "Yeni kova."}]}
+        kart = bp.kart_html(bp.haber_urunleri(haber)[0], Path("."))
+        self.assertIn('<div class="ua">Go Buckets</div>', kart)
+
+    def test_sbarro_tek_urunde_uyari_verir(self):
+        self.assertIn("1 ürün", bp.sbarro_uyarisi([{"marka": "Sbarro"}]))
+        self.assertEqual(bp.sbarro_uyarisi([{"marka": "Sbarro"}, {"marka": "Sbarro"}]), "")
+
+    def test_gecerli_gorsel_sinami(self):
+        self.assertTrue(bp.gecerli_gorsel_mi(b"\x89PNG\r\n\x1a\n" + b"0" * 8))
+        self.assertTrue(bp.gecerli_gorsel_mi(b"RIFF\x00\x00\x00\x00WEBPVP8 "))
+        self.assertTrue(bp.gecerli_gorsel_mi(b'<?xml version="1.0"?><svg xmlns="x"></svg>'))
+        self.assertFalse(bp.gecerli_gorsel_mi(b"<html><body>Hata</body></html>"))
+
+    def test_bozuk_logo_yazilmaz(self):
+        with tempfile.TemporaryDirectory() as d:
+            kok = Path(d)
+            (kok / "logolar").mkdir()
+            (kok / "logolar" / "popeyes.png").write_bytes(b"<html>hata</html>")
+            self.assertEqual(bp.marka_logosu("Popeyes", kok), "")
+
+    def test_kapakta_haber_suresi_30_gun(self):
+        with tempfile.TemporaryDirectory() as d:
+            html_metni = bp.rapor_html([], Path(d), date(2026, 7, 20), date(2026, 10, 18), 90, [])
+        self.assertIn("son 90 günde", html_metni)
+        self.assertIn("son 30 günde", html_metni)
 
 
 if __name__ == "__main__":

@@ -84,5 +84,43 @@ class TekrarTesti(unittest.TestCase):
         self.assertEqual(len(bp.benzer_haberleri_birlestir(haberler)), 2)
 
 
+class KonuTekrariTesti(unittest.TestCase):
+    def test_ayni_konudaki_farkli_dil_basliklari_birlesir(self):
+        haberler = [haber("KFC", "KFC y Cheetos Pandilla lanzan un menú especial por Halloween", 4),
+                    haber("KFC", "Cheetos Pandilla protagoniza el primer menú de Halloween de KFC", 2),
+                    haber("KFC", "KFC España y Cheetos Pandilla se unen para lanzar su primer menú de Halloween", 3),
+                    haber("KFC", "KFC introduces lots of new vegetarian options", 5)]
+        sonuc = bp.benzer_haberleri_birlestir(haberler)
+        self.assertEqual(len(sonuc), 2)
+        cheetos = next(u for u in sonuc if "Cheetos" in u["ad"])
+        self.assertEqual(cheetos.get("ek_kaynak"), 2)
+
+    def test_sbarro_ayni_pizza_tek_urun_sayilir(self):
+        haberler = [haber("Sbarro", "Sbarro Introduces Spicy Calabrian Pepperoni and Sausage Pizza", 7),
+                    haber("Sbarro", "Sbarro launches limited-time Spicy Calabrian Pepperoni and Sausage Pizza", 7)]
+        birlesik = bp.benzer_haberleri_birlestir(haberler)
+        self.assertEqual(len(birlesik), 1)
+        self.assertEqual(len(bp.haber_penceresi(birlesik, BIT)), 1)
+        self.assertIn("1 ürün", bp.sbarro_uyarisi(bp.haber_penceresi(birlesik, BIT)))
+
+    def test_burger_king_farkli_urunler_birlesmez(self):
+        haberler = [haber("Burger King", "Burger King Has A New Burger—But It Won’t Be Around For Long", 2),
+                    haber("Burger King", "Burger King Is Releasing a New, Limited-Time Menu", 3)]
+        self.assertEqual(len(bp.benzer_haberleri_birlestir(haberler)), 2)
+
+    def test_mcdonalds_happy_meal_farkli_haberler_birlesmez(self):
+        haberler = [haber("McDonald's", "McDonald's Happy Meal x Pokémon launch: Release date and how to collect all trading cards", 2),
+                    haber("McDonald's", "McDonald's menu shake up sees return of World Heist and new Happy Meal", 3)]
+        self.assertEqual(len(bp.benzer_haberleri_birlestir(haberler)), 2)
+
+    def test_resmi_urun_adi_haber_kelimeleriyle_eslesir(self):
+        resmi = [{"marka": "Popeyes", "ad": "Honey Chicken Biscuit", "ek_kaynak": 0}]
+        haberler = [haber("Popeyes", "Popeyes finally gives diners what they want: A chicken biscuit sandwich", 3),
+                    haber("Popeyes", "Popeyes Launches New Sandwich With Special Twist Inspired By Fans", 3)]
+        resmi_son, kalan = bp.haberleri_resmiye_bagla(resmi, haberler)
+        self.assertEqual(resmi_son[0]["ek_kaynak"], 1)
+        self.assertEqual([u["ad"] for u in kalan], ["Popeyes Launches New Sandwich With Special Twist Inspired By Fans"])
+
+
 if __name__ == "__main__":
     unittest.main()

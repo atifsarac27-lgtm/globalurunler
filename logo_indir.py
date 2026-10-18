@@ -13,7 +13,7 @@ import urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from birlestir_pdf import marka_slug
+from birlestir_pdf import gecerli_gorsel_mi, marka_slug
 from haber_gorsel import ATTR_RE, indir
 
 LINK_RE = re.compile(r"<link\s[^>]*?>", re.I)
@@ -37,33 +37,41 @@ def ikon_adaylari(sayfa, taban):
     return apple + genel + yedek
 
 
+MARKA_BASINA_SITE = 6  # bir markanın en fazla bu kadar sitesinde logo aranır
+
+
 def marka_adresleri(veri):
-    """Her marka için arşivdeki ilk site adresini seçer."""
+    """Her marka için arşivdeki site adreslerini (en fazla MARKA_BASINA_SITE) sırayla verir."""
     secilen = {}
     for s in veri.get("siteler", []):
         marka, adres = s.get("marka"), s.get("adres")
-        if marka and adres and marka not in secilen:
-            secilen[marka] = adres
+        if not marka or not adres:
+            continue
+        liste = secilen.setdefault(marka, [])
+        if adres not in liste and len(liste) < MARKA_BASINA_SITE:
+            liste.append(adres)
     return secilen
 
 
-def logo_kaydet(marka, adres, klasor):
-    """Markanın logosunu indirir. Kaydedilen dosya adını ya da boş metni döndürür."""
-    try:
-        sayfa, _, son = indir(adres, azami=1_500_000)
-    except Exception:  # noqa: BLE001  # Tek sitenin hatası diğer markaları durdurmaz.
-        return ""
-    taban = son or adres
-    for aday in ikon_adaylari(sayfa.decode("utf-8", errors="ignore"), taban):
+def logo_kaydet(marka, adresler, klasor, al=indir):
+    """Markanın logosunu sitelerinden dener; ilk geçerli görseli kaydeder. Kayıt adını ya da boş metni döndürür."""
+    for adres in adresler:
         try:
-            veri, tur, _ = indir(aday, azami=EN_FAZLA_BAYT)
-        except Exception:  # noqa: BLE001
+            sayfa, _, son = al(adres, azami=1_500_000)
+        except Exception:  # noqa: BLE001  # Tek sitenin hatası diğer siteleri ve markaları durdurmaz.
             continue
-        uzanti = UZANTI.get(tur.split(";")[0].strip().lower())
-        if uzanti and 0 < len(veri) < EN_FAZLA_BAYT:
-            ad = marka_slug(marka) + uzanti
-            (klasor / ad).write_bytes(veri)
-            return ad
+        taban = son or adres
+        for aday in ikon_adaylari(sayfa.decode("utf-8", errors="ignore"), taban):
+            try:
+                veri, tur, _ = al(aday, azami=EN_FAZLA_BAYT)
+            except Exception:  # noqa: BLE001
+                continue
+            uzanti = UZANTI.get(tur.split(";")[0].strip().lower())
+            # Bildirilen tür yetmez: içerik gerçekten görsel olmalı (HTML hata sayfası kaydedilmesin).
+            if uzanti and 0 < len(veri) < EN_FAZLA_BAYT and gecerli_gorsel_mi(veri):
+                ad = marka_slug(marka) + uzanti
+                (klasor / ad).write_bytes(veri)
+                return ad
     return ""
 
 

@@ -22,11 +22,12 @@ class LogoTesti(unittest.TestCase):
         adaylar = li.ikon_adaylari("<html></html>", "https://s.com/")
         self.assertIn("https://s.com/favicon.ico", adaylar)
 
-    def test_marka_adresleri_ilk_siteyi_secer(self):
+    def test_marka_adresleri_tum_siteleri_sirayla_verir(self):
         veri = {"siteler": [{"marka": "KFC", "adres": "https://kfc.a/"},
                             {"marka": "KFC", "adres": "https://kfc.b/"},
                             {"marka": "Subway", "adres": "https://sub.a/"}]}
-        self.assertEqual(li.marka_adresleri(veri), {"KFC": "https://kfc.a/", "Subway": "https://sub.a/"})
+        self.assertEqual(li.marka_adresleri(veri),
+                         {"KFC": ["https://kfc.a/", "https://kfc.b/"], "Subway": ["https://sub.a/"]})
 
     def test_marka_slug_turkce_ve_kesme_isaretli(self):
         self.assertEqual(bp.marka_slug("Burger King"), "burger-king")
@@ -40,7 +41,7 @@ class LogoTesti(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             kok = Path(d)
             (kok / "logolar").mkdir()
-            (kok / "logolar" / "burger-king.png").write_bytes(b"\x89PNG")
+            (kok / "logolar" / "burger-king.png").write_bytes(b"\x89PNG\r\n\x1a\n" + b"\x00" * 8)
             html_metni = bp.marka_bolumu("Burger King", urunler, kok)
         self.assertIn('<img class="logo"', html_metni)
         self.assertLess(html_metni.index('<img class="logo"'), html_metni.index("Burger King"))
@@ -79,3 +80,33 @@ class KontrolTesti(unittest.TestCase):
         self.assertEqual(ozet["resmi_gorselli"], 1)
         self.assertEqual(ozet["haber_kutulu"], 1)
         self.assertEqual(ozet["resmiye_bagli_haber"], 1)
+
+
+class LogoKaydetTesti(unittest.TestCase):
+    PNG = b"\x89PNG\r\n\x1a\n" + b"0" * 20
+
+    def sahte_al(self, url, azami=0):
+        """Ağ yerine sabit yanıtlar: ilk sitenin simgesi HTML hata sayfası, ikinci sitenin simgesi PNG."""
+        yanitlar = {
+            "https://bad.a/": (b"<html>hata</html>", "text/html"),
+            "https://bad.a/apple-touch-icon.png": (b"<html>hata</html>", "image/png"),
+            "https://good.b/": (b'<link rel="icon" href="/i.png">', "text/html"),
+            "https://good.b/i.png": (self.PNG, "image/png"),
+        }
+        if url not in yanitlar:
+            raise OSError("yok")
+        govde, tur = yanitlar[url]
+        return govde, tur, url
+
+    def test_hata_sayfasi_kaydedilmez_sonraki_site_denenir(self):
+        with tempfile.TemporaryDirectory() as d:
+            klasor = Path(d)
+            ad = li.logo_kaydet("Popeyes", ["https://bad.a/", "https://good.b/"], klasor, al=self.sahte_al)
+            self.assertEqual(ad, "popeyes.png")
+            self.assertEqual((klasor / ad).read_bytes(), self.PNG)
+
+    def test_hicbir_site_gecerli_logo_vermezse_bos_doner(self):
+        with tempfile.TemporaryDirectory() as d:
+            ad = li.logo_kaydet("Popeyes", ["https://bad.a/"], Path(d), al=self.sahte_al)
+            self.assertEqual(ad, "")
+            self.assertEqual(list(Path(d).iterdir()), [])
