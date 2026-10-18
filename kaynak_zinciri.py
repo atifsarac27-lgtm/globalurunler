@@ -177,23 +177,62 @@ def ulke_kodu(site):
     return {"UK": "GB"}.get(cc, cc)
 
 
-def katman_haber(site, ctx):
-    cc = ulke_kodu(site)
-    sorgu = f'"{site["marka"]}" (new OR launch OR yeni)'
-    # Ülkeye özel haber sonucu: aksi halde her ülke için ABD haberleri gelir.
+# Yerel dilde haber araması: ülke kodu -> (hl, ceid, arama terimleri, başlık filtresi).
+# Sonuçlar İngilizce aramaya EK olarak gelir; yerel arama başarısız olursa İngilizce sonuçlar kalır.
+YEREL_ARAMA = {
+    "TR": ("tr", "TR:tr", '(yeni OR lansman OR "yeni ürün" OR menü)',
+           re.compile(r"yeni|lansman|menü|tanıt|sunu|ürün", re.I)),
+    "MX": ("es-419", "MX:es-419", '(nuevo OR lanzamiento OR "nuevo producto" OR menú)',
+           re.compile(r"nuev|lanza|menú|producto|sabor", re.I)),
+    "BR": ("pt-419", "BR:pt-419", '(novo OR lançamento OR "novo produto" OR cardápio)',
+           re.compile(r"novo|nova|lançament|cardápio|sabor", re.I)),
+    "FR": ("fr", "FR:fr", '(nouveau OR nouvelle OR lancement OR "nouveau produit")',
+           re.compile(r"nouveau|nouvelle|lancement|lance|menu|saveur", re.I)),
+    "DE": ("de", "DE:de", '(neu OR neue OR Einführung OR "neues Produkt")',
+           re.compile(r"neu|einführ|menü|geschmack", re.I)),
+    "KR": ("ko", "KR:ko", "(신메뉴 OR 신제품 OR 출시)", re.compile(r"신메뉴|신제품|출시|론칭")),
+    "JP": ("ja", "JP:ja", "(新商品 OR 新発売 OR 新メニュー)", re.compile(r"新商品|新発売|新メニュー|発売")),
+    "CN": ("zh-CN", "CN:zh-Hans", "(新品 OR 上市 OR 新菜单)", re.compile(r"新品|上市|新菜单|推出")),
+    "SA": ("ar", "SA:ar", "(جديد OR إطلاق)", re.compile(r"جديد|إطلاق|يطلق")),
+    "AE": ("ar", "AE:ar", "(جديد OR إطلاق)", re.compile(r"جديد|إطلاق|يطلق")),
+}
+
+
+def haber_sorgula(marka, hl, gl, ceid, terimler):
+    """Google Haberler RSS'inde tek bir arama yapar. (öğeler, hata) döndürür; öğeler None ise hata var."""
     url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
-        {"q": sorgu, "hl": "en-US", "gl": cc, "ceid": f"{cc}:en"})
+        {"q": f'"{marka}" {terimler}', "hl": hl, "gl": gl, "ceid": ceid})
     ok, veri = indir(url)
     if not ok:
-        return "hata", veri, []
+        return None, veri
     try:
-        ogeler = rss_ogeleri(veri)
+        return rss_ogeleri(veri), ""
     except ET.ParseError as e:
-        return "hata", f"RSS ayrıştırılamadı: {e}", []
-    ogeler = [o for o in ogeler
-              if site["marka"].lower() in o["metin"].lower()
-              and URUN_RE.search(o["metin"])
-              and not KAMPANYA_RE.search(o["metin"])]
+        return None, f"RSS ayrıştırılamadı: {e}"
+
+
+def haber_filtrele(ogeler, marka, yerel_uyum=None):
+    """Markayı içeren, ürün kelimesi geçen ve kampanya olmayan başlıkları tutar."""
+    return [o for o in ogeler
+            if marka.lower() in o["metin"].lower()
+            and (URUN_RE.search(o["metin"]) or (yerel_uyum and yerel_uyum.search(o["metin"])))
+            and not KAMPANYA_RE.search(o["metin"])]
+
+
+def katman_haber(site, ctx):
+    cc = ulke_kodu(site)
+    marka = site["marka"]
+    # Ülkeye özel haber sonucu: aksi halde her ülke için ABD haberleri gelir.
+    ogeler, hata = haber_sorgula(marka, "en-US", cc, f"{cc}:en", "(new OR launch OR yeni)")
+    if ogeler is None:
+        return "hata", hata, []
+    ogeler = haber_filtrele(ogeler, marka)
+    if cc in YEREL_ARAMA:
+        hl, ceid, terimler, uyum = YEREL_ARAMA[cc]
+        yerel, _ = haber_sorgula(marka, hl, cc, ceid, terimler)
+        if yerel:
+            goruldu = {o["url"] for o in ogeler}
+            ogeler += [o for o in haber_filtrele(yerel, marka, uyum) if o["url"] not in goruldu]
     if ogeler:
         return "ok", "", ogeler
     return "yok", f"son {GERIYE_GUN} günde haber yok", []

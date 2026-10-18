@@ -100,14 +100,16 @@ class EslesmeTesti(unittest.TestCase):
         self.assertEqual(kz.ulke_kodu({"kod": "bk-uk"}), "GB")
 
     def test_haber_sorgusu_ulkeye_ozel(self):
-        vars_ = {}
+        urller = []
         def yakala(url, *a, **k):
-            vars_["url"] = url
+            urller.append(url)
             return True, "<rss><channel></channel></rss>"
         with mock.patch.object(kz, "indir", side_effect=yakala):
             kz.katman_haber({"kod": "kfc-cn", "marka": "KFC", "ulke": "Çin", "adres": None}, {})
-        self.assertIn("gl=CN", vars_["url"])
-        self.assertIn("ceid=CN%3Aen", vars_["url"])
+        self.assertTrue(urller)
+        for url in urller:
+            self.assertIn("gl=CN", url)
+        self.assertTrue(any("ceid=CN%3Aen" in url for url in urller))
 
     def test_ayni_baslik_ikinci_kez_tekrar_sayilir(self):
         sonuclar = [
