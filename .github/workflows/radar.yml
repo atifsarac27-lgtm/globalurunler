@@ -53,8 +53,9 @@ jobs:
           MAX_SITE: ${{ inputs.kapsam == 'deneme-12' && '12' || inputs.kapsam == 'buyuk-50' && '50' || '0' }}
           MAX_CAGRI: ${{ inputs.kapsam == 'deneme-12' && '20' || inputs.kapsam == 'buyuk-50' && '130' || '260' }}
           SADECE_RAPOR: ${{ inputs.sadece_rapor == 'evet' && '1' || '0' }}
-          EKRAN_KOPYALA: "1"
-          VERI_KOPYALA: "1"
+          # Arşiv yalnızca tam taramada (hepsi) yazılır; küçük çalıştırmalar arşivin üzerine yazmaz.
+          EKRAN_KOPYALA: ${{ inputs.kapsam == 'hepsi' && '1' || '0' }}
+          VERI_KOPYALA: ${{ inputs.kapsam == 'hepsi' && '1' || '0' }}
           PARALEL: "8"
         run: python radar.py
 
