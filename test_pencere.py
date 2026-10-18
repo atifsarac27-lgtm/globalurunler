@@ -31,10 +31,10 @@ class PencereTesti(unittest.TestCase):
         self.assertEqual(len(kz.rss_ogeleri(xml, simdi)), 1)
         self.assertEqual(len(kz.rss_ogeleri(xml, simdi, gun=180)), 2)
 
-    def test_haber_son_30_gun(self):
-        haberler = [haber("Popeyes", "A yeni", 10), haber("Popeyes", "B yeni", 40)]
+    def test_haber_son_2_ay(self):
+        haberler = [haber("Popeyes", "A yeni", 10), haber("Popeyes", "B yeni", 40), haber("Popeyes", "C yeni", 70)]
         sonuc = bp.haber_penceresi(haberler, BIT)
-        self.assertEqual([u["ad"] for u in sonuc], ["A yeni"])
+        self.assertEqual(sorted(u["ad"] for u in sonuc), ["A yeni", "B yeni"])
 
     def test_sbarro_iki_urun_bulunana_kadar_geriye(self):
         haberler = [haber("Sbarro", "Eski 1", 100), haber("Sbarro", "Eski 2", 150), haber("Sbarro", "Eski 3", 200)]

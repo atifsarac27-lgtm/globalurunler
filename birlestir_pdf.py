@@ -197,7 +197,7 @@ def haber_urunleri(haber):
     return urunler
 
 
-HABER_GUN = 30            # haberler: son 1 ay
+HABER_GUN = 60            # haberler: son 2 ay
 RESMI_GUN = 90            # resmi siteler: son 3 ay (tespit tarihine göre)
 SBARRO = "Sbarro"
 SBARRO_EN_AZ_URUN = 2     # Sbarro'da en az bu kadar ürün bulunana kadar geriye gidilir
@@ -326,7 +326,7 @@ def ozet_html(urunler, markalar):
 YONTEM = """<section class="sayfa"><h2>Yöntem ve kaynaklar</h2><ul class="yon">
 <li><b>Resmi site:</b> Markanın kendi sitesinde yeni olarak öne çıkardığı ürünler. Sitede çıkış tarihi yazmadığında tespit tarihi esas alınır.</li>
 <li><b>Haber:</b> Google Haberler'de marka ve yeni ürün kelimeleriyle geçen başlıklar. Yeni ürün olup olmadıkları ve hangi ülkeye ait oldukları başlıktan otomatik belirlendi; ülke belirtilmeyenler "Ülke belirtilmemiş" altında yer alır. Haber kaynağı başlığın sonundan alındı. Görsel, haber sayfasındaki paylaşım görselidir; bulunamazsa marka renkli bir kutu gösterilir: ürün türü, ürün adı ve kısa açıklama başlıktan alınır, uydurma bilgi eklenmez.</li>
-<li><b>Dönem:</b> Resmi siteler son 90 gün (tespit tarihine göre), haberler son 30 gün. Sbarro'da en az 2 ürün bulunana kadar en fazla 180 gün geriye bakıldı. Aynı haberin farklı kaynaklardaki kopyaları tek kartta gösterildi.</li>
+<li><b>Dönem:</b> Resmi siteler son 90 gün (tespit tarihine göre), haberler son 60 gün. Sbarro'da en az 2 ürün bulunana kadar en fazla 180 gün geriye bakıldı. Aynı haberin farklı kaynaklardaki kopyaları tek kartta gösterildi.</li>
 <li><b>Sınır:</b> Haber listesi otomatik derlendiği için ürün dışı ya da tekrar eden başlıklar bulunabilir.</li>
 </ul></section>"""
 
