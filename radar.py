@@ -2173,12 +2173,18 @@ def main():
         br = tarayici_ac(p)
         if SADECE_RAPOR:
             tum, siteler, zaman = veri_yukle()
+            veri_kaydet(tum, siteler, zaman)   # birleştirme adımı rapor/veri.json dosyasını okur
             print(f"Yalnızca rapor: {len(tum)} ürün, dönem {DONEM_BAS} - {BUGUN}", flush=True)
         else:
             sites = [s for s in SITES if not ONLY or s[1] in ONLY]
             print(f"Dönem: {DONEM_BAS} - {BUGUN} ({GUN} gün), {len(sites)} marka x ülke", flush=True)
             siteler, tum = topla(br, sites, hatalar)
             veri_kaydet(tum, siteler, zaman)
+        # Arşivdeki ürün fotoğrafları her raporda kullanılsın (bu çalıştırmada taranmayan ürünler için de).
+        import shutil
+        kaynak_g = Path(os.environ.get("SON_GORSEL_DIR", "son-gorseller"))
+        if kaynak_g.exists():
+            shutil.copytree(kaynak_g, GORSEL, dirs_exist_ok=True)
         katmanlar, acik_n = rapor_uret(tum, siteler, zaman, hatalar, br)
         br.close()
 

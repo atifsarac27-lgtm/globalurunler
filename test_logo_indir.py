@@ -59,3 +59,23 @@ class LogoTesti(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class KontrolTesti(unittest.TestCase):
+    def test_kontrol_ozeti_gorselli_ve_kutulu_sayar(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            kok = Path(d)
+            (kok / "gorseller").mkdir()
+            (kok / "gorseller" / "a.jpg").write_bytes(b"\xff\xd8")
+            urunler = [
+                {"etiket": bp.RESMI, "gorsel_yolu": "gorseller/a.jpg", "ek_kaynak": 1, "marka": "KFC"},
+                {"etiket": bp.RESMI, "gorsel_yolu": "", "marka": "KFC"},
+                {"etiket": bp.HABER, "gorsel_yolu": "", "urun_adi": "Yeni", "marka": "KFC"},
+                {"etiket": bp.HABER, "gorsel_yolu": "", "marka": "KFC"},
+            ]
+            ozet = bp.kontrol_ozeti(urunler, kok)
+        self.assertEqual(ozet["resmi_toplam"], 2)
+        self.assertEqual(ozet["resmi_gorselli"], 1)
+        self.assertEqual(ozet["haber_kutulu"], 1)
+        self.assertEqual(ozet["resmiye_bagli_haber"], 1)

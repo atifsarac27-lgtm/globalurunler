@@ -274,6 +274,24 @@ def haberleri_resmiye_bagla(resmi, haberler):
     return resmi, kalan
 
 
+def kontrol_ozeti(urunler, kok):
+    """Raporda kaç kartın fotoğrafı, kaç kartın kutusu olduğunu sayar (kontrol için)."""
+    kok = Path(kok)
+    resmi = [u for u in urunler if u["etiket"] == RESMI]
+    haber = [u for u in urunler if u["etiket"] == HABER]
+
+    def gorselli(u):
+        return bool(u["gorsel_yolu"]) and (kok / u["gorsel_yolu"]).exists()
+
+    return {
+        "resmi_toplam": len(resmi), "resmi_gorselli": sum(gorselli(u) for u in resmi),
+        "haber_toplam": len(haber), "haber_gorselli": sum(gorselli(u) for u in haber),
+        "haber_kutulu": sum(1 for u in haber if not gorselli(u)
+                            and (u.get("urun_adi") or u.get("tur") or u.get("kutu_aciklama"))),
+        "resmiye_bagli_haber": sum(u.get("ek_kaynak", 0) for u in resmi),
+    }
+
+
 def sirala(urunler):
     return sorted(urunler, key=lambda u: (u["ulke"] == BILINMEYEN_ULKE, anahtar(u["ulke"]),
                                           0 if u["etiket"] == RESMI else 1, anahtar(u["ad"])))
@@ -434,7 +452,10 @@ def main():
     cikti = Path(a.cikti)
     cikti.parent.mkdir(parents=True, exist_ok=True)
     bas = bit - timedelta(days=a.gun)
-    html_metni = rapor_html(urunler, cikti.resolve().parent, bas, bit, a.gun, uyarilar)
+    kok = cikti.resolve().parent
+    (kok / "kontrol.json").write_text(json.dumps(kontrol_ozeti(urunler, kok), ensure_ascii=False, indent=2),
+                                      encoding="utf-8")
+    html_metni = rapor_html(urunler, kok, bas, bit, a.gun, uyarilar)
     pdf_yaz(html_metni, cikti, f"Global Yeni Ürünler · {tr_tarih(bas)} – {tr_tarih(bit)}")
     print(f"Resmi site: {len(resmi_liste)}, haber: {len(haber_liste)}, toplam: {len(urunler)}")
     print(f"Çıktı: {cikti}")
