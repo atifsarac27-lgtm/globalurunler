@@ -49,7 +49,9 @@ h3.ulke .sayi { font-size: 8.5pt; color: #6b6b66; font-weight: 400; margin-left:
 .kutu b { display: block; font-size: 22pt; }
 .kutu span { color: #6b6b66; font-size: 9pt; }
 .uyari { border-left: 3pt solid #8a5a00; background: #fdf0d5; padding: 6pt 9pt; margin: 6pt 0; font-size: 9pt; }
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt; }
+.satir { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt; break-inside: avoid; }
+.ulke-blok { min-width: 0; }
+.kartlar { display: grid; gap: 8pt; }
 .kart { border: 1pt solid #d8d7d0; border-radius: 6pt; overflow: hidden; break-inside: avoid; }
 .gorsel { height: 110pt; background: #f4f3ef; display: flex; align-items: center; justify-content: center; }
 .gorsel img { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -177,6 +179,8 @@ HABER_KAYNAK_ULKE = {
     "los andes": "Arjantin", "milenio": "Meksika", "mercado negro": "Meksika", "el universal": "Meksika",
     "revista merca2.0": "Meksika", "restauración news": "İspanya", "canal ideal": "Brezilya",
     "hungrygowhere": "Singapur", "soranews24": "Japonya", "nine.com.au": "Avustralya",
+    "roastbrief": "ABD", "roastbrief us": "ABD", "chowhound": "ABD",
+    "chip": "Almanya", "afr": "Avustralya",
 }
 
 
@@ -352,6 +356,24 @@ def haber_kelimeleri(u):
     return anahtar_kelimeler(u["ad"], u["marka"]) | anahtar_kelimeler(u.get("urun_adi"), u["marka"])
 
 
+def ayni_olay(ta, tb, ka, kb):
+    """Aynı markanın iki haberi aynı olay olabilir. Aynı gün yayımlandıysa en az 2 ortak kelime ve küçük kümenin en az
+    dörtte biri yeter; bir gün ara varsa ortak oran en az %40 olmalı. Daha uzak tarihli haberler birleştirilmez."""
+    da, db = tarih_oku(ta), tarih_oku(tb)
+    if not da or not db or not ka or not kb:
+        return False
+    ortak = len(ka & kb)
+    m = min(len(ka), len(kb))
+    if ortak < 2:
+        return False
+    fark = abs((da - db).days)
+    if fark == 0:
+        return ortak * 4 >= m
+    if fark == 1:
+        return ortak * 5 >= m * 2
+    return False
+
+
 def benzer_haberleri_birlestir(haberler):
     """Aynı haberin kopyalarını ya da aynı konuyu anlatan başlıkları tek karta indirir; ek kaynak sayısını 'ek_kaynak' alanına yazar."""
     tutulan = []
@@ -360,7 +382,8 @@ def benzer_haberleri_birlestir(haberler):
         kel = haber_kelimeleri(u)
         esi = next((t for t in tutulan if t["marka"] == u["marka"]
                     and (SequenceMatcher(None, anahtar_baslik(t["ad"]), a).ratio() >= 0.85
-                         or ayni_konu(haber_kelimeleri(t), kel))), None)
+                         or ayni_konu(haber_kelimeleri(t), kel)
+                         or ayni_olay(t["tarih"], u["tarih"], haber_kelimeleri(t), kel))), None)
         if esi:
             esi["ek_kaynak"] = esi.get("ek_kaynak", 0) + 1
             if esi.get("ulke") == BILINMEYEN_ULKE and u.get("ulke", BILINMEYEN_ULKE) != BILINMEYEN_ULKE:
@@ -495,19 +518,49 @@ def kart_html(u, kok):
             "</div></div>")
 
 
+KOLON = 4  # bir satırdaki kart sütunu sayısı
+
+
+def satirlara_diz(gruplar):
+    """Ülkeleri 4 sütunluk satırlara yan yana dizer; ürünü az olan ülkeler aynı satıra sığar, böylece sayfalar boş kalmaz.
+    Bir ülkenin ürünleri 4'ü aşarsa 4'lük parçalara bölünür. Her satır sayfa ortasında bölünmez."""
+    parcalar = []  # (ülke, toplam ürün, kartlar, devam mı)
+    for ulke, kartlar in gruplar:
+        for i in range(0, len(kartlar), KOLON):
+            parcalar.append((ulke, len(kartlar), kartlar[i:i + KOLON], i > 0))
+    satirlar, acik, dolu = [], [], 0
+    for parca in parcalar:
+        n = len(parca[2])
+        if dolu + n > KOLON:
+            satirlar.append(acik)
+            acik, dolu = [], 0
+        acik.append(parca)
+        dolu += n
+    if acik:
+        satirlar.append(acik)
+    html_satirlar = []
+    for satir in satirlar:
+        hucreler = []
+        for ulke, toplam, kartlar, devam in satir:
+            n = len(kartlar)
+            sayi = "devamı" if devam else f"{toplam} ürün"
+            hucreler.append(
+                f'<div class="ulke-blok" style="grid-column: span {n}">'
+                f'<h3 class="ulke">{e(ulke)}<span class="sayi">{sayi}</span></h3>'
+                f'<div class="kartlar" style="grid-template-columns: repeat({n}, 1fr)">{"".join(kartlar)}</div></div>')
+        html_satirlar.append(f'<div class="satir">{"".join(hucreler)}</div>')
+    return "".join(html_satirlar)
+
+
 def marka_bolumu(marka, urunler, kok):
     if not urunler:
         return (f'<section class="sayfa"><h2>{marka_logosu(marka, kok)}{e(marka)}<span class="sayi">bulunamadı</span></h2>'
                 '<p class="not">Bu dönemde bu markada yeni ürün bulunamadı.</p></section>')
-    # Her ülkenin kendi ızgarası olur: tek ızgarada Chromium kartları sayfa sonunda böler.
-    bloklar = []
+    gruplar = []
     for ulke, grup in groupby(sirala(urunler), key=lambda u: ulke_goster(u["ulke"])):
-        grup = list(grup)
-        kartlar = "".join(kart_html(u, kok) for u in grup)
-        bloklar.append(f'<h3 class="ulke">{e(ulke)}<span class="sayi">{len(grup)} ürün</span></h3>'
-                       f'<div class="grid">{kartlar}</div>')
+        gruplar.append((ulke, [kart_html(u, kok) for u in grup]))
     return (f'<section class="sayfa"><h2>{marka_logosu(marka, kok)}{e(marka)}<span class="sayi">{len(urunler)} ürün</span></h2>'
-            f'{"".join(bloklar)}</section>')
+            f'{satirlara_diz(gruplar)}</section>')
 
 
 def ozet_html(urunler, markalar):

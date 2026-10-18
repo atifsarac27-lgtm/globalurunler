@@ -208,6 +208,28 @@ class YeniKurallarTesti(unittest.TestCase):
         self.assertIn("son 90 günde", html_metni)
         self.assertIn("son 30 günde", html_metni)
 
+    def test_yeni_kaynaklar_ulke_verir(self):
+        self.assertEqual(bp.haber_ulkesi(None, "Roastbrief US", "x"), "ABD")
+        self.assertEqual(bp.haber_ulkesi(None, "Roastbrief", "x"), "ABD")
+        self.assertEqual(bp.haber_ulkesi(None, "Chowhound", "x"), "ABD")
+        self.assertEqual(bp.haber_ulkesi(None, "CHIP", "Fast-Food-Konzern"), "Almanya")
+        self.assertEqual(bp.haber_ulkesi(None, "AFR", "Size matters"), "Avustralya")
+
+    def test_ulkeler_ayni_satirda_yan_yana(self):
+        html_metni = bp.satirlara_diz([("Japan", ["<k1>"]), ("Singapore", ["<k2>"]), ("Turkey", ["<k3>", "<k4>"])])
+        self.assertEqual(html_metni.count('class="satir"'), 1)
+        self.assertIn('<h3 class="ulke">Turkey', html_metni)
+
+    def test_sigmayan_ulke_yeni_satira_gecer(self):
+        html_metni = bp.satirlara_diz([("A", ["<k>"] * 3), ("B", ["<k>"] * 2)])
+        self.assertEqual(html_metni.count('class="satir"'), 2)
+
+    def test_buyuk_ulke_parcalara_bolunur(self):
+        html_metni = bp.satirlara_diz([("Japan", ["<k>"] * 5)])
+        self.assertEqual(html_metni.count('class="satir"'), 2)
+        self.assertIn(">5 ürün<", html_metni)
+        self.assertIn(">devamı<", html_metni)
+
 
 if __name__ == "__main__":
     unittest.main()

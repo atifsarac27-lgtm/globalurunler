@@ -121,6 +121,23 @@ class KonuTekrariTesti(unittest.TestCase):
         self.assertEqual(resmi_son[0]["ek_kaynak"], 1)
         self.assertEqual([u["ad"] for u in kalan], ["Popeyes Launches New Sandwich With Special Twist Inspired By Fans"])
 
+    def test_ayni_gun_ayni_olay_tek_karta_iner(self):
+        haberler = [haber("McDonald's", "McDonald's menu shake up as nine items from across the world launch in UK - full list", 1),
+                    haber("McDonald's", "McDonald's menu shake up sees return of World Heist and new Happy Meal", 1)]
+        sonuc = bp.benzer_haberleri_birlestir(haberler)
+        self.assertEqual(len(sonuc), 1)
+        self.assertEqual(sonuc[0]["ek_kaynak"], 1)
+
+    def test_bir_gun_ara_yeterli_ortaklik_birlestirir(self):
+        haberler = [haber("Popeyes", "Popeyes Just Launched A New Sandwich That Combines 3 Fan-Favorite Ingredients", 3),
+                    haber("Popeyes", "Popeyes Launches New Sandwich With Special Twist Inspired By Fans", 4)]
+        self.assertEqual(len(bp.benzer_haberleri_birlestir(haberler)), 1)
+
+    def test_iki_gun_ara_ayni_kelimeler_birlesmez(self):
+        haberler = [haber("Popeyes", "Popeyes Just Launched A New Sandwich That Combines 3 Fan-Favorite Ingredients", 3),
+                    haber("Popeyes", "Popeyes Launches New Sandwich With Special Twist Inspired By Fans", 5)]
+        self.assertEqual(len(bp.benzer_haberleri_birlestir(haberler)), 2)
+
 
 if __name__ == "__main__":
     unittest.main()
