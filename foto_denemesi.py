@@ -52,8 +52,13 @@ def menu_baglantilari(html, taban):
 
 def sayfa_ac(pg, url):
     pg.goto(url, wait_until="domcontentloaded", timeout=60000)
-    pg.wait_for_timeout(2500)
-    return pg.content(), pg.url
+    try:
+        pg.wait_for_load_state("networkidle", timeout=20000)
+    except Exception:  # noqa: BLE001  # Sürekli açık bağlantılı siteler networkidle'a ulaşmayabilir.
+        pass
+    pg.wait_for_timeout(3000)
+    metin = re.sub(r"\s+", " ", pg.inner_text("body"))[:300] if pg.query_selector("body") else ""
+    return pg.content(), pg.url, pg.title(), metin
 
 
 def main():
@@ -72,7 +77,8 @@ def main():
         tarayici = p.chromium.launch()
         pg = tarayici.new_page(user_agent=TARAYICI_UA, locale="tr-TR")
         try:
-            html, taban = sayfa_ac(pg, a.adres)
+            html, taban, baslik, metin = sayfa_ac(pg, a.adres)
+            rapor["baslik"], rapor["metin_ornek"] = baslik, metin
         except Exception as e:  # noqa: BLE001
             rapor["hata"] = f"ana sayfa açılamadı: {type(e).__name__}: {str(e)[:150]}"
             (kok / "sonuc.json").write_text(json.dumps(rapor, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -82,7 +88,7 @@ def main():
         sayfalar = [(taban, html)]
         for link in menu_baglantilari(html, taban):
             try:
-                h2, s2 = sayfa_ac(pg, link)
+                h2, s2, _, _ = sayfa_ac(pg, link)
                 sayfalar.append((s2, h2))
             except Exception:  # noqa: BLE001
                 rapor["sayfalar"].append({"url": link, "durum": "açılamadı"})
