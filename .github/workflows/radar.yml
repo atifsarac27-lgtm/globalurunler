@@ -89,8 +89,6 @@ jobs:
         with:
           name: PDF-rapor
           path: |
-            rapor/rapor.pdf
-            rapor/ozet.pdf
             rapor/birlesik_rapor.pdf
           retention-days: 90
 
@@ -99,7 +97,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: yeni-urun-raporu
-          path: rapor/
+          path: |
+            rapor/
+            !rapor/rapor.pdf
+            !rapor/ozet.pdf
           retention-days: 90
 
       - name: Arşivi depoya kaydet
