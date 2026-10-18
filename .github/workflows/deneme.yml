@@ -22,7 +22,7 @@ jobs:
 
       - name: Bağlantı çözücüyü kur
         continue-on-error: true
-        run: pip install googlenewsdecoder
+        run: pip install googlenewsdecoder "selectolax<1.0"
 
       - name: Haber adaylarını topla
         run: mkdir -p rapor && python kaynak_zinciri.py --veri arsiv/son-veri.json --cikti rapor/kaynak_sonuc.json --limit 40
