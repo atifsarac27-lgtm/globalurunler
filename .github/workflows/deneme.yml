@@ -1,6 +1,6 @@
 name: Foto denemesi
 
-# Elle başlatılır. Tek marka sitesinden ürün adı ve fotoğraf denemesi yapar. Gemini kullanmaz.
+# Elle başlatılır. Birkaç markanın sitesinden ürün adı ve fotoğraf denemesi yapar. Gemini kullanmaz.
 on:
   workflow_dispatch:
 
@@ -10,7 +10,7 @@ permissions:
 jobs:
   deneme:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 60
     steps:
       - name: Dosyaları al
         uses: actions/checkout@v4
@@ -25,8 +25,22 @@ jobs:
           pip install playwright==1.49.1
           playwright install --with-deps chromium
 
-      - name: Deneme sitesini tara
-        run: python foto_denemesi.py --adres https://www.kfcturkiye.com/ --kok rapor/foto_deneme
+      - name: Siteleri tara
+        run: |
+          python - <<'PY' > siteler.txt
+          import json
+          d = json.load(open("arsiv/son-veri.json", encoding="utf-8"))
+          kodlar = ["kfc-tr", "bk-tr", "pop-tr", "mcd-tr", "sbr-tr", "sub-tr", "arb-tr",
+                    "kfc-us", "bk-us", "pop-us", "mcd-us", "sbr-us", "sub-us", "arb-us"]
+          adresler = {s["kod"]: s.get("adres") for s in d["siteler"]}
+          for k in kodlar:
+              if adresler.get(k):
+                  print(k, adresler[k])
+          PY
+          cat siteler.txt
+          while read kod adres; do
+            python foto_denemesi.py --adres "$adres" --kok "denemeler/$kod" || true
+          done < siteler.txt
 
       - name: Sonucu foto-denemesi dalına kaydet
         if: always()
@@ -34,7 +48,6 @@ jobs:
           git config user.name "Claude"
           git config user.email "noreply@anthropic.com"
           git checkout -q -B foto-denemesi
-          mkdir -p denemeler && rm -rf denemeler/* && cp -r rapor/foto_deneme/. denemeler/
           git add -f denemeler
           git commit -q -m "Foto denemesi sonucu" || echo "Değişiklik yok"
           git push -q -f origin foto-denemesi
@@ -42,4 +55,6 @@ jobs:
       - name: Özet
         if: always()
         run: |
-          if [ -f rapor/foto_deneme/sonuc.json ]; then cat rapor/foto_deneme/sonuc.json >> "$GITHUB_STEP_SUMMARY"; fi
+          for f in denemeler/*/sonuc.json; do
+            [ -f "$f" ] && { echo "### $f"; cat "$f"; echo; } >> "$GITHUB_STEP_SUMMARY"
+          done
