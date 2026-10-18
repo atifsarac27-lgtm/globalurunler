@@ -76,6 +76,13 @@ jobs:
         continue-on-error: true
         run: python birlestir.py --veri rapor/veri.json --haber rapor/haber_urunleri.json --cikti rapor/birlesik.xlsx
 
+      - name: Birleşik PDF raporu üret
+        if: always()
+        continue-on-error: true
+        env:
+          DONEM_GUN: ${{ inputs.gun }}
+        run: python birlestir_pdf.py --veri rapor/veri.json --haber rapor/haber_urunleri.json --cikti rapor/birlesik_rapor.pdf
+
       - name: PDF raporları yükle
         if: always()
         uses: actions/upload-artifact@v4
@@ -84,6 +91,7 @@ jobs:
           path: |
             rapor/rapor.pdf
             rapor/ozet.pdf
+            rapor/birlesik_rapor.pdf
           retention-days: 90
 
       - name: Tüm rapor dosyalarını yükle

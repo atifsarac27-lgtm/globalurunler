@@ -32,7 +32,8 @@ def resmi_satirlari(veri):
 
 
 def haber_satirlari(haber):
-    return [[k.get("marka", ""), "-", k.get("metin", ""), "Haber", k.get("url", ""), ""]
+    return [[k.get("marka_site") or k.get("marka", ""), k.get("ulke") or "-", k.get("metin", ""),
+             "Haber", k.get("url", ""), k.get("tarih", "")]
             for k in haber.get("yeni_urun", [])]
 
 

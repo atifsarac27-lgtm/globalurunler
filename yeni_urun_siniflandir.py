@@ -70,7 +70,8 @@ def benzersiz_basliklar(sonuclar):
     for s in sonuclar:
         for a in s["adaylar"]:
             if s["sonuc"] == "haber RSS" and not a.get("tekrar"):
-                liste.append({"metin": a["metin"], "url": a["url"], "marka_site": s["marka"]})
+                liste.append({"metin": a["metin"], "url": a["url"], "marka_site": s["marka"],
+                              "ulke": s.get("ulke", ""), "tarih": a.get("tarih", "")})
     return liste
 
 
