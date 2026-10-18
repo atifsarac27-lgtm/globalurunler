@@ -6928,7 +6928,7 @@
    "ad": "Melts",
    "slug": "melts",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7081,7 +7081,7 @@
    "ad": "烧烤风味香骨鸡",
    "slug": "烧烤风味香骨鸡",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7099,7 +7099,7 @@
    "ad": "好运元宝酥",
    "slug": "好运元宝酥",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7117,7 +7117,7 @@
    "ad": "蘸酱鸡块（杏子甜辣酱/葱香奶酪酱）",
    "slug": "蘸酱鸡块杏子甜辣酱葱香奶酪酱",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7126,7 +7126,7 @@
    "ad": "Miksēts spainītis",
    "slug": "miksetsspainitis",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7306,7 +7306,7 @@
    "ad": "NUEVOS DIPS",
    "slug": "nuevosdips",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7396,7 +7396,7 @@
    "ad": "רד בול נותן לך דאבל כנפיים",
    "slug": "רדבולנותןלךדאבלכנפיים",
    "ilk_gorulme": "2026-10-13",
-   "son_gorulme": "2026-10-13",
+   "son_gorulme": "2026-10-18",
    "sinif": "ulke"
   },
   {
@@ -7485,6 +7485,87 @@
    "ulke": "Hollanda",
    "ad": "Freakingdel",
    "slug": "freakingdel",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "elenen"
+  },
+  {
+   "marka": "Arby's",
+   "ulke": "Kanada",
+   "ad": "Sips CRAFTED IN-HOUSE DAILY",
+   "slug": "sipscraftedinhousedaily",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "McDonald's",
+   "ulke": "Hong Kong",
+   "ad": "香烤雞翼 BBQ McWings",
+   "slug": "香烤雞翼bbqmcwings",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Yeni Zelanda",
+   "ad": "BURGER KING X KITKAT® King Fusion",
+   "slug": "burgerkingxkitkatkingfusion",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Çin",
+   "ad": "牛乳厚酱小皇堡",
+   "slug": "牛乳厚酱小皇堡",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "KFC",
+   "ulke": "Litvanya",
+   "ad": "Aštrių sparnelių kibirėlis",
+   "slug": "astriusparneliukibirelis",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avusturya",
+   "ad": "Zimtschnecken und King Fusion Cinnamon",
+   "slug": "zimtschneckenundkingfusioncinnamon",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "Avusturya",
+   "ad": "Royals Hot Harry & Toni Maccaroni",
+   "slug": "royalshotharrytonimaccaroni",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İsviçre",
+   "ad": "Dragon Ball Super Burger",
+   "slug": "dragonballsuperburger",
+   "ilk_gorulme": "2026-10-18",
+   "son_gorulme": "2026-10-18",
+   "sinif": "ulke"
+  },
+  {
+   "marka": "Burger King",
+   "ulke": "İsviçre",
+   "ad": "Swiss Selection",
+   "slug": "swissselection",
    "ilk_gorulme": "2026-10-18",
    "son_gorulme": "2026-10-18",
    "sinif": "elenen"
