@@ -31,10 +31,25 @@ class PencereTesti(unittest.TestCase):
         self.assertEqual(len(kz.rss_ogeleri(xml, simdi)), 1)
         self.assertEqual(len(kz.rss_ogeleri(xml, simdi, gun=180)), 2)
 
-    def test_haber_son_2_ay(self):
-        haberler = [haber("Popeyes", "A yeni", 10), haber("Popeyes", "B yeni", 40), haber("Popeyes", "C yeni", 70)]
+    def test_haber_son_1_ay(self):
+        haberler = [haber("Popeyes", "A yeni", 10), haber("Popeyes", "B yeni", 40)]
         sonuc = bp.haber_penceresi(haberler, BIT)
-        self.assertEqual(sorted(u["ad"] for u in sonuc), ["A yeni", "B yeni"])
+        self.assertEqual([u["ad"] for u in sonuc], ["A yeni"])
+
+    def test_resmi_eslesen_haber_ayrik_kart_olmaz(self):
+        resmi = [{"marka": "KFC", "ad": "Go Bucket", "ek_kaynak": 0}]
+        haberler = [haber("KFC", "KFC Go Bucket is back in Canada", 3),
+                    haber("KFC", "KFC yeni kola tanıtıldı", 3)]
+        resmi_son, kalan = bp.haberleri_resmiye_bagla(resmi, haberler)
+        self.assertEqual(resmi_son[0]["ek_kaynak"], 1)
+        self.assertEqual([u["ad"] for u in kalan], ["KFC yeni kola tanıtıldı"])
+
+    def test_farkli_markadaki_eslesme_baglanmaz(self):
+        resmi = [{"marka": "Subway", "ad": "Go Bucket", "ek_kaynak": 0}]
+        haberler = [haber("KFC", "KFC Go Bucket is back", 3)]
+        resmi_son, kalan = bp.haberleri_resmiye_bagla(resmi, haberler)
+        self.assertEqual(resmi_son[0]["ek_kaynak"], 0)
+        self.assertEqual(len(kalan), 1)
 
     def test_sbarro_iki_urun_bulunana_kadar_geriye(self):
         haberler = [haber("Sbarro", "Eski 1", 100), haber("Sbarro", "Eski 2", 150), haber("Sbarro", "Eski 3", 200)]

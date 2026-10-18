@@ -197,7 +197,7 @@ def haber_urunleri(haber):
     return urunler
 
 
-HABER_GUN = 60            # haberler: son 2 ay
+HABER_GUN = 30            # haberler: son 1 ay
 RESMI_GUN = 90            # resmi siteler: son 3 ay (tespit tarihine göre)
 SBARRO = "Sbarro"
 SBARRO_EN_AZ_URUN = 2     # Sbarro'da en az bu kadar ürün bulunana kadar geriye gidilir
@@ -248,6 +248,30 @@ def haber_penceresi(haberler, bit):
 def resmi_penceresi(resmi, bit):
     sinir = bit - timedelta(days=RESMI_GUN)
     return [u for u in resmi if (tarih_oku(u["tarih"]) or date.min) >= sinir]
+
+
+def resmiye_eslesir(resmi_ad, haber):
+    """Haber başlığında (ya da ürün adında) resmi ürünün adı geçiyorsa eşleşir."""
+    r = anahtar_baslik(resmi_ad)
+    if len(r) < 5:
+        return False
+    for metin in (haber.get("urun_adi") or "", haber["ad"]):
+        h = anahtar_baslik(metin)
+        if h and (r in h or SequenceMatcher(None, r, h).ratio() >= 0.85):
+            return True
+    return False
+
+
+def haberleri_resmiye_bagla(resmi, haberler):
+    """Haber, resmi sitedeki aynı ürünle eşleşirse ayrı kart olmaz; resmi kartın 'ek kaynak' sayısını artırır."""
+    kalan = []
+    for h in haberler:
+        esi = next((r for r in resmi if r["marka"] == h["marka"] and resmiye_eslesir(r["ad"], h)), None)
+        if esi:
+            esi["ek_kaynak"] = esi.get("ek_kaynak", 0) + 1
+        else:
+            kalan.append(h)
+    return resmi, kalan
 
 
 def sirala(urunler):
@@ -326,7 +350,7 @@ def ozet_html(urunler, markalar):
 YONTEM = """<section class="sayfa"><h2>Yöntem ve kaynaklar</h2><ul class="yon">
 <li><b>Resmi site:</b> Markanın kendi sitesinde yeni olarak öne çıkardığı ürünler. Sitede çıkış tarihi yazmadığında tespit tarihi esas alınır.</li>
 <li><b>Haber:</b> Google Haberler'de marka ve yeni ürün kelimeleriyle geçen başlıklar. Yeni ürün olup olmadıkları ve hangi ülkeye ait oldukları başlıktan otomatik belirlendi; ülke belirtilmeyenler "Ülke belirtilmemiş" altında yer alır. Haber kaynağı başlığın sonundan alındı. Görsel, haber sayfasındaki paylaşım görselidir; bulunamazsa marka renkli bir kutu gösterilir: ürün türü, ürün adı ve kısa açıklama başlıktan alınır, uydurma bilgi eklenmez.</li>
-<li><b>Dönem:</b> Resmi siteler son 90 gün (tespit tarihine göre), haberler son 60 gün. Sbarro'da en az 2 ürün bulunana kadar en fazla 180 gün geriye bakıldı. Aynı haberin farklı kaynaklardaki kopyaları tek kartta gösterildi.</li>
+<li><b>Dönem:</b> Resmi siteler son 90 gün (tespit tarihine göre), haberler son 30 gün. Sbarro'da en az 2 ürün bulunana kadar en fazla 180 gün geriye bakıldı. Aynı haberin farklı kaynaklardaki kopyaları tek kartta gösterildi. Aynı ürün hem resmi sitede hem haberde varsa resmi site kartı gösterilir, haber ek kaynak olarak sayılır.</li>
 <li><b>Sınır:</b> Haber listesi otomatik derlendiği için ürün dışı ya da tekrar eden başlıklar bulunabilir.</li>
 </ul></section>"""
 
@@ -401,6 +425,7 @@ def main():
     bit = datetime.now(ISTANBUL).date()
     resmi_liste = resmi_penceresi(resmi_urunleri(veri), bit)
     haber_liste = haber_penceresi(benzer_haberleri_birlestir(haber_urunleri(haber)), bit)
+    resmi_liste, haber_liste = haberleri_resmiye_bagla(resmi_liste, haber_liste)
     urunler = resmi_liste + haber_liste
     if not urunler:
         print("UYARI: yazılacak ürün yok, PDF üretilmedi")
